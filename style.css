@@ -1,0 +1,215 @@
+body{
+    background: url("img/background.jpg");
+    /*background: #492713;*/
+    background-size: cover;
+    color: white;
+}
+@font-face {
+    font-family: 'Ubuntu-bold';
+    src: url('fonts/Ubuntu/Ubuntu-Bold.ttf');
+}
+@font-face {
+    font-family: 'Ubuntu-regular';
+    src: url('fonts/Ubuntu/Ubuntu-Regular.ttf');
+}
+@font-face {
+    font-family: 'Ubuntu-light';
+    src: url('fonts/Ubuntu/Ubuntu-Light.ttf');
+}
+a{
+    color: white;
+    text-underline: none;
+    text-decoration: none;
+}
+               /*
+                  HEADER
+                          */
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.header{
+    padding: 10px 0;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    max-width: 1280px;
+    position: sticky;
+}
+.header-container{
+    width: 1280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-menu{
+    font-family: 'Ubuntu-regular',sans-serif;
+}
+.header-menu-nav .nav-item{
+    padding: 10px;
+}
+.header-logo{
+    width: 220px;
+}
+.header-logo img{
+    width: 350px;
+}
+.header-menu-nav{
+    display: flex;
+    font-family: 'Ubuntu-regular',sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+
+              /*
+                 HERO
+                       */
+
+
+.hero{
+    display: flex;
+    justify-content: center;
+}
+.hero-container{
+    width: 1280px;
+    display: flex;
+
+}
+.hero-info{
+    width: 60%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 115px;
+}
+.hero-info-title{
+    font-size: 49px;
+    font-family: 'Ubuntu-bold', sans-serif;
+}
+.hero-info-text{
+    font-size: 30px;
+    padding-top: 30px;
+    font-family: 'Ubuntu-light',sans-serif;
+}
+.hero-info-button{
+    padding-top: 40px;
+}
+.hero-info-text-item svg{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.hero-info-text-item svg g{
+    fill: #d9b103;
+}
+
+/*АНИМАЦИЯ КНОПКИ КОНСУЛЬТАЦИИ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+.premium-gold-btn {
+    /* Базовые настройки */
+    position: relative;
+    overflow: hidden;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    background: transparent;
+    box-shadow: 0 8px 20px rgba(191, 149, 63, 0.4);
+    will-change: transform, box-shadow;
+
+    /* 2. Принудительно включаем 3D-ускорение (создаем GPU-слой сразу, а не при наведении) */
+    transform: translateZ(0);
+
+    /* 3. Убираем дрожание текста и краев при увеличении */
+    backface-visibility: hidden;
+
+    /* 4. Фикс бага Chrome/Safari с тормозами из-за overflow: hidden + border-radius */
+
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+.premium-gold-btn span {
+    color: #492713;
+    position: relative;
+    z-index: 2; /* Поднимаем текст над фоном */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+
+.premium-gold-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Начинаем за пределами кнопки */
+    width: 300%; /* Делаем фон огромным */
+    height: 100%;
+    background: linear-gradient(
+            45deg,
+            #BF953F,
+            #FCF6BA,
+            #B38728,
+            #FBF5B7,
+            #BF953F
+    );
+    z-index: 1; /* Кладем под текст */
+    /* Анимируем только transform - это не нагружает процессор! */
+    animation: gpuShimmer 2s ease-in-out infinite alternate;
+}
+
+
+.premium-gold-btn:hover {
+    /* Используем 3D-трансформацию (translate3d вместо translateY) для идеальной плавности */
+    transform: translate3d(0, -3px, 0) scale(1.02);
+    box-shadow: 0 12px 25px rgba(191, 149, 63, 0.6);
+}
+
+
+
+/* Эффекты при клике */
+.premium-gold-btn:active {
+    transform: translate3d(0, 1px, 0) scale(0.98);
+    box-shadow: 0 4px 10px rgba(191, 149, 63, 0.4);
+}
+
+/* Плавная анимация через видеокарту */
+@keyframes gpuShimmer {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(30%); /* Просто сдвигаем слой по оси X */
+    }
+}
+
+.glass-header {
+
+    background: rgba(15, 45, 35, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgb(72 63 0 / 42%);
+    padding: 14px;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.3);
+
+
+
+
+
+
+
+
