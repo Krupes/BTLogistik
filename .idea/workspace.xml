@@ -57,7 +57,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -85,7 +85,7 @@
       <workItem from="1790696452683" duration="733000" />
       <workItem from="1791031222879" duration="13461000" />
       <workItem from="1791129204121" duration="209000" />
-      <workItem from="1791215781982" duration="5004000" />
+      <workItem from="1791215781982" duration="5331000" />
     </task>
     <servers />
   </component>
