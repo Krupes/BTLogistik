@@ -36,7 +36,7 @@ body{
 }
 .gold-text{
     /* Создаем золотой градиент */
-    background: linear-gradient(to bottom, #fdf5d3 0%, #d4af37 40%, #997a15 100%);
+    background: linear-gradient(to bottom, #fdf5d3 0%, #d4af37 40%, #e7d7a3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -174,7 +174,7 @@ body{
     margin-top: 100px;
 }
 .catalog-item{
-    height: 450px;
+    height: 490px;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -211,19 +211,21 @@ body{
 
 }
 .catalog-item-title{
+    height: 80px;
+    text-align: center;
     font-family: 'Ubuntu-bold', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     color: #af901b;
     margin-top: 120px;
 
 }
 .catalog-item-text{
+    display: flex;
     height: 200px;
-    font-family: 'Ubuntu-regular', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-top: 10px;
     padding: 0 15px;
     justify-content: center;
-    align-items: center;
     font-size: 16px;
     color:#fffced;
 }
