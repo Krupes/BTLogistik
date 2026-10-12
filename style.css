@@ -1,5 +1,5 @@
 body{
-    background: url("img/background.jpg");
+    background: url("img/background5.png");
     /*background: #492713;*/
     background-size: cover;
     color: white;
@@ -100,7 +100,7 @@ body{
 
 }
 .hero-info{
-    width: 60%;
+    width: 56%;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -125,6 +125,18 @@ body{
 }
 .hero-info-text-item svg g{
     fill: #d9b103;
+}
+.hero-render-wrapper{
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+
+.hero-render-wrapper img{
+    width: 500px;
+
+
 }
 
 
@@ -221,12 +233,18 @@ body{
 }
 .catalog-item-text{
     display: flex;
+    /*text-align: center;*/
     height: 200px;
     font-family: 'Roboto', sans-serif;
     margin-top: 10px;
     padding: 0 15px;
     justify-content: center;
     font-size: 16px;
+    font-weight: 350;
     color:#fffced;
+}
+.change-back{
+    font-size: 20px;
+    margin-top: 10px;
 }
 
