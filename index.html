@@ -310,7 +310,32 @@
          <div class="calculator-form-container liquid-glass">
              <form action="" class="calcuator-form">
 
-                 <button>Рассчитать</button>
+
+
+                 <div class="form-group">
+                     <label for="product">Категория товара</label>
+                     <select id="product" class="glass-input" required>
+                         <option value="" disabled selected>Выберите тип товара</option>
+                         <option>Пиво</option>
+                         <option>Игрушки</option>
+                         <option value="laptop">Вариант 3</option>
+                     </select>
+                 </div>
+
+                 <div class="form-group">
+                     <label for="quantity">Количество</label>
+                     <input type="number" id="quantity" class="glass-input" min="1" max="99" placeholder="Введите количество (шт)" required>
+                 </div>
+
+                 <div class="form-group toggle-group">
+                     <label for="giftWrap">Бахнуть пивка?</label>
+                     <label class="toggle-switch">
+                         <input type="checkbox" id="giftWrap">
+                         <span class="slider"></span>
+                     </label>
+                 </div>
+
+                 <button class="premium-gold-btn"> <span>Рассчитать</span></button>
              </form>
          </div>
 

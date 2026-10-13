@@ -20,3 +20,24 @@
 //         isFirstBackground = !isFirstBackground;
 //     });
 // });
+
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Получаем данные для демонстрации
+    const product = document.getElementById('product').value;
+    const quantity = document.getElementById('quantity').value;
+    const isGiftWrapped = document.getElementById('giftWrap').checked;
+
+    // Визуальный эффект при нажатии (меняем текст кнопки)
+    const btn = document.querySelector('.submit-btn');
+    const originalText = btn.innerText;
+    btn.innerText = 'Успешно!';
+    btn.style.background = 'rgba(52, 199, 89, 0.4)'; // Зеленый оттенок
+
+    setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.background = '';
+        this.reset();
+    }, 2000);
+});
