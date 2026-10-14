@@ -334,3 +334,9 @@ body{
     padding: 20px;
 
 }
+.calc-section, .contacts-section,.site-footer{
+    font-family: 'Roboto', sans-serif;
+}
+.site-footer{
+    width: 101%;
+}

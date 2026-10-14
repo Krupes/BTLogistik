@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Белтаможлогистик</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="alien_styles.css">
@@ -13,6 +14,7 @@
              <a href="#">
                  <img src="img/header_logo2.png" alt="">
              </a>
+
 
          </div>
 
@@ -301,216 +303,236 @@
 
 
  </section>
- <section class="calculator">
-     <div class="calculator-container">
-            <h2 class="calculator-title">
-                Рассчитать стоимость
-            </h2>
+ <!-- ================= БЛОК РАСЧЕТА СТОИМОСТИ ================= -->
+ <section class="calc-section" id="calculator">
+     <div class="container">
+         <h2 class="section-title ">РАССЧИТАТЬ СТОИМОСТЬ</h2>
          <div class="gold-glow-line"></div>
-         <div class="calculator-form-container liquid-glass">
-             <form action="" class="calcuator-form">
+         <div class="title-underline"></div>
+         <p class="section-subtitle">Быстрый ориентировочный расчёт логистических, складских и таможенных услуг</p>
 
+         <div class="glass-card calc-card">
+             <form id="costCalcForm" class="calc-grid" onsubmit="return false;">
 
+                 <!-- Левая колонка: Параметры -->
+                 <div class="calc-inputs">
 
-                 <div class="form-group">
-                     <label for="product">Категория товара</label>
-                     <select id="product" class="glass-input" required>
-                         <option value="" disabled selected>Выберите тип товара</option>
-                         <option>Пиво</option>
-                         <option>Игрушки</option>
-                         <option value="laptop">Вариант 3</option>
-                     </select>
+                     <!-- Выбор услуги (интерактивные теги) -->
+                     <div class="form-group">
+                         <label class="form-label">Выберите направление услуги</label>
+                         <div class="service-pills" id="servicePills">
+                             <button type="button" class="pill-btn active" data-base="180">Таможенное оформление</button>
+                             <button type="button" class="pill-btn" data-base="120">Услуги склада / СВХ</button>
+                             <button type="button" class="pill-btn" data-base="90">Маркировка (УКЗ / DataMatrix)</button>
+                             <button type="button" class="pill-btn" data-base="350">Комплексный аутсорсинг</button>
+                         </div>
+                     </div>
+
+                     <div class="form-row-2col">
+                         <!-- Категория товара -->
+                         <div class="form-group">
+                             <label class="form-label" for="cargoCategory">Категория товара</label>
+                             <div class="custom-select-wrapper">
+                                 <select id="cargoCategory" class="glass-input">
+                                     <option value="1">Стандартный (паллетированный груз)</option>
+                                     <option value="1.25">Сборный груз / мелкоштучный товар</option>
+                                     <option value="1.4">Товары, подлежащие обязательной маркировке</option>
+                                     <option value="1.6">Негабаритный / требующий спец. режима</option>
+                                 </select>
+                             </div>
+                         </div>
+
+                         <!-- Количество -->
+                         <div class="form-group">
+                             <label class="form-label" for="cargoAmount">Количество (паллет / партий / тыс. шт)</label>
+                             <input type="number" id="cargoAmount" class="glass-input" placeholder="Например: 10" min="1" max="10000" value="5">
+                         </div>
+                     </div>
+
+                     <!-- Дополнительные опции (переключатели) -->
+                     <div class="form-group">
+                         <label class="form-label">Дополнительные опции</label>
+                         <div class="toggles-row">
+                             <label class="toggle-item">
+                                 <input type="checkbox" id="optExpress" value="1.3">
+                                 <span class="toggle-slider"></span>
+                                 <span class="toggle-text">Экспресс-обработка в день прибытия (+30%)</span>
+                             </label>
+
+                             <label class="toggle-item">
+                                 <input type="checkbox" id="optDocs" value="80">
+                                 <span class="toggle-slider"></span>
+                                 <span class="toggle-text">Полное документальное сопровождение</span>
+                             </label>
+                         </div>
+                     </div>
+
                  </div>
 
-                 <div class="form-group">
-                     <label for="quantity">Количество</label>
-                     <input type="number" id="quantity" class="glass-input" min="1" max="99" placeholder="Введите количество (шт)" required>
+                 <!-- Правая колонка: Итог и CTA -->
+                 <div class="calc-summary">
+                     <div class="summary-box">
+                         <span class="summary-caption">Ориентировочная стоимость:</span>
+                         <div class="summary-price">
+                             от <span id="calcTotalValue">360</span> <span class="currency">BYN</span>
+                         </div>
+                         <p class="summary-note">
+                             * Расчёт является предварительным. Точная ставка зависит от специфики груза, кодов ТН ВЭД и сроков хранения.
+                         </p>
+                         <button type="button" class="gold-btn calc-submit-btn" id="openOrderModalBtn">
+                             ОСТАВИТЬ ЗАЯВКУ НА РАСЧЁТ
+                         </button>
+                     </div>
                  </div>
 
-                 <div class="form-group toggle-group">
-                     <label for="giftWrap">Бахнуть пивка?</label>
-                     <label class="toggle-switch">
-                         <input type="checkbox" id="giftWrap">
-                         <span class="slider"></span>
-                     </label>
-                 </div>
-
-                 <button class="premium-gold-btn"> <span>Рассчитать</span></button>
              </form>
          </div>
-
      </div>
  </section>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+ <!-- ================= БЛОК КОНТАКТОВ ================= -->
+ <section class="contacts-section" id="contacts">
+     <div class="container">
+         <h2 class="section-title">КОНТАКТЫ</h2>
+         <div class="title-underline"></div>
+
+         <div class="contacts-grid">
+             <!-- Карточка с контактными данными -->
+             <div class="glass-card contacts-info">
+                 <h3 class="contacts-subtitle">Свяжитесь с нами напрямую</h3>
+                 <p class="contacts-desc">Проконсультируем по вопросам таможенной очистки, размещения на СВХ и маркировки товаров.</p>
+
+                 <ul class="contacts-list">
+                     <li>
+            <span class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+                         <div>
+                             <span class="contact-label">Телефоны отдела логистики:</span>
+                             <a href="tel:+375171234567" class="contact-link">+375 (17) 123-45-67</a>
+                             <a href="tel:+375299876543" class="contact-link">+375 (29) 987-65-43</a>
+                         </div>
+                     </li>
+
+                     <li>
+            <span class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+                         <div>
+                             <span class="contact-label">Электронная почта:</span>
+                             <a href="mailto:info@btlogistik.by" class="contact-link">info@btlogistik.by</a>
+                         </div>
+                     </li>
+
+                     <li>
+            <span class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+                         <div>
+                             <span class="contact-label">Адрес офиса и склада (СВХ):</span>
+                             <span class="contact-value">Республика Беларусь, г. Вилейка, ул. Шубина, 103</span>
+                         </div>
+                     </li>
+
+                     <li>
+            <span class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+                         <div>
+                             <span class="contact-label">Режим работы:</span>
+                             <span class="contact-value">Офис: Пн–Пт 09:00 – 18:00 | СВХ: Круглосуточно</span>
+                         </div>
+                     </li>
+                 </ul>
+
+                 <div class="messengers-block">
+                     <span class="contact-label">Мессенджеры для быстрой связи:</span>
+                     <div class="messenger-buttons">
+                         <a href="https://t.me/" target="_blank" rel="noopener" class="messenger-btn" aria-label="Telegram">
+                             Telegram
+                         </a>
+                         <a href="viber://chat?number=%2B375299876543" class="messenger-btn" aria-label="Viber">
+                             Viber
+                         </a>
+                         <a href="https://wa.me/375299876543" target="_blank" rel="noopener" class="messenger-btn" aria-label="WhatsApp">
+                             WhatsApp
+                         </a>
+                         <a href="https://wa.me/375299876543" target="_blank" rel="noopener" class="messenger-btn" aria-label="WeChat">
+                             WeChat
+                         </a>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- Правая колонка: Стилизованная карта -->
+             <div class="glass-card contacts-map-wrapper">
+                 <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2363ec0b86cd50469779f0265c2a32d895330c6b9445ae652e07442de05010b0&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+                 <div class="map-badge">
+                     <span>📍 ПТО / СВХ «Белтаможлогистик»</span>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
+
+ <!-- ================= ФУТЕР ================= -->
+ <footer class="site-footer">
+     <div class="container">
+         <div class="footer-top">
+
+             <!-- Бренд -->
+             <div class="footer-brand">
+                 <a href="#" class="footer-logo">
+                     <img src="img/header_logo2.png" alt="Белтаможлогистик" class="footer-logo-img">
+                     <span></span>
+                 </a>
+                 <p class="footer-tagline">Надёжная логистика — от таможни до маркировки. Полный комплекс складских и таможенных услуг в Республике Беларусь.</p>
+             </div>
+
+             <!-- Навигация: Услуги -->
+             <div class="footer-col">
+                 <h4 class="footer-heading">Услуги</h4>
+                 <ul class="footer-links">
+                     <li><a href="#">Таможенное оформление</a></li>
+                     <li><a href="#">Услуги СВХ</a></li>
+                     <li><a href="#">Услуги склада</a></li>
+                     <li><a href="#">Маркировка товаров</a></li>
+                     <li><a href="#">Аутсорсинг ВЭД</a></li>
+                 </ul>
+             </div>
+
+             <!-- Навигация: Компания -->
+             <div class="footer-col">
+                 <h4 class="footer-heading">Компания</h4>
+                 <ul class="footer-links">
+                     <li><a href="#">О компании</a></li>
+                     <li><a href="#calculator">Калькулятор стоимости</a></li>
+                     <li><a href="#">Документы и тарифы</a></li>
+                     <li><a href="#contacts">Контакты и схема проезда</a></li>
+                 </ul>
+             </div>
+
+             <!-- Форма обратной связи в футере -->
+             <div class="footer-col footer-callback">
+                 <h4 class="footer-heading">Остались вопросы?</h4>
+                 <p class="footer-callback-text">Оставьте ваш телефон, и специалист свяжется с вами в течение 15 минут.</p>
+                 <form class="footer-mini-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы скоро свяжемся с вами.');">
+                     <input type="tel" class="glass-input footer-input" placeholder="+375 (__) ___-__-__" required>
+                     <button type="submit" class="gold-btn footer-submit" aria-label="Отправить">→</button>
+                 </form>
+             </div>
+
+         </div>
+
+         <div class="footer-bottom">
+             <p>© 2026 ООО «Белтаможлогистик». Все права защищены.</p>
+             <div class="footer-legal">
+                 <a href="#">Политика конфиденциальности</a>
+                 <a href="#">Пользовательское соглашение</a>
+             </div>
+         </div>
+     </div>
+ </footer>
 </body>
 <script src="index.js"></script>
 </html>
