@@ -132,14 +132,13 @@
 .catalog-title-wrapper {
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
-    padding: 40px 20px;
+
 }
 
 .catalog-title,.frame-title,.about-title, .calculator-title, .section-title  {
     font-size: 3rem;
     font-weight: 700;
     text-transform: uppercase;
-    margin: 90px 0 0 0 ;
     letter-spacing: 2px;
 
     /* Создаем золотой градиент */
@@ -1046,4 +1045,332 @@ html {
         flex-direction: column;
         text-align: center;
     }
+}
+
+
+/*ГЛОБУС ПРОКРУТКА*/
+
+
+
+/* Компактный блок без лишних пустот */
+.advantages-section {
+    position: relative;
+    width: 100%;
+    padding: 25px 0 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    user-select: none;
+}
+
+
+
+
+
+/* 3D Сцена */
+.scene {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 480px;
+    perspective: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Внешнее кольцо орбиты карточек */
+.orbit-ring {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    border: 2px solid rgba(212, 175, 55, 0.22);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.08), inset 0 0 40px rgba(212, 175, 55, 0.08);
+    transform: rotateX(76deg);
+    pointer-events: none;
+    z-index: 1;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scene.is-spinning .orbit-ring,
+.scene.scroll-unlocked .orbit-ring {
+    border-color: rgba(243, 198, 79, 0.65);
+    box-shadow: 0 0 70px rgba(212, 175, 55, 0.35), inset 0 0 60px rgba(212, 175, 55, 0.25);
+}
+
+/* Центральный узел глобуса */
+.globe-wrapper {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    pointer-events: none;
+    transform-style: preserve-3d;
+}
+
+/* Сам шар глобуса (неподвижный) */
+.globe-sphere {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #1b6d58, #062920 65%, #02120e 100%);
+    box-shadow:
+            0 0 60px rgba(16, 185, 129, 0.25),
+            inset -25px -25px 50px rgba(0, 0, 0, 0.85),
+            inset 10px 10px 35px rgba(212, 175, 55, 0.3);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.scene.is-spinning .globe-sphere {
+    box-shadow:
+            0 0 95px rgba(212, 175, 55, 0.45),
+            inset -20px -20px 50px rgba(0, 0, 0, 0.85),
+            inset 0 0 50px rgba(243, 198, 79, 0.55);
+}
+
+/* Контейнер под твой img глобуса — теперь строго 100% и неподвижный */
+.globe-texture {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.globe-texture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.globe-shade {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset -30px -20px 60px rgba(2, 18, 14, 0.75), inset 6px 6px 25px rgba(252, 234, 187, 0.2);
+    pointer-events: none;
+}
+
+/* 3D Золотые нити вокруг глобуса (продолжают вращаться!) */
+.golden-threads {
+    position: absolute;
+    width: 346px;
+    height: 346px;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.thread {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid rgba(212, 175, 55, 0.45);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.thread::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    background: #fff3c4;
+    border-radius: 50%;
+    box-shadow: 0 0 12px 3px #d4af37;
+}
+
+.thread.t1 {
+    transform: rotateX(62deg) rotateY(22deg);
+    animation: spinThread1 14s linear infinite;
+}
+.thread.t2 {
+    transform: rotateX(-52deg) rotateY(48deg);
+    border-style: dashed;
+    animation: spinThread2 19s linear infinite reverse;
+}
+.thread.t3 {
+    transform: rotateX(18deg) rotateY(-65deg);
+    animation: spinThread3 16s linear infinite;
+}
+.thread.t4 {
+    inset: -12px;
+    border-color: rgba(212, 175, 55, 0.25);
+    transform: rotateX(75deg) rotateY(-10deg);
+    animation: spinThread4 24s linear infinite reverse;
+}
+
+@keyframes spinThread1 {
+    from { transform: rotateX(62deg) rotateY(22deg) rotateZ(0deg); }
+    to   { transform: rotateX(62deg) rotateY(22deg) rotateZ(360deg); }
+}
+@keyframes spinThread2 {
+    from { transform: rotateX(-52deg) rotateY(48deg) rotateZ(0deg); }
+    to   { transform: rotateX(-52deg) rotateY(48deg) rotateZ(360deg); }
+}
+@keyframes spinThread3 {
+    from { transform: rotateX(18deg) rotateY(-65deg) rotateZ(0deg); }
+    to   { transform: rotateX(18deg) rotateY(-65deg) rotateZ(360deg); }
+}
+@keyframes spinThread4 {
+    from { transform: rotateX(75deg) rotateY(-10deg) rotateZ(0deg); }
+    to   { transform: rotateX(75deg) rotateY(-10deg) rotateZ(360deg); }
+}
+
+
+
+/* Контейнер карточек */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: 10;
+}
+
+/* Карточка (Glassmorphism + Spotlight Glow) */
+.adv-card {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 430px;
+    min-height: 200px;
+    margin-top: -100px;
+    margin-left: -215px;
+    padding: 22px 26px;
+    border-radius: 18px;
+    background: rgba(8, 48, 38, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    cursor: pointer;
+    overflow: hidden;
+    will-change: transform, opacity, filter;
+    transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Свечение за курсором мыши */
+.adv-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(
+            260px circle at var(--mouse-x) var(--mouse-y),
+            rgba(245, 208, 97, 0.28),
+            rgba(16, 185, 129, 0.12) 45%,
+            transparent 80%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.adv-card:hover::before {
+    opacity: 1;
+}
+
+/* Фоновый блик активной карточки */
+.adv-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 235, 160, 0.12) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Активная карточка по центру */
+.adv-card.active {
+    border-color: rgba(243, 198, 79, 0.95);
+    background: rgba(10, 58, 46, 0.88);
+    box-shadow:
+            0 25px 55px rgba(0, 0, 0, 0.85),
+            0 0 35px rgba(212, 175, 55, 0.3);
+}
+
+/* Когда курсор продержали 1 секунду и скролл орбиты активировался */
+.scene.scroll-unlocked .adv-card.active {
+    border-color: #ffe680;
+    box-shadow:
+            0 28px 65px rgba(0, 0, 0, 0.9),
+            0 0 50px rgba(243, 198, 79, 0.55);
+}
+
+.adv-card.active::after {
+    opacity: 1;
+}
+
+.card-num,
+.card-content {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-num {
+    font-size: 70px;
+    font-weight: 800;
+    line-height: 0.85;
+    background: linear-gradient(180deg, #fceabb 0%, #d4af37 60%, #8a6f1d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    flex-shrink: 0;
+}
+
+.card-content h3 {
+    color: #f3c64f;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+.card-content p {
+    color: #e2e8f0;
+    font-size: 14px;
+    line-height: 1.48;
+}
+
+/* Индикатор-подсказка снизу */
+
+
+@media (max-width: 900px) {
+    .scene { height: 420px; }
+    .globe-wrapper { width: 240px; height: 240px; }
+    .globe-sphere { width: 220px; height: 220px; }
+    .golden-threads { width: 250px; height: 250px; }
+    .orbit-ring { width: 600px; height: 600px; }
+    .adv-card { width: 320px; margin-left: -160px; padding: 18px; min-height: 180px; margin-top: -90px; }
+    .card-num { font-size: 52px; }
+    .card-content h3 { font-size: 16px; }
+    .card-content p { font-size: 12.5px; }
 }
