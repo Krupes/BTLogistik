@@ -372,6 +372,17 @@ h2{
     margin: 50px 0;
     font-family: 'Roboto',sans-serif;
 }
-
+.footer-tagline-link{
+    color: var(--gold-light);
+}
+.footer-tagline-link:hover{
+    color: #bfa960;
+}
+#cargoAmountGroup{
+    display: none;
+}
+.controls-panel{
+    margin-top: 10px;
+}
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Орбита Преимуществ — UX Scroll Lock</title>
+    <title>3D Орбита Преимуществ — Stable & Smooth</title>
     <style>
         * {
             box-sizing: border-box;
@@ -16,6 +16,9 @@
             color: #ffffff;
             font-family: 'Ubuntu', 'Roboto', sans-serif;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         /* Компактный блок без лишних пустот */
@@ -71,7 +74,7 @@
             border-radius: 50%;
             border: 2px solid rgba(212, 175, 55, 0.22);
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.08), inset 0 0 40px rgba(212, 175, 55, 0.08);
-            transform: rotateX(76deg);
+            transform: translate3d(0, 0, -290px) rotateX(76deg);
             pointer-events: none;
             z-index: 1;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -94,9 +97,10 @@
             z-index: 5;
             pointer-events: none;
             transform-style: preserve-3d;
+            transform: translate3d(0, 0, -290px);
         }
 
-        /* Сам шар глобуса (неподвижный) */
+        /* Сам шар глобуса */
         .globe-sphere {
             position: relative;
             width: 310px;
@@ -121,7 +125,6 @@
                     inset 0 0 50px rgba(243, 198, 79, 0.55);
         }
 
-        /* Контейнер под твой img глобуса — теперь строго 100% и неподвижный */
         .globe-texture {
             position: relative;
             width: 100%;
@@ -149,7 +152,7 @@
             pointer-events: none;
         }
 
-        /* 3D Золотые нити вокруг глобуса (продолжают вращаться!) */
+        /* 3D Золотые нити вокруг глобуса */
         .golden-threads {
             position: absolute;
             width: 346px;
@@ -157,7 +160,6 @@
             border-radius: 50%;
             transform-style: preserve-3d;
             pointer-events: none;
-            will-change: transform;
         }
 
         .thread {
@@ -236,22 +238,22 @@
             z-index: 10;
         }
 
-        /* Карточка (Glassmorphism + Spotlight Glow) */
+        /* Карточка */
         .adv-card {
             --mouse-x: 50%;
             --mouse-y: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 430px;
-            min-height: 200px;
-            margin-top: -100px;
-            margin-left: -215px;
-            padding: 22px 26px;
+            width: 450px;
+            min-height: 205px;
+            margin-top: -102px;
+            margin-left: -225px;
+            padding: 24px 28px;
             border-radius: 18px;
-            background: rgba(8, 48, 38, 0.65);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(8, 48, 38, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(212, 175, 55, 0.28);
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
             display: flex;
@@ -259,11 +261,12 @@
             align-items: flex-start;
             cursor: pointer;
             overflow: hidden;
-            will-change: transform, opacity, filter;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
         }
 
-        /* Свечение за курсором мыши */
+        /* Свечение управляется классом .is-hovered из JS, чтобы не мигать при 3D-наклоне */
         .adv-card::before {
             content: '';
             position: absolute;
@@ -276,16 +279,15 @@
                     transparent 80%
             );
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
             pointer-events: none;
             z-index: 0;
         }
 
-        .adv-card:hover::before {
+        .adv-card.is-hovered::before {
             opacity: 1;
         }
 
-        /* Фоновый блик активной карточки */
         .adv-card::after {
             content: '';
             position: absolute;
@@ -298,16 +300,14 @@
             z-index: 0;
         }
 
-        /* Активная карточка по центру */
         .adv-card.active {
             border-color: rgba(243, 198, 79, 0.95);
-            background: rgba(10, 58, 46, 0.88);
+            background: rgba(9, 54, 43, 0.92);
             box-shadow:
                     0 25px 55px rgba(0, 0, 0, 0.85),
                     0 0 35px rgba(212, 175, 55, 0.3);
         }
 
-        /* Когда курсор продержали 1 секунду и скролл орбиты активировался */
         .scene.scroll-unlocked .adv-card.active {
             border-color: #ffe680;
             box-shadow:
@@ -324,10 +324,11 @@
             position: relative;
             z-index: 1;
             pointer-events: none;
+            transform: translateZ(0);
         }
 
         .card-num {
-            font-size: 70px;
+            font-size: 72px;
             font-weight: 800;
             line-height: 0.85;
             background: linear-gradient(180deg, #fceabb 0%, #d4af37 60%, #8a6f1d 100%);
@@ -337,33 +338,92 @@
         }
 
         .card-content h3 {
-            color: #f3c64f;
-            font-size: 19px;
+            color: #f5ca56;
+            font-size: 19.5px;
             font-weight: 700;
             margin-bottom: 8px;
             line-height: 1.25;
+            letter-spacing: 0.2px;
         }
 
         .card-content p {
-            color: #e2e8f0;
-            font-size: 14px;
-            line-height: 1.48;
+            color: #f1f5f9;
+            font-size: 14.5px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* Панель управления (Пагинация + Подсказка) */
+        .controls-panel {
+            position: relative;
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        /* Пагинация (точки и стрелки) */
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(4, 28, 22, 0.8);
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .pag-btn {
+            background: none;
+            border: none;
+            color: #d4af37;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 2px 6px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .pag-btn:hover {
+            color: #fff3c4;
+            transform: scale(1.15);
+        }
+
+        .pag-dots {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .dot.active {
+            width: 26px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #fceabb, #d4af37);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+            border-color: #ffe680;
         }
 
         /* Индикатор-подсказка снизу */
         .scroll-hint {
-            margin-top: 6px;
             color: rgba(212, 175, 55, 0.75);
             font-size: 13px;
             letter-spacing: 0.4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            z-index: 20;
             background: rgba(4, 28, 22, 0.75);
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
         }
 
@@ -376,10 +436,10 @@
 
         @media (max-width: 900px) {
             .scene { height: 420px; }
-            .globe-wrapper { width: 240px; height: 240px; }
+            .globe-wrapper { width: 240px; height: 240px; transform: translate3d(0, 0, -165px); }
             .globe-sphere { width: 220px; height: 220px; }
             .golden-threads { width: 250px; height: 250px; }
-            .orbit-ring { width: 600px; height: 600px; }
+            .orbit-ring { width: 600px; height: 600px; transform: translate3d(0, 0, -165px) rotateX(76deg); }
             .adv-card { width: 320px; margin-left: -160px; padding: 18px; min-height: 180px; margin-top: -90px; }
             .card-num { font-size: 52px; }
             .card-content h3 { font-size: 16px; }
@@ -389,13 +449,13 @@
 </head>
 <body>
 
-<section class="advantages-section">
+<section class="advantages-section" id="advSection">
     <h2 class="section-title">Белтаможлогистик — это</h2>
 
     <div class="scene" id="orbitScene">
         <div class="orbit-ring"></div>
 
-        <!-- Центральный глобус: шар неподвижен, нити вокруг него вращаются -->
+        <!-- Центральный глобус -->
         <div class="globe-wrapper">
             <div class="golden-threads" id="goldenThreads">
                 <div class="thread t1"></div>
@@ -406,7 +466,7 @@
 
             <div class="globe-sphere" id="globeSphere">
                 <div class="globe-texture" id="globeTexture">
-                    <!-- Вставляй свой img сюда, он будет стоять ровно и неподвижно: -->
+                    <!-- Вставляй свой img сюда: -->
                     <!-- <img src="img/globe.png" alt="Глобус Белтаможлогистик"> -->
                 </div>
                 <div class="globe-shade"></div>
@@ -451,14 +511,32 @@
         </div>
     </div>
 
-    <div class="scroll-hint" id="scrollHint">
-        <span id="scrollHintText">🖱️ Задержите курсор на карточке на 1 сек., чтобы крутить орбиту колёсиком</span>
+    <!-- Панель управления: Пагинация + Подсказка -->
+    <div class="controls-panel">
+        <div class="pagination">
+            <button class="pag-btn" id="prevBtn" title="Предыдущее преимущество">❮</button>
+            <div class="pag-dots" id="pagDots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+            </div>
+            <button class="pag-btn" id="nextBtn" title="Следующее преимущество">❯</button>
+        </div>
+
+        <div class="scroll-hint" id="scrollHint">
+            <span id="scrollHintText">🖱️ Задержите курсор на карточке на 1 сек., чтобы крутить орбиту колёсиком</span>
+        </div>
     </div>
 </section>
 
 <script>
     const scene = document.getElementById('orbitScene');
-    const cards = document.querySelectorAll('.adv-card');
+    const advSection = document.getElementById('advSection');
+    const cards = Array.from(document.querySelectorAll('.adv-card'));
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
     const goldenThreads = document.getElementById('goldenThreads');
     const globeSphere = document.getElementById('globeSphere');
     const scrollHint = document.getElementById('scrollHint');
@@ -472,191 +550,328 @@
     let velocity = 0;
     let snapTimer = null;
 
-    // Логика задержки 1 секунды перед активацией скролла карточек
+    // Стабильное отслеживание координат мыши и математических центров карточек
+    let pointerClientX = -1000;
+    let pointerClientY = -1000;
+    let hoveredCardIndex = -1;
     let isOrbitScrollActive = false;
-    let hoverIntentTimer = null;
-    let isHoveringCard = false;
+    let hoverStartTimestamp = 0; // Точное время начала наведения на карточку
+
+    // Хранилище стабильных (не зависящих от наклона!) координат и наклонов каждой карточки
+    const cardState = cards.map(() => ({
+        centerX: 0,
+        centerY: 0,
+        scale: 1,
+        zOrder: 0,
+        targetTiltX: 0,
+        targetTiltY: 0,
+        currentTiltX: 0,
+        currentTiltY: 0
+    }));
+
+    // Логика автопрокрутки (Autoplay)
+    let autoplayTimer = null;
+    let isSectionHovered = false;
+
+    function startAutoplay() {
+        clearInterval(autoplayTimer);
+        if (isSectionHovered || isOrbitScrollActive) return;
+
+        autoplayTimer = setInterval(() => {
+            targetAngle -= stepAngle;
+        }, 5000);
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayTimer);
+    }
 
     function activateOrbitScroll() {
+        if (isOrbitScrollActive) return;
         isOrbitScrollActive = true;
+        stopAutoplay();
         scene.classList.add('scroll-unlocked');
         scrollHint.classList.add('ready');
         scrollHintText.textContent = '✨ Режим вращения активен — крутите колёсико мыши';
     }
 
     function deactivateOrbitScroll() {
-        clearTimeout(hoverIntentTimer);
         isOrbitScrollActive = false;
+        hoverStartTimestamp = 0;
         scene.classList.remove('scroll-unlocked');
         scrollHint.classList.remove('ready');
         scrollHintText.textContent = '🖱️ Задержите курсор на карточке на 1 сек., чтобы крутить орбиту колёсиком';
+        if (!isSectionHovered) {
+            startAutoplay();
+        }
     }
 
-    // Состояние наклона (Tilt) для каждой карточки
-    const cardTilts = Array.from({ length: totalCards }, () => ({
-        targetX: 0,
-        targetY: 0,
-        currentX: 0,
-        currentY: 0
-    }));
+    // Функция проверяет, находится ли курсор в стабильном хитбоксе карточки (без учёта её 3D-наклона!)
+    // Это полностью исключает дрожание и ложные сбросы таймера на краях карточки.
+    function updatePointerAndTilt() {
+        const sceneRect = scene.getBoundingClientRect();
+        const sceneCenterX = sceneRect.left + sceneRect.width / 2;
+        const sceneCenterY = sceneRect.top + sceneRect.height / 2;
 
-    cards.forEach((card, index) => {
-        // Когда пользователь наводит курсор на карточку — запускаем таймер 1 секунда
-        card.addEventListener('mouseenter', () => {
-            isHoveringCard = true;
-            if (!isOrbitScrollActive) {
-                clearTimeout(hoverIntentTimer);
-                hoverIntentTimer = setTimeout(() => {
-                    if (isHoveringCard) {
-                        activateOrbitScroll();
-                    }
-                }, 1000); // 1000 мс = 1 секунда
+        const isMobile = window.innerWidth <= 900;
+        const baseW = isMobile ? 320 : 450;
+        const baseH = isMobile ? 185 : 210;
+
+        let foundIndex = -1;
+        let bestZ = -Infinity;
+
+        for (let i = 0; i < totalCards; i++) {
+            const st = cardState[i];
+            const halfW = (baseW * st.scale) / 2;
+            const halfH = (baseH * st.scale) / 2;
+
+            const cardScreenCenterX = sceneCenterX + st.centerX;
+            const cardScreenCenterY = sceneCenterY + st.centerY;
+
+            const dx = pointerClientX - cardScreenCenterX;
+            const dy = pointerClientY - cardScreenCenterY;
+
+            if (Math.abs(dx) <= halfW && Math.abs(dy) <= halfH) {
+                // Если карточки перекрываются, выбираем ту, которая ближе к зрителю
+                if (st.zOrder > bestZ) {
+                    bestZ = st.zOrder;
+                    foundIndex = i;
+                }
             }
-        });
+        }
 
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left;
-            const mouseY = e.clientY - rect.top;
+        hoveredCardIndex = foundIndex;
 
-            // Координаты для свечения за курсором
-            card.style.setProperty('--mouse-x', `${mouseX}px`);
-            card.style.setProperty('--mouse-y', `${mouseY}px`);
+        // Обновляем наклон и свечение для всех карточек
+        for (let i = 0; i < totalCards; i++) {
+            const st = cardState[i];
+            const card = cards[i];
 
-            // Вычисляем наклон карточки
-            const pctX = (mouseX / rect.width) - 0.5;
-            const pctY = (mouseY / rect.height) - 0.5;
+            if (i === hoveredCardIndex) {
+                card.classList.add('is-hovered');
 
-            cardTilts[index].targetX = -pctY * 22;
-            cardTilts[index].targetY = pctX * 24;
-        });
+                const halfW = (baseW * st.scale) / 2;
+                const halfH = (baseH * st.scale) / 2;
+                const cardScreenCenterX = sceneCenterX + st.centerX;
+                const cardScreenCenterY = sceneCenterY + st.centerY;
 
-        card.addEventListener('mouseleave', () => {
-            isHoveringCard = false;
-            cardTilts[index].targetX = 0;
-            cardTilts[index].targetY = 0;
+                // Нормализованное положение мыши от -0.5 до +0.5 относительно НЕПОДВИЖНОЙ рамки карточки
+                const pctX = Math.max(-0.5, Math.min(0.5, (pointerClientX - cardScreenCenterX) / (halfW * 2)));
+                const pctY = Math.max(-0.5, Math.min(0.5, (pointerClientY - cardScreenCenterY) / (halfH * 2)));
 
-            // Если пользователь увёл мышь с карточки до истечения 1 секунды — отменяем таймер
-            if (!isOrbitScrollActive) {
-                clearTimeout(hoverIntentTimer);
+                // Координаты для радиального свечения в процентах
+                const glowX = ((pctX + 0.5) * 100).toFixed(1);
+                const glowY = ((pctY + 0.5) * 100).toFixed(1);
+                card.style.setProperty('--mouse-x', `${glowX}%`);
+                card.style.setProperty('--mouse-y', `${glowY}%`);
+
+                // Мягкий 3D-наклон без обратной связи
+                st.targetTiltX = -pctY * 16;
+                st.targetTiltY = pctX * 18;
+            } else {
+                card.classList.remove('is-hovered');
+                st.targetTiltX = 0;
+                st.targetTiltY = 0;
             }
+        }
+
+        // Железобетонная логика таймера 1 секунды
+        if (hoveredCardIndex !== -1) {
+            if (!isOrbitScrollActive) {
+                if (hoverStartTimestamp === 0) {
+                    hoverStartTimestamp = performance.now();
+                } else if (performance.now() - hoverStartTimestamp >= 1000) {
+                    activateOrbitScroll();
+                }
+            }
+        } else {
+            // Если курсор ушёл с карточки — сбрасываем отсчёт ожидания
+            hoverStartTimestamp = 0;
+            // Если курсор вообще покинул пределы сцены — выключаем активный режим прокрутки
+            const inScene =
+                pointerClientX >= sceneRect.left &&
+                pointerClientX <= sceneRect.right &&
+                pointerClientY >= sceneRect.top &&
+                pointerClientY <= sceneRect.bottom;
+
+            if (!inScene && isOrbitScrollActive) {
+                deactivateOrbitScroll();
+            }
+        }
+    }
+
+    // Глобальное отслеживание положения курсора
+    window.addEventListener('mousemove', (e) => {
+        pointerClientX = e.clientX;
+        pointerClientY = e.clientY;
+    }, { passive: true });
+
+    // Переход к карточке по клику / пагинации
+    function goToCard(index) {
+        activateOrbitScroll();
+        const currentCardAngle = index * stepAngle + targetAngle;
+        const remainder = ((currentCardAngle % 360) + 540) % 360 - 180;
+        targetAngle -= remainder;
+        targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
+    }
+
+    dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+            const idx = parseInt(dot.getAttribute('data-index'), 10);
+            goToCard(idx);
         });
     });
 
-    // Когда курсор полностью покидает 3D-сцену — сбрасываем перехват скролла
-    scene.addEventListener('mouseleave', () => {
-        isHoveringCard = false;
+    prevBtn.addEventListener('click', () => {
+        targetAngle += stepAngle;
+        targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
+        activateOrbitScroll();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        targetAngle -= stepAngle;
+        targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
+        activateOrbitScroll();
+    });
+
+    cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            goToCard(index);
+        });
+    });
+
+    advSection.addEventListener('mouseenter', () => {
+        isSectionHovered = true;
+        stopAutoplay();
+    });
+
+    advSection.addEventListener('mouseleave', () => {
+        isSectionHovered = false;
+        pointerClientX = -1000;
+        pointerClientY = -1000;
         deactivateOrbitScroll();
     });
 
     function animate() {
-        const diff = targetAngle - currentAngle;
-        velocity = diff * 0.09;
-        currentAngle += velocity;
+        let diff = targetAngle - currentAngle;
+
+        if (Math.abs(diff) < 0.04) {
+            currentAngle = targetAngle;
+            velocity = 0;
+        } else {
+            velocity = diff * 0.09;
+            currentAngle += velocity;
+        }
 
         const speed = Math.abs(velocity);
         const isSpinning = speed > 0.35;
 
         scene.classList.toggle('is-spinning', isSpinning);
 
-        // Картинка внутри #globeTexture теперь стоит неподвижно!
-        // Вращаются только золотые нити вокруг глобуса и лёгкая пульсация сферы:
         const globeScale = 1 + Math.min(speed * 0.008, 0.05);
         globeSphere.style.transform = `scale(${globeScale.toFixed(3)})`;
         goldenThreads.style.transform = `rotateY(${-currentAngle * 1.3}deg) rotateZ(${velocity * 1.8}deg)`;
 
-        // Геометрия орбиты
         const isMobile = window.innerWidth <= 900;
-        const radiusX = isMobile ? 230 : 420;
+        const radiusX = isMobile ? 250 : 450;
         const radiusZ = isMobile ? 165 : 290;
         const tiltY   = isMobile ? 35  : 52;
 
         const snappedIndex = ((-Math.round(currentAngle / stepAngle) % totalCards) + totalCards) % totalCards;
 
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === snappedIndex);
+        });
+
+        // Сначала вычисляем базовые центры всех карточек
         cards.forEach((card, index) => {
             const cardAngleDeg = index * stepAngle + currentAngle;
             const angleRad = (cardAngleDeg * Math.PI) / 180;
 
-            const x = Math.sin(angleRad) * radiusX;
-            const z = Math.cos(angleRad) * radiusZ;
-            const y = Math.cos(angleRad) * tiltY + 22;
+            const rawX = Math.sin(angleRad) * radiusX;
+            const rawZ = Math.cos(angleRad) * radiusZ;
+            const rawY = Math.cos(angleRad) * tiltY + 22;
+            const depthNormalized = rawZ / radiusZ;
+            const scale = 0.72 + (depthNormalized + 1) * 0.14;
 
-            // Плавное сглаживание наклона от мыши
-            const tilt = cardTilts[index];
-            tilt.currentX += (tilt.targetX - tilt.currentX) * 0.14;
-            tilt.currentY += (tilt.targetY - tilt.currentY) * 0.14;
+            cardState[index].centerX = rawX;
+            cardState[index].centerY = rawY;
+            cardState[index].scale = scale;
+            cardState[index].zOrder = rawZ;
+        });
+
+        // Проверяем курсор и 1-секундный таймер каждый кадр (60 раз в секунду!)
+        updatePointerAndTilt();
+
+        // Применяем единую плавную трансформацию без резких переключений режима
+        cards.forEach((card, index) => {
+            const st = cardState[index];
+            const cardAngleDeg = index * stepAngle + currentAngle;
+            const angleRad = (cardAngleDeg * Math.PI) / 180;
+
+            const rawX = st.centerX;
+            const rawY = st.centerY;
+            const rawZ = st.zOrder;
+            const z = rawZ - radiusZ; // Передняя карточка ровно на Z = 0px для чёткости шрифта
+
+            // Плавное сглаживание наклона (Lerp)
+            st.currentTiltX += (st.targetTiltX - st.currentTiltX) * 0.12;
+            st.currentTiltY += (st.targetTiltY - st.currentTiltY) * 0.12;
 
             const baseRotateY = Math.sin(angleRad) * -28;
-            const totalRotateY = baseRotateY + tilt.currentY;
-            const totalRotateX = tilt.currentX;
+            const totalRotateY = baseRotateY + st.currentTiltY;
+            const totalRotateX = st.currentTiltX;
             const bankTiltZ = Math.max(-10, Math.min(10, velocity * -0.9));
 
-            const depthNormalized = z / radiusZ;
-            const scale = 0.78 + (depthNormalized + 1) * 0.14;
+            const depthNormalized = rawZ / radiusZ;
+            const scale = st.scale;
             const opacity = 0.32 + (depthNormalized + 1) * 0.34;
 
-            const depthBlur = Math.max(0, (1 - depthNormalized) * 2.1);
+            const depthBlur = Math.max(0, (1 - depthNormalized) * 2.2);
             const motionBlur = Math.min(4.5, speed * 0.32);
-            const totalBlur = (index === snappedIndex && speed < 1.2) ? depthBlur : depthBlur + motionBlur;
+            const isFrontCardSettled = (index === snappedIndex && speed < 0.8);
+            const totalBlur = isFrontCardSettled ? 0 : depthBlur + motionBlur;
 
-            card.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, ${z.toFixed(1)}px) rotateY(${totalRotateY.toFixed(2)}deg) rotateX(${totalRotateX.toFixed(2)}deg) rotateZ(${bankTiltZ.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
-            card.style.opacity = opacity.toFixed(2);
-            card.style.filter = `blur(${totalBlur.toFixed(1)}px)`;
+            // Всегда используем единую формулу transform, чтобы не было скачка при наведении мыши
+            card.style.transform = `translate3d(${rawX.toFixed(2)}px, ${rawY.toFixed(2)}px, ${z.toFixed(2)}px) rotateY(${totalRotateY.toFixed(2)}deg) rotateX(${totalRotateX.toFixed(2)}deg) rotateZ(${bankTiltZ.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
 
-            card.style.zIndex = z >= 0 ? 15 : 2;
+            card.style.opacity = isFrontCardSettled ? '1' : opacity.toFixed(2);
+            card.style.filter = totalBlur < 0.15 ? 'none' : `blur(${totalBlur.toFixed(1)}px)`;
+            card.style.zIndex = rawZ >= 0 ? 15 : 2;
 
-            if (index === snappedIndex && speed < 1.8) {
-                card.classList.add('active');
-            } else {
-                card.classList.remove('active');
-            }
+            card.classList.toggle('active', index === snappedIndex && speed < 1.8);
         });
 
         requestAnimationFrame(animate);
     }
 
-    // Обработка колёсика мыши с защитой от случайной остановки скролла страницы
-    scene.addEventListener('wheel', (e) => {
-        // Если пользователь ещё НЕ продержал мышь 1 секунду на карточке:
+    // Перехват колёсика на уровне window с capture: true гарантирует срабатывание после 1 секунды
+    window.addEventListener('wheel', (e) => {
+        pointerClientX = e.clientX;
+        pointerClientY = e.clientY;
+        updatePointerAndTilt();
+
         if (!isOrbitScrollActive) {
-            // Если он просто скроллит страницу мимо — перезапускаем таймер, чтобы страница спокойно ехала дальше
-            if (isHoveringCard) {
-                clearTimeout(hoverIntentTimer);
-                hoverIntentTimer = setTimeout(() => {
-                    if (isHoveringCard) activateOrbitScroll();
-                }, 1000);
-            }
-            return; // НЕ вызываем e.preventDefault() — браузер спокойно скроллит сайт!
+            return; // До истечения 1 секунды страница спокойно скроллится
         }
 
-        // Если же 1 секунда прошла и режим активен — крутим орбиту:
         e.preventDefault();
+        stopAutoplay();
 
         const delta = Math.sign(e.deltaY) * Math.min(Math.abs(e.deltaY), 110);
         targetAngle -= delta * 0.85;
 
         clearTimeout(snapTimer);
-
         snapTimer = setTimeout(() => {
             targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
         }, 140);
-    }, { passive: false });
+    }, { passive: false, capture: true });
 
-    // Клик по любой карточке тоже сразу включает режим и подтягивает её в центр
-    cards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-            activateOrbitScroll();
-            const currentCardAngle = index * stepAngle + targetAngle;
-            const remainder = ((currentCardAngle % 360) + 540) % 360 - 180;
-            targetAngle -= remainder;
-            targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
-        });
-    });
-
-    // Поддержка свайпов на смартфонах
+    // Свайпы на мобильных
     let touchStartX = 0;
     scene.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
     }, { passive: true });
 
     scene.addEventListener('touchmove', (e) => {
@@ -671,6 +886,7 @@
     }, { passive: true });
 
     requestAnimationFrame(animate);
+    startAutoplay();
 </script>
 </body>
 </html>

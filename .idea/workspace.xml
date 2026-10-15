@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +80,9 @@
       <workItem from="1792011360916" duration="166000" />
       <workItem from="1792011826530" duration="12000" />
       <workItem from="1792012249650" duration="3073000" />
-      <workItem from="1792076339017" duration="10135000" />
+      <workItem from="1792076339017" duration="14718000" />
+      <workItem from="1792095341967" duration="890000" />
+      <workItem from="1792097866887" duration="2322000" />
     </task>
     <servers />
   </component>

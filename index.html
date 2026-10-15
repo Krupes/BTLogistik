@@ -287,13 +287,13 @@
 </section>
 
 
- <section class="advantages-section">
+ <section class="advantages-section" id="advSection">
      <h2 class="section-title">Почему выбирают нас</h2>
 
      <div class="scene" id="orbitScene">
          <div class="orbit-ring"></div>
 
-         <!-- Центральный глобус: шар неподвижен, нити вокруг него вращаются -->
+         <!-- Центральный глобус -->
          <div class="globe-wrapper">
              <div class="golden-threads" id="goldenThreads">
                  <div class="thread t1"></div>
@@ -305,11 +305,10 @@
              <div class="globe-sphere" id="globeSphere">
                  <div class="globe-texture" id="globeTexture">
                      <img src="img/globe2.png" alt="">
-                     <!-- Вставляй свой img сюда, он будет стоять ровно и неподвижно: -->
-                     <!-- <img src="img/globe.png" alt="Глобус Белтаможлогистик"> -->
                  </div>
                  <div class="globe-shade"></div>
              </div>
+
 
          </div>
 
@@ -335,21 +334,35 @@
                  <div class="card-num">3</div>
                  <div class="card-content">
                      <h3>Оперативная и выгодная маркировка</h3>
-                     <p>Обеспечиваем маркировку товаров в соответствии с требованиями законодательства. Услуга оказывается как на складе ответственного хранения, так и на таможенном складе.</p>
+                     <p>Обеспечиваем маркировку товаров в соответствии с требованиями законодательства. Услуга оказывается как на складе ответственного хранения, так и на таможенном складе. Наличие Ж\Д путей позволяет маркировать вагоны и контейнера. Возможна круглосуточная работа по запросу.</p>
                  </div>
              </div>
 
              <div class="adv-card" data-index="3">
                  <div class="card-num">4</div>
                  <div class="card-content">
-                     <h3>Наличие Ж/Д путей в зоне таможенного контроля</h3>
-                     <p>Наличие железнодорожных путей на территории ЗТК позволяет принимать вагоны и контейнера напрямую, сокращать затраты на перегрузку и таможенное оформление.</p>
+                     <h3>Наличие Ж\Д путей в зоне таможенного контроля</h3>
+                     <p>Наличие железнодорожных путей на территории ЗТК позволяет принимать вагоны и контейнера напрямую, сокращать затраты на перегрузку и таможенное оформление. Выгрузка возможна непосредственно в склад и на открытую площадку.</p>
                  </div>
              </div>
          </div>
      </div>
 
+     <!-- Панель управления: Пагинация + Подсказка -->
+     <div class="controls-panel">
+         <div class="pagination">
+             <button class="pag-btn" id="prevBtn" title="Предыдущее преимущество">❮</button>
+             <div class="pag-dots" id="pagDots">
+                 <span class="dot active" data-index="0"></span>
+                 <span class="dot" data-index="1"></span>
+                 <span class="dot" data-index="2"></span>
+                 <span class="dot" data-index="3"></span>
+             </div>
+             <button class="pag-btn" id="nextBtn" title="Следующее преимущество">❯</button>
+         </div>
 
+
+     </div>
  </section>
 
 
@@ -422,8 +435,6 @@
  <section class="calc-section" id="calculator">
      <div class="container">
          <h2 class="section-title ">Калькулятор стоимости</h2>
-         <div class="gold-glow-line"></div>
-         <div class="title-underline"></div>
          <p class="section-subtitle">Быстрый ориентировочный расчёт логистических, складских и таможенных услуг</p>
 
          <div class="glass-card calc-card">
@@ -436,7 +447,7 @@
                      <div class="form-group">
                          <label class="form-label">Выберите направление услуги</label>
                          <div class="service-pills" id="servicePills">
-                             <button type="button" class="pill-btn active" >Услуги склада / СВХ</button>
+                             <button type="button" class="pill-btn " >Услуги склада / СВХ</button>
                              <button type="button" class="pill-btn" >Услуги склада / СОХ</button>
                              <button type="button" class="pill-btn" >Маркировка (УКЗ / DataMatrix)</button>
                          </div>
@@ -448,6 +459,8 @@
                              <label class="form-label" for="cargoCategory">Категория товара</label>
                              <div class="custom-select-wrapper">
                                  <select id="cargoCategory" class="glass-input">
+
+                                     <option value="0">Не выбрано</option>
                                      <option value="1">Пиво</option>
                                      <option value="1.25">Товары народного потребления</option>
                                      <option value="1.4">Крупногабаритный груз</option>
@@ -456,9 +469,9 @@
                          </div>
 
                          <!-- Количество -->
-                         <div class="form-group">
-                             <label class="form-label" for="cargoAmount">Количество (паллет / партий / тыс. шт)</label>
-                             <input type="number" id="cargoAmount" class="glass-input" placeholder="Например: 10" min="1" max="10000" value="5">
+                         <div class="form-group" id="cargoAmountGroup">
+                             <label class="form-label" id="cargoAmountLabel" for="cargoAmount">Количество паллет</label>
+                             <input type="number" id="cargoAmount" class="glass-input" value="1" min="1">
                          </div>
                      </div>
 
@@ -493,10 +506,10 @@
                      <div class="summary-box">
                          <span class="summary-caption">Ориентировочная стоимость:</span>
                          <div class="summary-price">
-                             от <span id="calcTotalValue">360</span> <span class="currency">BYN</span>
+                             от <span id="calcTotalValue">0</span> <span class="currency">BYN</span>
                          </div>
                          <p class="summary-note">
-                             * Расчёт является предварительным. Точная ставка зависит от специфики груза, кодов ТН ВЭД и сроков хранения.
+                             Расчёт является предварительным. Точная ставка зависит от специфики груза, кодов ТН ВЭД и сроков хранения.
                          </p>
                          <button type="button" class="gold-btn calc-submit-btn" id="openOrderModalBtn">
                              ОСТАВИТЬ ЗАЯВКУ НА РАСЧЁТ
@@ -513,7 +526,7 @@
  <section class="contacts-section" id="contacts">
      <div class="container">
          <h2 class="section-title">КОНТАКТЫ</h2>
-         <div class="title-underline"></div>
+
 
          <div class="contacts-grid">
              <!-- Карточка с контактными данными -->
@@ -605,7 +618,7 @@
                      <img src="img/header_logo2.png" alt="Белтаможлогистик" class="footer-logo-img">
                      <span></span>
                  </a>
-                 <p class="footer-tagline">Надёжная логистика — от таможни до маркировки. Полный комплекс складских и таможенных услуг в Республике Беларусь.</p>
+                 <p class="footer-tagline">Компания является членом <br> <a href="https://beltamas.by/" class="footer-tagline-link"> Ассоциации таможенных представителей Республики Беларусь</a></p>
              </div>
 
              <!-- Навигация: Услуги -->
@@ -613,10 +626,9 @@
                  <h4 class="footer-heading">Услуги</h4>
                  <ul class="footer-links">
                      <li><a href="#">Таможенное оформление</a></li>
-                     <li><a href="#">Услуги СВХ</a></li>
                      <li><a href="#">Услуги склада</a></li>
                      <li><a href="#">Маркировка товаров</a></li>
-                     <li><a href="#">Аутсорсинг ВЭД</a></li>
+                     <li><a href="#">Обработка Ж/Д поставок</a></li>
                  </ul>
              </div>
 
