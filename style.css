@@ -384,5 +384,7 @@ h2{
 .controls-panel{
     margin-top: 10px;
 }
-
+.map-badge svg g{
+    fill: #c59d1c;
+}
 

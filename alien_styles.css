@@ -885,6 +885,8 @@ html {
 }
 
 .map-badge {
+    display: flex;
+    gap: 4px;
     position: absolute;
     bottom: 20px;
     right: 20px;
