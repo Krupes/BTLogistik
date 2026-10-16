@@ -1,0 +1,807 @@
+/* ==========================================================================
+   MEDIA.CSS — адаптив для секций HEADER и CATALOG
+   Подключать ПОСЛЕ style.css (и желательно после responsive.css):
+   <link rel="stylesheet" href="styles/media.css">
+   Базовые стили не изменяются — только переопределяются в media queries.
+   Брейкпоинты: 1280 / 1100 / 1024 / 960 / 768 / 600 / 520 / 480 / 360 / 340
+   ========================================================================== */
+
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+/* ---- ≤1280: убираем жёсткую ширину 1280px, шапка становится резиновой ---- */
+@media (max-width: 1280px) {
+    section.header.glass-header,
+    section.header {
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .header .header-container {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 1280px;
+    }
+    .header .header-logo {
+        width: auto;
+        flex-shrink: 0;
+    }
+}
+
+/* ---- 1101–1200: всё ещё одна строка, но компактнее ---- */
+@media (min-width: 1101px) and (max-width: 1200px) {
+    section.header.glass-header {
+        padding: 0 10px 0 16px;
+    }
+    .header .header-logo img {
+        width: 64px;
+    }
+    .header .header-logo .brand-name {
+        font-size: 19px;
+    }
+    .header .header-menu-nav .nav-item {
+        font-size: 12px;
+        letter-spacing: .08em;
+        padding: 0 8px;
+    }
+    .header .header-contacts .premium-gold-btn {
+        padding: 0 18px;
+    }
+    .header .header-contacts .premium-gold-btn span {
+        font-size: 11.5px;
+        letter-spacing: .1em;
+    }
+}
+
+/* ---- ≤1100: две строки — логотип + кнопка сверху, меню снизу ---- */
+@media (max-width: 1100px) {
+    section.header.glass-header {
+        min-height: 0;
+        padding: 8px 16px 6px;
+        border-radius: 32px;
+        margin-top: 16px;
+    }
+    .header .header-container {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        row-gap: 6px;
+        column-gap: 12px;
+    }
+    .header .header-logo {
+        order: 1;
+    }
+    .header .header-logo img {
+        width: 64px;
+    }
+    .header .header-logo .brand-name {
+        font-size: 20px;
+    }
+    .header .header-contacts {
+        order: 2;
+        margin-left: auto;
+    }
+    .header .header-contacts .premium-gold-btn {
+        min-height: 46px;
+        padding: 0 22px;
+    }
+    .header .header-contacts .premium-gold-btn span {
+        font-size: 12px;
+        letter-spacing: .12em;
+    }
+
+    .header .header-menu-nav {
+        order: 3;
+        flex: 1 1 100%;
+        width: 100%;
+        margin-top: 0;
+        padding-top: 4px;
+        border-top: 1px solid rgba(230, 194, 122, .2);
+        justify-content: center;
+        gap: 0;
+    }
+    .header .header-menu-nav .nav-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;                 /* touch-friendly */
+        padding: 0 14px;
+        font-size: 13px;
+        letter-spacing: .1em;
+        white-space: nowrap;
+    }
+    .header .header-menu-nav .nav-item::after {
+        display: none;
+    }
+}
+
+/* ---- ≤768: меню — горизонтальная прокрутка пальцем ---- */
+@media (max-width: 768px) {
+    section.header.glass-header {
+        margin-top: 12px;
+        padding: 8px 12px 4px;
+    }
+    .header .header-logo img {
+        width: 56px;
+    }
+    .header .header-logo a {
+        gap: 8px;
+    }
+    .header .header-logo .brand-name {
+        font-size: 18px;
+    }
+    .header .header-menu-nav {
+        justify-content: flex-start;
+        justify-content: safe center;     /* центр, пока всё помещается */
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+    }
+    .header .header-menu-nav::-webkit-scrollbar {
+        display: none;
+    }
+    .header .header-menu-nav .nav-item {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        padding: 0 14px;
+        font-size: 13px;
+    }
+    .header .header-contacts .premium-gold-btn {
+        min-height: 44px;
+        padding: 0 18px;
+    }
+    .header .header-contacts .premium-gold-btn span {
+        font-size: 11.5px;
+        letter-spacing: .1em;
+    }
+}
+
+/* ---- ≤520: логотип по центру, CTA на всю ширину, ниже — меню ---- */
+@media (max-width: 520px) {
+    section.header.glass-header {
+        border-radius: 26px;
+        padding: 10px 12px 4px;
+    }
+    .header .header-container {
+        row-gap: 8px;
+    }
+    .header .header-logo {
+        flex: 1 1 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .header .header-logo a {
+        min-height: 48px;
+    }
+    .header .header-contacts {
+        order: 2;
+        flex: 1 1 100%;
+        margin-left: 0;
+    }
+    .header .header-contacts .premium-gold-btn {
+        width: 100%;
+        min-height: 48px;
+    }
+    .header .header-contacts .premium-gold-btn span {
+        font-size: 12.5px;
+        letter-spacing: .12em;
+    }
+    .header .header-menu-nav {
+        justify-content: flex-start;      /* на узком экране — со старта списка */
+    }
+    .header .header-menu-nav .nav-item {
+        padding: 0 12px;
+        font-size: 12.5px;
+    }
+}
+
+/* ---- ≤480 ---- */
+@media (max-width: 480px) {
+    section.header.glass-header {
+        margin-top: 10px;
+    }
+    .header .header-logo img {
+        width: 52px;
+    }
+    .header .header-logo .brand-name {
+        font-size: 18px;
+    }
+}
+
+/* ---- ≤360 ---- */
+@media (max-width: 360px) {
+    section.header.glass-header {
+        padding: 8px 10px 2px;
+        border-radius: 22px;
+    }
+    .header .header-logo img {
+        width: 46px;
+    }
+    .header .header-logo .brand-name {
+        font-size: 16px;
+    }
+    .header .header-contacts .premium-gold-btn span {
+        font-size: 12px;
+        letter-spacing: .08em;
+    }
+}
+
+/* ---- ≤340 (320px-устройства) ---- */
+@media (max-width: 340px) {
+    section.header.glass-header {
+        padding: 8px 8px 2px;
+    }
+    .header .header-logo img {
+        width: 42px;
+    }
+    .header .header-logo .brand-name {
+        font-size: 15px;
+    }
+    .header .header-menu-nav .nav-item {
+        padding: 0 10px;
+        font-size: 12px;
+        letter-spacing: .08em;
+    }
+}
+
+
+/* ==========================================================================
+   CATALOG
+   --cat-img — размер иллюстрации; от него считаются все отступы,
+   чтобы картинка, выступающая над карточкой, не налезала на соседей.
+   ========================================================================== */
+
+/* ---- ≤1280: контейнер на всю ширину, flex → grid 4 колонки ---- */
+@media (max-width: 1280px) {
+    .catalog {
+        --cat-img: clamp(120px, 13vw, 150px);
+        width: 100%;
+    }
+    .catalog .catalog-container {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 1280px;
+        margin-inline: auto;
+        padding-inline: clamp(12px, 2.5vw, 20px);
+    }
+    .catalog .catalog-items {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: calc(var(--cat-img) * .5 + 4.5rem);
+    }
+    .catalog .catalog-item {
+        position: relative;
+        box-sizing: border-box;
+        width: auto;
+        min-width: 0;
+        height: auto;
+        padding: 0 14px 22px;
+    }
+    .catalog .catalog-item-img {
+        width: var(--cat-img);
+    }
+    .catalog .catalog-item-img img {
+        width: var(--cat-img);
+        height: auto;
+        top: calc(var(--cat-img) * -.5);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .catalog .catalog-item-title {
+        height: auto;
+        min-height: 2.4em;
+        margin-top: calc(var(--cat-img) * .8);
+        margin-bottom: 18px;
+        font-size: clamp(1.375rem, 2.35vw, 1.875rem);
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+    /* вся кнопка — зона нажатия; кнопки выровнены по низу карточки */
+    .catalog .catalog-item-action {
+        box-sizing: border-box;
+        width: min(100%, 220px);
+        height: auto;
+        min-height: 48px;
+        margin-top: auto;
+        padding: 0;
+    }
+    .catalog .catalog-item-action span {
+        display: flex;
+        align-self: stretch;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+    }
+    .catalog .catalog-item-action span a {
+        flex: 1;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 16px;
+        font-size: 15px;
+    }
+    .catalog .catalog-item-action span a svg {
+        flex: none;
+    }
+    .catalog .catalog-title {
+        font-size: 28px;
+    }
+    .catalog .catalog-title::after {
+        width: min(260px, 60%);
+    }
+}
+
+/* ---- ≤960: сетка 2×2 ---- */
+@media (max-width: 960px) {
+    .catalog {
+        --cat-img: 140px;
+    }
+    .catalog .catalog-items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: calc(var(--cat-img) * .5 + 1.25rem) 20px;   /* row-gap учитывает выступ картинки */
+        margin-top: calc(var(--cat-img) * .5 + 3.5rem);
+    }
+    .catalog .catalog-item-title {
+        font-size: clamp(1.375rem, 3.4vw, 1.75rem);
+    }
+}
+
+/* ---- ≤768 ---- */
+@media (max-width: 768px) {
+    .catalog {
+        margin-bottom: 40px;
+    }
+    .catalog .catalog-title {
+        font-size: 26px;
+    }
+}
+
+/* ---- ≤600: одна колонка ---- */
+@media (max-width: 600px) {
+    .catalog {
+        --cat-img: 130px;
+    }
+    .catalog .catalog-items {
+        grid-template-columns: minmax(0, 420px);
+        justify-content: center;
+        gap: calc(var(--cat-img) * .5 + 1.5rem);
+    }
+    .catalog .catalog-item {
+        padding: 0 16px 24px;
+    }
+    .catalog .catalog-item-title {
+        font-size: 1.5rem;
+    }
+    .catalog .catalog-item-action {
+        width: min(100%, 260px);
+    }
+}
+
+/* ---- ≤480 ---- */
+@media (max-width: 480px) {
+    .catalog {
+        margin-bottom: 32px;
+    }
+    .catalog .catalog-container {
+        padding-inline: 16px;
+    }
+    .catalog .catalog-title {
+        font-size: 24px;
+        letter-spacing: 1.5px;
+    }
+    .catalog .catalog-title::after {
+        width: 180px;
+    }
+    .catalog .catalog-item-action span a {
+        font-size: 16px;                  /* читаемо и без зума */
+    }
+}
+
+/* ---- ≤360 ---- */
+@media (max-width: 360px) {
+    .catalog {
+        --cat-img: 116px;
+    }
+    .catalog .catalog-container {
+        padding-inline: 12px;
+    }
+    .catalog .catalog-item {
+        padding: 0 12px 20px;
+        border-radius: 18px;
+    }
+    .catalog .catalog-item-title {
+        font-size: 1.3rem;
+    }
+    .catalog .catalog-title {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+}
+
+/* ---- ≤340 (320px-устройства) ---- */
+@media (max-width: 340px) {
+    .catalog {
+        --cat-img: 104px;
+    }
+    .catalog .catalog-container {
+        padding-inline: 10px;
+    }
+    .catalog .catalog-item-title {
+        font-size: 1.2rem;
+    }
+    .catalog .catalog-title {
+        font-size: 20px;
+    }
+    .catalog .catalog-title::after {
+        width: 140px;
+    }
+}
+
+
+/* ==========================================================================
+   Сенсорные устройства и reduced-motion (только для header/catalog)
+   ========================================================================== */
+@media (hover: none) {
+    .header .premium-gold-btn:hover,
+    .catalog .premium-gold-btn:hover {
+        transform: none;                  /* нет «залипшего» hover после тапа */
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .header .premium-gold-btn::before,
+    .catalog .premium-gold-btn::before {
+        animation: none;
+    }
+    .header .header-menu-nav {
+        scroll-behavior: auto;
+    }
+}
+/* ==========================================================================
+   BURGER (стилизован как кнопка и кромка шапки: стекло + золото)
+   ========================================================================== */
+.header .burger {
+    display: none;                       /* на десктопе скрыт */
+    position: relative;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid rgba(230, 194, 122, .6);
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    background:
+            radial-gradient(120% 160% at 50% -40%, rgba(255, 247, 214, .34), transparent 60%),
+            linear-gradient(135deg, rgba(243, 223, 157, .20), rgba(212, 175, 55, .05));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .40),
+            inset 0 -8px 16px rgba(212, 175, 55, .10),
+            0 0 22px rgba(212, 175, 55, .22);
+    transition: box-shadow .35s ease, border-color .35s ease, transform .2s ease;
+}
+.header .burger span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 22px;
+    height: 2px;
+    margin: -1px 0 0 -11px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--gold-1), var(--gold-2), var(--gold-3));
+    box-shadow: 0 0 8px rgba(243, 223, 157, .55);
+    transition: transform .35s cubic-bezier(.2, .8, .2, 1), opacity .2s ease;
+}
+.header .burger span:nth-child(1) { transform: translateY(-7px); }
+.header .burger span:nth-child(3) { transform: translateY(7px); }
+
+/* состояние «открыто» → крестик */
+.header .burger[aria-expanded="true"] {
+    border-color: rgba(255, 231, 150, .95);
+    box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .55),
+            inset 0 -8px 16px rgba(212, 175, 55, .16),
+            0 0 30px rgba(243, 223, 157, .4);
+}
+.header .burger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg); }
+.header .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.header .burger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg); }
+
+.header .burger:active { transform: scale(.93); }
+.header .burger:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+@media (hover: hover) {
+    .header .burger:hover {
+        border-color: rgba(255, 231, 150, .95);
+        box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, .55),
+                inset 0 -8px 16px rgba(212, 175, 55, .16),
+                0 0 34px rgba(243, 223, 157, .42);
+    }
+}
+
+/* ==========================================================================
+   HEADER ≤1100: бургер + раскрывающееся меню (переопределяет прежние правила)
+   ========================================================================== */
+@media (max-width: 1100px) {
+    .header .header-container {
+        row-gap: 0;                       /* скрытые блоки не должны давать зазоры */
+    }
+    .header .burger {
+        display: block;
+        order: 3;
+    }
+    .header .header-contacts {
+        order: 2;
+        margin-left: auto;
+    }
+
+    /* меню: свёрнуто по умолчанию */
+    .header .header-menu-nav {
+        order: 4;
+        flex: 1 1 100%;
+        width: 100%;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        overflow: hidden;
+        scroll-snap-type: none;
+        max-height: 0;
+        margin: 0;
+        padding: 0;
+        border-top: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+                max-height .4s cubic-bezier(.2, .8, .2, 1),
+                opacity .25s ease,
+                margin .4s ease,
+                padding .4s ease,
+                visibility 0s linear .4s;
+    }
+    /* меню: открыто */
+    .header.is-open .header-menu-nav {
+        max-height: 360px;
+        margin-top: 8px;
+        padding: 6px 0 4px;
+        border-top: 1px solid rgba(230, 194, 122, .22);
+        opacity: 1;
+        visibility: visible;
+        transition:
+                max-height .4s cubic-bezier(.2, .8, .2, 1),
+                opacity .3s ease .05s,
+                margin .4s ease,
+                padding .4s ease,
+                visibility 0s;
+    }
+    .header .header-menu-nav .nav-item {
+        flex: none;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: flex-start;
+        min-height: 52px;                 /* touch-friendly */
+        padding: 0 18px;
+        font-size: 14px;
+        letter-spacing: .1em;
+        white-space: normal;
+        scroll-snap-align: none;
+        border-bottom: 1px solid rgba(230, 194, 122, .12);
+    }
+    .header .header-menu-nav .nav-item:last-child {
+        border-bottom: 0;
+    }
+    .header .header-menu-nav .nav-item:active {
+        background: rgba(243, 223, 157, .08);
+    }
+}
+
+/* ≤600: в строке шапки только логотип и бургер, CTA уезжает в раскрытое меню */
+@media (max-width: 600px) {
+    .header .header-logo {
+        flex: 0 1 auto;
+        display: block;
+        justify-content: normal;
+    }
+    .header .burger {
+        margin-left: auto;
+    }
+    .header .header-contacts {
+        order: 5;
+        flex: 1 1 100%;
+        margin: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+                max-height .4s cubic-bezier(.2, .8, .2, 1),
+                opacity .25s ease,
+                padding .4s ease,
+                visibility 0s linear .4s;
+    }
+    .header.is-open .header-contacts {
+        max-height: 90px;
+        padding: 8px 2px 6px;
+        opacity: 1;
+        visibility: visible;
+        transition:
+                max-height .4s cubic-bezier(.2, .8, .2, 1),
+                opacity .3s ease .1s,
+                padding .4s ease,
+                visibility 0s;
+    }
+    .header .header-contacts .premium-gold-btn {
+        width: 100%;
+        min-height: 48px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header .header-menu-nav,
+    .header .header-contacts,
+    .header .burger span {
+        transition: none;
+    }
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+/* ---- ≤1280: резиновый контейнер, две колонки ---- */
+@media (max-width: 1280px) {
+    .hero {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .hero .hero-container {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 1280px;
+        padding-inline: clamp(16px, 3vw, 24px);
+    }
+    .hero .hero-info {
+        box-sizing: border-box;
+        flex: 0 0 56%;
+        width: 56%;
+        height: auto;
+        min-height: 400px;
+        padding-top: clamp(56px, 9vw, 115px);
+        padding-right: 16px;
+    }
+    .hero .hero-info-title {
+        font-size: clamp(2rem, 4vw, 3.0625rem);
+        line-height: 1.12;
+        overflow-wrap: break-word;
+    }
+    .hero .hero-info-text {
+        font-size: clamp(1.125rem, 2.3vw, 1.875rem);
+        padding-top: clamp(18px, 2.4vw, 30px);
+    }
+    .hero .hero-info-text-item {
+        display: flex;
+        align-items: center;
+        padding-block: .15em;
+    }
+    .hero .hero-info-text-item svg {
+        flex: none;
+        width: .68em;
+        height: .68em;
+        margin-right: .35em;
+    }
+    .hero .hero-info-button {
+        padding-top: clamp(24px, 3.2vw, 40px);
+    }
+    .hero .hero-render {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+    .hero .hero-render-wrapper {
+        width: 100%;
+        max-width: 500px;
+        margin-top: 30px;
+    }
+    .hero .hero-render-wrapper img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* ---- ≤900: колонка — текст сверху, маскот снизу по центру ---- */
+@media (max-width: 900px) {
+    .hero .hero-container {
+        flex-direction: column;
+    }
+    .hero .hero-info {
+        flex: none;
+        width: 100%;
+        min-height: 0;
+        padding: clamp(32px, 6vw, 56px) 0 0;
+    }
+    .hero .hero-info-title {
+        font-size: clamp(2rem, 6vw, 2.75rem);
+    }
+    .hero .hero-info-text {
+        font-size: clamp(1.125rem, 3vw, 1.5rem);
+    }
+    .hero .hero-info-button .premium-gold-btn {
+        min-height: 52px;
+    }
+    .hero .hero-render {
+        flex: none;
+        width: 100%;
+        justify-content: center;
+    }
+    .hero .hero-render-wrapper {
+        max-width: min(420px, 80%);
+        margin-top: 28px;
+    }
+}
+
+/* ---- ≤768 ---- */
+@media (max-width: 768px) {
+    .hero {
+        margin-bottom: 32px;
+    }
+}
+
+/* ---- ≤520: кнопка на всю ширину ---- */
+@media (max-width: 520px) {
+    .hero .hero-info-button .premium-gold-btn {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 20px;
+        min-height: 54px;
+    }
+    .hero .hero-info-button .premium-gold-btn span {
+        font-size: 15px;
+    }
+}
+
+/* ---- ≤480 ---- */
+@media (max-width: 480px) {
+    .hero .hero-container {
+        padding-inline: 16px;
+    }
+    .hero .hero-info-title {
+        font-size: 1.75rem;
+    }
+    .hero .hero-info-text {
+        font-size: 1.0625rem;
+        padding-top: 18px;
+    }
+    .hero .hero-render-wrapper {
+        max-width: min(300px, 78%);
+    }
+}
+
+/* ---- ≤360 ---- */
+@media (max-width: 360px) {
+    .hero .hero-container {
+        padding-inline: 12px;
+    }
+    .hero .hero-info-title {
+        font-size: 1.55rem;
+    }
+    .hero .hero-info-text {
+        font-size: 1rem;
+    }
+}
+
+/* ---- ≤340 (320px-устройства) ---- */
+@media (max-width: 340px) {
+    .hero .hero-info-title {
+        font-size: 1.4rem;
+    }
+}

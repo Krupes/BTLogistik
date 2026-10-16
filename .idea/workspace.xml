@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcba9d45-d510-458f-a7c7-04c95d69bbf9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alien_styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop.ini" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/alien_styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/UFL.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/Ubuntu-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/Ubuntu-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/Ubuntu-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/Ubuntu-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/Ubuntu-LightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/Ubuntu-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/Ubuntu-MediumItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/fonts/Ubuntu/Ubuntu-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/background4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/catalog_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/catalog_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/catalog_2_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/catalog_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/catalog_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/globe2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/header_logo2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/img/mascott2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to claude/to claude.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +82,7 @@
       <workItem from="1792174058534" duration="9955000" />
       <workItem from="1792184330217" duration="690000" />
       <workItem from="1792185031418" duration="270000" />
+      <workItem from="1792185305826" duration="2641000" />
     </task>
     <servers />
   </component>

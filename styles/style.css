@@ -216,6 +216,35 @@ h2{
     gap: 0;
 }
 
+/*LOGO*/
+.header-logo{ width: auto; flex-shrink: 0; }
+.header-logo .brand{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: var(--tap);
+    text-decoration: none;
+}
+.brand-mark{
+    display: block;
+    width: 52px; height: auto; flex: none;
+    filter: drop-shadow(0 0 8px rgba(212,175,55,.45));
+    transition: filter .4s ease, transform .4s ease;
+}
+.brand:hover .brand-mark{ filter: drop-shadow(0 0 14px rgba(255,231,150,.8)); transform: scale(1.04); }
+.brand-name{
+    font-family: 'Ubuntu-bold', 'Ubuntu', sans-serif;
+    font-size: 21px;
+    letter-spacing: .01em;
+    line-height: 1;
+    white-space: nowrap;
+    background: linear-gradient(180deg, #ffffff 0%, var(--gold-2) 48%, var(--gold-3) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.45));
+}
+
 .header-menu-nav{
     gap: 2px;
 }
@@ -389,12 +418,19 @@ h2{
 
 .header-logo{
     width: 300px;
+
+}
+.header-logo a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 .header-logo img{
-    width: 350px;
+    width: 80px;
 }
 .header-menu-nav{
     display: flex;
+    margin-top: 3px;
 
 }
 
