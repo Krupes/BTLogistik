@@ -50,7 +50,7 @@
     .globe-sphere { width: 220px; height: 220px; }
     .golden-threads { width: 250px; height: 250px; }
     .orbit-ring { width: 600px; height: 600px; transform: translate3d(0, 0, -165px) rotateX(76deg); }
-    .adv-card { width: 320px; margin-left: -160px; padding: 18px; min-height: 180px; margin-top: -90px; }
+    .adv-card { width: 320px; margin-left: -175px; padding: 18px; min-height: 180px; margin-top: -90px; }
     .card-num { font-size: 52px; }
     .card-content h3 { font-size: 16px; }
     .card-content p { font-size: 12.5px; }
