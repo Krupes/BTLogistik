@@ -1,25 +1,3 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Находим кнопку по классу
-//     const changeBtn = document.querySelector('.change-back');
-//
-//     // Переменная для отслеживания текущего фона (true - background1, false - background2)
-//     let isFirstBackground = true;
-//
-//     // Добавляем слушатель события клика на кнопку
-//     changeBtn.addEventListener('click', () => {
-//         if (isFirstBackground) {
-//             // Если сейчас первый фон, меняем на второй
-//             // Обратите внимание на расширение файла (jpg/png), укажите свое
-//             document.body.style.backgroundImage = "url('img/background5.png')";
-//         } else {
-//             // Если сейчас второй фон, возвращаем первый
-//             document.body.style.backgroundImage = "url('img/background4.jpg')";
-//         }
-//
-//         // Инвертируем значение флага
-//         isFirstBackground = !isFirstBackground;
-//     });
-// });
 
 ////КАЛЬКУЛЯТОР ///
 
@@ -96,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /*ГЛОБУС*/
 
 const scene = document.getElementById('orbitScene');
-const advSection = document.getElementById('advSection');
+const paginationBar = document.getElementById('paginationBar');
 const cards = Array.from(document.querySelectorAll('.adv-card'));
 const dots = Array.from(document.querySelectorAll('.dot'));
 const prevBtn = document.getElementById('prevBtn');
@@ -104,97 +82,96 @@ const nextBtn = document.getElementById('nextBtn');
 const goldenThreads = document.getElementById('goldenThreads');
 const globeSphere = document.getElementById('globeSphere');
 
-
 const totalCards = cards.length;
 const stepAngle = 360 / totalCards; // 90 градусов на 1 карточку
+const AUTOPLAY_DELAY = 5000;        // 5 секунд между автопрокруткой
+const PERSPECTIVE = 1400;           // Соответствует CSS perspective: 1400px
 
 let currentAngle = 0;
 let targetAngle = 0;
 let velocity = 0;
 let snapTimer = null;
 
-// Стабильное отслеживание координат мыши и математических центров карточек
 let pointerClientX = -1000;
 let pointerClientY = -1000;
 let hoveredCardIndex = -1;
+let isPointerInCardOrbitZone = false;
+let isPaginationHovered = false;
+let isTouchActive = false;
 let isOrbitScrollActive = false;
-let hoverStartTimestamp = 0; // Точное время начала наведения на карточку
+let hoverStartTimestamp = 0;
 
-// Хранилище стабильных (не зависящих от наклона!) координат и наклонов каждой карточки
-const cardState = cards.map(() => ({
-    centerX: 0,
-    centerY: 0,
-    scale: 1,
-    zOrder: 0,
+let lastAutoplayTick = performance.now();
+
+const cardState = cards.map((card) => ({
+    screenX: 0,
+    screenY: 0,
+    halfW: 225,
+    halfH: 105,
+    rawZ: 0,
     targetTiltX: 0,
     targetTiltY: 0,
     currentTiltX: 0,
-    currentTiltY: 0
+    currentTiltY: 0,
+    baseW: card.offsetWidth || 450,
+    baseH: card.offsetHeight || 210
 }));
 
-// Логика автопрокрутки (Autoplay)
-let autoplayTimer = null;
-let isSectionHovered = false;
-
-function startAutoplay() {
-    clearInterval(autoplayTimer);
-    if (isSectionHovered || isOrbitScrollActive) return;
-
-    autoplayTimer = setInterval(() => {
-        targetAngle -= stepAngle;
-    }, 5000);
+// Обновляем реальные базовые размеры карточек при ресайзе
+function measureCards() {
+    cards.forEach((card, i) => {
+        cardState[i].baseW = card.offsetWidth || 450;
+        cardState[i].baseH = card.offsetHeight || 210;
+    });
 }
+window.addEventListener('resize', measureCards);
+measureCards();
 
-function stopAutoplay() {
-    clearInterval(autoplayTimer);
+function resetAutoplayClock() {
+    lastAutoplayTick = performance.now();
 }
 
 function activateOrbitScroll() {
     if (isOrbitScrollActive) return;
     isOrbitScrollActive = true;
-    stopAutoplay();
-
+    scene.classList.add('scroll-unlocked');
+    resetAutoplayClock();
 }
 
 function deactivateOrbitScroll() {
+    if (!isOrbitScrollActive && hoverStartTimestamp === 0) return;
     isOrbitScrollActive = false;
     hoverStartTimestamp = 0;
     scene.classList.remove('scroll-unlocked');
-
-    if (!isSectionHovered) {
-        startAutoplay();
-    }
+    resetAutoplayClock();
 }
 
-// Функция проверяет, находится ли курсор в стабильном хитбоксе карточки (без учёта её 3D-наклона!)
-// Это полностью исключает дрожание и ложные сбросы таймера на краях карточки.
-function updatePointerAndTilt() {
+function updatePointerAndTilt(now, snappedIndex) {
     const sceneRect = scene.getBoundingClientRect();
     const sceneCenterX = sceneRect.left + sceneRect.width / 2;
     const sceneCenterY = sceneRect.top + sceneRect.height / 2;
 
     const isMobile = window.innerWidth <= 900;
-    const baseW = isMobile ? 320 : 450;
-    const baseH = isMobile ? 185 : 210;
+    const tiltY = isMobile ? 35 : 52;
 
     let foundIndex = -1;
     let bestZ = -Infinity;
 
+    // 1. Проверяем попадание курсора ТОЛЬКО по видимым спереди/сбоку карточкам!
+    // Карточка, спрятанная за глобусом (rawZ < -10), полностью игнорируется!
     for (let i = 0; i < totalCards; i++) {
         const st = cardState[i];
-        const halfW = (baseW * st.scale) / 2;
-        const halfH = (baseH * st.scale) / 2;
+        if (st.rawZ < -10) continue; // Исключаем заднюю карточку за глобусом!
 
-        const cardScreenCenterX = sceneCenterX + st.centerX;
-        const cardScreenCenterY = sceneCenterY + st.centerY;
+        const cardScreenCenterX = sceneCenterX + st.screenX;
+        const cardScreenCenterY = sceneCenterY + st.screenY;
 
         const dx = pointerClientX - cardScreenCenterX;
         const dy = pointerClientY - cardScreenCenterY;
 
-        if (Math.abs(dx) <= halfW && Math.abs(dy) <= halfH) {
-            // Если карточки перекрываются, выбираем ту, которая ближе к зрителю
-            if (st.zOrder > bestZ) {
-                bestZ = st.zOrder;
+        if (Math.abs(dx) <= st.halfW && Math.abs(dy) <= st.halfH) {
+            if (st.rawZ > bestZ) {
+                bestZ = st.rawZ;
                 foundIndex = i;
             }
         }
@@ -202,7 +179,24 @@ function updatePointerAndTilt() {
 
     hoveredCardIndex = foundIndex;
 
-    // Обновляем наклон и свечение для всех карточек
+    // 2. Скролл колёсиком активируется ТОЛЬКО на центральной (передней) карточке
+    // или в её точном прямоугольнике, пока она вращается:
+    const frontSt = cardState[snappedIndex];
+    const frontSlotCenterX = sceneCenterX;
+    const frontSlotCenterY = sceneCenterY + tiltY + 22;
+    const inFrontCardExactBox =
+        Math.abs(pointerClientX - frontSlotCenterX) <= frontSt.baseW / 2 &&
+        Math.abs(pointerClientY - frontSlotCenterY) <= frontSt.baseH / 2;
+
+    const isHoveredFrontCard = (hoveredCardIndex === snappedIndex);
+    const isCurrentlyMoving = Math.abs(targetAngle - currentAngle) > 0.5;
+
+    // Зона прокрутки строго ограничена рамками передней карточки (никакой зоны выше карточки над глобусом!)
+    isPointerInCardOrbitZone =
+        (isHoveredFrontCard && inFrontCardExactBox) ||
+        (isOrbitScrollActive && isCurrentlyMoving && inFrontCardExactBox);
+
+    // 3. Обновляем 3D-наклон и свечение
     for (let i = 0; i < totalCards; i++) {
         const st = cardState[i];
         const card = cards[i];
@@ -210,22 +204,17 @@ function updatePointerAndTilt() {
         if (i === hoveredCardIndex) {
             card.classList.add('is-hovered');
 
-            const halfW = (baseW * st.scale) / 2;
-            const halfH = (baseH * st.scale) / 2;
-            const cardScreenCenterX = sceneCenterX + st.centerX;
-            const cardScreenCenterY = sceneCenterY + st.centerY;
+            const cardScreenCenterX = sceneCenterX + st.screenX;
+            const cardScreenCenterY = sceneCenterY + st.screenY;
 
-            // Нормализованное положение мыши от -0.5 до +0.5 относительно НЕПОДВИЖНОЙ рамки карточки
-            const pctX = Math.max(-0.5, Math.min(0.5, (pointerClientX - cardScreenCenterX) / (halfW * 2)));
-            const pctY = Math.max(-0.5, Math.min(0.5, (pointerClientY - cardScreenCenterY) / (halfH * 2)));
+            const pctX = Math.max(-0.5, Math.min(0.5, (pointerClientX - cardScreenCenterX) / (st.halfW * 2)));
+            const pctY = Math.max(-0.5, Math.min(0.5, (pointerClientY - cardScreenCenterY) / (st.halfH * 2)));
 
-            // Координаты для радиального свечения в процентах
             const glowX = ((pctX + 0.5) * 100).toFixed(1);
             const glowY = ((pctY + 0.5) * 100).toFixed(1);
             card.style.setProperty('--mouse-x', `${glowX}%`);
             card.style.setProperty('--mouse-y', `${glowY}%`);
 
-            // Мягкий 3D-наклон без обратной связи
             st.targetTiltX = -pctY * 16;
             st.targetTiltY = pctX * 18;
         } else {
@@ -235,40 +224,51 @@ function updatePointerAndTilt() {
         }
     }
 
-    // Железобетонная логика таймера 1 секунды
-    if (hoveredCardIndex !== -1) {
+    // 4. Таймер 1 секунды работает строго внутри передней карточки
+    if (isPointerInCardOrbitZone) {
         if (!isOrbitScrollActive) {
             if (hoverStartTimestamp === 0) {
-                hoverStartTimestamp = performance.now();
-            } else if (performance.now() - hoverStartTimestamp >= 250) {
+                hoverStartTimestamp = now;
+            } else if (now - hoverStartTimestamp >= 350) {
                 activateOrbitScroll();
             }
         }
     } else {
-        // Если курсор ушёл с карточки — сбрасываем отсчёт ожидания
-        hoverStartTimestamp = 0;
-        // Если курсор вообще покинул пределы сцены — выключаем активный режим прокрутки
-        const inScene =
-            pointerClientX >= sceneRect.left &&
-            pointerClientX <= sceneRect.right &&
-            pointerClientY >= sceneRect.top &&
-            pointerClientY <= sceneRect.bottom;
+        deactivateOrbitScroll();
+    }
 
-        if (!inScene && isOrbitScrollActive) {
-            deactivateOrbitScroll();
-        }
+    // 5. Безотказный Autoplay: пауза при наведении на карточку или пагинацию
+    if (hoveredCardIndex !== -1 || isPaginationHovered || isTouchActive) {
+        lastAutoplayTick = now;
+    } else if (now - lastAutoplayTick >= AUTOPLAY_DELAY) {
+        lastAutoplayTick = now;
+        targetAngle = Math.round((targetAngle - stepAngle) / stepAngle) * stepAngle;
     }
 }
 
-// Глобальное отслеживание положения курсора
 window.addEventListener('mousemove', (e) => {
     pointerClientX = e.clientX;
     pointerClientY = e.clientY;
 }, { passive: true });
 
-// Переход к карточке по клику / пагинации
+document.addEventListener('mouseleave', () => {
+    pointerClientX = -1000;
+    pointerClientY = -1000;
+    deactivateOrbitScroll();
+});
+
+paginationBar.addEventListener('mouseenter', () => {
+    isPaginationHovered = true;
+    resetAutoplayClock();
+});
+
+paginationBar.addEventListener('mouseleave', () => {
+    isPaginationHovered = false;
+    resetAutoplayClock();
+});
+
 function goToCard(index) {
-    activateOrbitScroll();
+    resetAutoplayClock();
     const currentCardAngle = index * stepAngle + targetAngle;
     const remainder = ((currentCardAngle % 360) + 540) % 360 - 180;
     targetAngle -= remainder;
@@ -283,36 +283,25 @@ dots.forEach((dot) => {
 });
 
 prevBtn.addEventListener('click', () => {
-    targetAngle += stepAngle;
-    targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
-    activateOrbitScroll();
+    resetAutoplayClock();
+    targetAngle = Math.round((targetAngle + stepAngle) / stepAngle) * stepAngle;
 });
 
 nextBtn.addEventListener('click', () => {
-    targetAngle -= stepAngle;
-    targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
-    activateOrbitScroll();
+    resetAutoplayClock();
+    targetAngle = Math.round((targetAngle - stepAngle) / stepAngle) * stepAngle;
 });
 
 cards.forEach((card, index) => {
     card.addEventListener('click', () => {
+        if (cardState[index].rawZ < -10) return; // Игнорируем клики по задней карточке за глобусом
         goToCard(index);
     });
 });
 
-advSection.addEventListener('mouseenter', () => {
-    isSectionHovered = true;
-    stopAutoplay();
-});
+function animate(now) {
+    if (!now) now = performance.now();
 
-advSection.addEventListener('mouseleave', () => {
-    isSectionHovered = false;
-    pointerClientX = -1000;
-    pointerClientY = -1000;
-    deactivateOrbitScroll();
-});
-
-function animate() {
     let diff = targetAngle - currentAngle;
 
     if (Math.abs(diff) < 0.04) {
@@ -343,7 +332,7 @@ function animate() {
         dot.classList.toggle('active', idx === snappedIndex);
     });
 
-    // Сначала вычисляем базовые центры всех карточек
+    // Вычисляем точные экранные проекции карточек с учётом 3D перспективы
     cards.forEach((card, index) => {
         const cardAngleDeg = index * stepAngle + currentAngle;
         const angleRad = (cardAngleDeg * Math.PI) / 180;
@@ -351,30 +340,35 @@ function animate() {
         const rawX = Math.sin(angleRad) * radiusX;
         const rawZ = Math.cos(angleRad) * radiusZ;
         const rawY = Math.cos(angleRad) * tiltY + 22;
+        const z = rawZ - radiusZ; // Для передней карточки z = 0
+
         const depthNormalized = rawZ / radiusZ;
         const scale = 0.72 + (depthNormalized + 1) * 0.14;
 
-        cardState[index].centerX = rawX;
-        cardState[index].centerY = rawY;
-        cardState[index].scale = scale;
-        cardState[index].zOrder = rawZ;
+        // Учитываем коэффициент перспективного сжатия CSS perspective (1400px)
+        const perspectiveFactor = PERSPECTIVE / (PERSPECTIVE - z);
+
+        const st = cardState[index];
+        st.rawX = rawX;
+        st.rawY = rawY;
+        st.rawZ = rawZ;
+        st.z = z;
+        st.scale = scale;
+
+        // Реальные координаты центра и половин ширины/высоты карточки на 2D-экране
+        st.screenX = rawX * perspectiveFactor;
+        st.screenY = rawY * perspectiveFactor;
+        st.halfW = (st.baseW * scale * perspectiveFactor * Math.cos((Math.sin(angleRad) * -28 * Math.PI) / 180)) / 2;
+        st.halfH = (st.baseH * scale * perspectiveFactor) / 2;
     });
 
-    // Проверяем курсор и 1-секундный таймер каждый кадр (60 раз в секунду!)
-    updatePointerAndTilt();
+    updatePointerAndTilt(now, snappedIndex);
 
-    // Применяем единую плавную трансформацию без резких переключений режима
     cards.forEach((card, index) => {
         const st = cardState[index];
         const cardAngleDeg = index * stepAngle + currentAngle;
         const angleRad = (cardAngleDeg * Math.PI) / 180;
 
-        const rawX = st.centerX;
-        const rawY = st.centerY;
-        const rawZ = st.zOrder;
-        const z = rawZ - radiusZ; // Передняя карточка ровно на Z = 0px для чёткости шрифта
-
-        // Плавное сглаживание наклона (Lerp)
         st.currentTiltX += (st.targetTiltX - st.currentTiltX) * 0.12;
         st.currentTiltY += (st.targetTiltY - st.currentTiltY) * 0.12;
 
@@ -383,8 +377,7 @@ function animate() {
         const totalRotateX = st.currentTiltX;
         const bankTiltZ = Math.max(-10, Math.min(10, velocity * -0.9));
 
-        const depthNormalized = rawZ / radiusZ;
-        const scale = st.scale;
+        const depthNormalized = st.rawZ / radiusZ;
         const opacity = 0.32 + (depthNormalized + 1) * 0.34;
 
         const depthBlur = Math.max(0, (1 - depthNormalized) * 2.2);
@@ -392,12 +385,13 @@ function animate() {
         const isFrontCardSettled = (index === snappedIndex && speed < 0.8);
         const totalBlur = isFrontCardSettled ? 0 : depthBlur + motionBlur;
 
-        // Всегда используем единую формулу transform, чтобы не было скачка при наведении мыши
-        card.style.transform = `translate3d(${rawX.toFixed(2)}px, ${rawY.toFixed(2)}px, ${z.toFixed(2)}px) rotateY(${totalRotateY.toFixed(2)}deg) rotateX(${totalRotateX.toFixed(2)}deg) rotateZ(${bankTiltZ.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+        card.style.transform = `translate3d(${st.rawX.toFixed(2)}px, ${st.rawY.toFixed(2)}px, ${st.z.toFixed(2)}px) rotateY(${totalRotateY.toFixed(2)}deg) rotateX(${totalRotateX.toFixed(2)}deg) rotateZ(${bankTiltZ.toFixed(2)}deg) scale(${st.scale.toFixed(3)})`;
 
         card.style.opacity = isFrontCardSettled ? '1' : opacity.toFixed(2);
         card.style.filter = totalBlur < 0.15 ? 'none' : `blur(${totalBlur.toFixed(1)}px)`;
-        card.style.zIndex = rawZ >= 0 ? 15 : 2;
+        card.style.zIndex = st.rawZ >= 0 ? 15 : 2;
+        // Отключаем pointer-events у задней карточки, чтобы она никогда не перехватывала мышь сквозь глобус
+        card.style.pointerEvents = st.rawZ >= 0 ? 'auto' : 'none';
 
         card.classList.toggle('active', index === snappedIndex && speed < 1.8);
     });
@@ -405,18 +399,18 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Перехват колёсика на уровне window с capture: true гарантирует срабатывание после 1 секунды
 window.addEventListener('wheel', (e) => {
     pointerClientX = e.clientX;
     pointerClientY = e.clientY;
-    updatePointerAndTilt();
+    const snappedIndex = ((-Math.round(currentAngle / stepAngle) % totalCards) + totalCards) % totalCards;
+    updatePointerAndTilt(performance.now(), snappedIndex);
 
-    if (!isOrbitScrollActive) {
-        return; // До истечения 1 секунды страница спокойно скроллится
+    if (!isOrbitScrollActive || !isPointerInCardOrbitZone) {
+        return;
     }
 
     e.preventDefault();
-    stopAutoplay();
+    resetAutoplayClock();
 
     const delta = Math.sign(e.deltaY) * Math.min(Math.abs(e.deltaY), 110);
     targetAngle -= delta * 0.85;
@@ -424,14 +418,15 @@ window.addEventListener('wheel', (e) => {
     clearTimeout(snapTimer);
     snapTimer = setTimeout(() => {
         targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
+        resetAutoplayClock();
     }, 140);
 }, { passive: false, capture: true });
 
-// Свайпы на мобильных
 let touchStartX = 0;
 scene.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
-    stopAutoplay();
+    isTouchActive = true;
+    resetAutoplayClock();
 }, { passive: true });
 
 scene.addEventListener('touchmove', (e) => {
@@ -439,11 +434,13 @@ scene.addEventListener('touchmove', (e) => {
     const dx = currentX - touchStartX;
     touchStartX = currentX;
     targetAngle += dx * 0.65;
+    resetAutoplayClock();
 }, { passive: true });
 
 scene.addEventListener('touchend', () => {
+    isTouchActive = false;
     targetAngle = Math.round(targetAngle / stepAngle) * stepAngle;
+    resetAutoplayClock();
 }, { passive: true });
 
 requestAnimationFrame(animate);
-startAutoplay();

@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Белтаможлогистик</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="alien_styles.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/alien_styles.css">
+    <link rel="stylesheet" href="styles/responsive.css">
 </head>
 <body>
  <section class="header glass-header">
@@ -14,11 +15,9 @@
              <a href="#">
                  <img src="img/header_logo2.png" alt="">
              </a>
-
-
          </div>
 
-         <div class="header-menu ">
+
              <nav class="header-menu-nav">
                 <a href="" class="nav-item">Таможенное оформление</a>
                 <a href="" class="nav-item">Услуги склада</a>
@@ -26,7 +25,7 @@
                 <a href="" class="nav-item">Контакты</a>
                 <a href="" class="nav-item">О Нас</a>
              </nav>
-         </div>
+
          <div class="header-contacts ">
              <button class="premium-gold-btn">
                  <span>Связаться с нами</span></button>
@@ -169,8 +168,7 @@
 <section class="catalog">
     <div class="catalog-container">
         <div class="catalog-title-wrapper">
-            <h2 class="catalog-title">Наши услуги</h2>
-            <div class="gold-glow-line"></div>
+            <h2 class="catalog-title section-title gold-text-title">Наши услуги</h2>
         </div>
         <div class="catalog-items">
             <div class="catalog-item glass-card">
@@ -288,7 +286,7 @@
 
 
  <section class="advantages-section" id="advSection">
-     <h2 class="section-title">Почему выбирают нас</h2>
+     <h2 class="section-title gold-text-title">Почему выбирают нас</h2>
 
      <div class="scene" id="orbitScene">
          <div class="orbit-ring"></div>
@@ -309,7 +307,7 @@
                  <div class="globe-shade"></div>
              </div>
 
-
+             <span class="globe-brand">BELTAMOZHLOGISTIK</span>
          </div>
 
          <!-- Вращающиеся карточки -->
@@ -334,23 +332,23 @@
                  <div class="card-num">3</div>
                  <div class="card-content">
                      <h3>Оперативная и выгодная маркировка</h3>
-                     <p>Обеспечиваем маркировку товаров в соответствии с требованиями законодательства. Услуга оказывается как на складе ответственного хранения, так и на таможенном складе. Наличие Ж\Д путей позволяет маркировать вагоны и контейнера. Возможна круглосуточная работа по запросу.</p>
+                     <p>Обеспечиваем маркировку товаров в соответствии с требованиями законодательства. Услуга оказывается как на складе ответственного хранения, так и на таможенном складе.</p>
                  </div>
              </div>
 
              <div class="adv-card" data-index="3">
                  <div class="card-num">4</div>
                  <div class="card-content">
-                     <h3>Наличие Ж\Д путей в зоне таможенного контроля</h3>
-                     <p>Наличие железнодорожных путей на территории ЗТК позволяет принимать вагоны и контейнера напрямую, сокращать затраты на перегрузку и таможенное оформление. Выгрузка возможна непосредственно в склад и на открытую площадку.</p>
+                     <h3>Наличие Ж/Д путей в зоне таможенного контроля</h3>
+                     <p>Наличие железнодорожных путей на территории ЗТК позволяет принимать вагоны и контейнера напрямую, сокращать затраты на перегрузку и таможенное оформление.</p>
                  </div>
              </div>
          </div>
      </div>
 
-     <!-- Панель управления: Пагинация + Подсказка -->
+     <!-- Пагинация -->
      <div class="controls-panel">
-         <div class="pagination">
+         <div class="pagination" id="paginationBar">
              <button class="pag-btn" id="prevBtn" title="Предыдущее преимущество">❮</button>
              <div class="pag-dots" id="pagDots">
                  <span class="dot active" data-index="0"></span>
@@ -360,8 +358,6 @@
              </div>
              <button class="pag-btn" id="nextBtn" title="Следующее преимущество">❯</button>
          </div>
-
-
      </div>
  </section>
 
@@ -377,64 +373,13 @@
 
 
 
-<!-- <section class="about">-->
-<!--     <div class="about-container">-->
-<!--         <h2 class="about-title">Почему выбирают НАС</h2>-->
-<!--         <div class="gold-glow-line"></div>-->
 
-<!--         <div class="about-content-grid">-->
-<!--             <div class="feature-item item-1">-->
-<!--                 <div class="feature-item-title">-->
-<!--                     Удобное таможенное оформление-->
-<!--                 </div>-->
-<!--                 <div class="feature-item-text">-->
-<!--                     Сопровождаем процесс на всех этапах, помогаем клиентам соблюдать требования законодательства, оптимизировать сроки прохождения таможни и сократить затраты.-->
-<!--                 </div>-->
-<!--             </div>-->
-
-<!--             <div class="globe-container">-->
-<!--                 <img src="img/globe.png" alt="Глобус">-->
-<!--             </div>-->
-
-<!--             <div class="feature-item item-3">-->
-<!--                 <div class="feature-item-title">-->
-<!--                     Оперативная и выгодная маркировка-->
-<!--                 </div>-->
-<!--                 <div class="feature-item-text">-->
-<!--                     Обеспечиваем маркировку товаров в соответствии с требованиями законодательства. Услуга оказывается как на складе ответственного хранения, так и на таможенном складе. Наличие Ж\Д путей позволяет маркировать вагоны и контейнера. Возможна круглосуточная работа по запросу.-->
-<!--                 </div>-->
-<!--             </div>-->
-
-<!--             <div class="feature-item item-2">-->
-<!--                 <div class="feature-item-title">-->
-<!--                     Профессиональные складские услуги-->
-<!--                 </div>-->
-<!--                 <div class="feature-item-text">-->
-<!--                     Организуем хранение и обработку грузов как под таможенным контролем, так и в свободном обращении. Склады оснащены системой видеонаблюдения, WMS-системой учёта и современным оборудованием.-->
-<!--                 </div>-->
-<!--             </div>-->
-
-<!--             <div class="feature-item item-4">-->
-<!--                 <div class="feature-item-title">-->
-<!--                     Наличие Ж\Д путей в зоне таможенного контроля-->
-<!--                 </div>-->
-<!--                 <div class="feature-item-text">-->
-<!--                     Наличие железнодорожных путей на территории ЗТК позволяет принимать вагоны и контейнера напрямую, сокращать затраты на перегрузку и таможенное оформление. Выгрузка возможна непосредственно в склад и на открытую площадку.                 </div>-->
-<!--             </div>-->
-<!--         </div>-->
-
-
-<!--     </div>-->
-
-
-
-
-
- </section>
  <!-- ================= БЛОК РАСЧЕТА СТОИМОСТИ ================= -->
+
+
  <section class="calc-section" id="calculator">
      <div class="container">
-         <h2 class="section-title ">Калькулятор стоимости</h2>
+         <h2 class="section-title gold-text-title ">Калькулятор стоимости</h2>
          <p class="section-subtitle">Быстрый ориентировочный расчёт логистических, складских и таможенных услуг</p>
 
          <div class="glass-card calc-card">
@@ -522,10 +467,26 @@
      </div>
  </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  <!-- ================= БЛОК КОНТАКТОВ ================= -->
+
+
  <section class="contacts-section" id="contacts">
      <div class="container">
-         <h2 class="section-title">КОНТАКТЫ</h2>
+         <h2 class="section-title gold-text-title">КОНТАКТЫ</h2>
 
 
          <div class="contacts-grid">

@@ -1,0 +1,91 @@
+
+
+
+
+
+/* region HEADER*/
+@media (min-width: 1201px) and (max-width: 1360px){
+    .header-logo{ width: auto; }
+    .brand-mark{ width: 46px; }
+    .brand-name{ font-size: 19px; }
+    .header-menu-nav .nav-item{ font-size: 11.5px; letter-spacing: .1em; padding: 0 10px; }
+    .header-menu-nav .nav-item::after{ left: 10px; right: 10px; }
+    .header-contacts .premium-gold-btn{ padding: 0 20px; }
+    .header-contacts .premium-gold-btn span{ font-size: 11.5px; letter-spacing: .12em; }
+}
+@media (max-width: 1200px){
+    .header.glass-header{ padding: 0 8px 0 16px; min-height: 60px; }
+    .header-logo{ width: auto; }
+    .header-drawer{
+        background: rgba(7,30,24,.98);
+        border: 1px solid rgba(230,194,122,.4);
+        box-shadow: 0 24px 50px rgba(0,0,0,.55), 0 0 30px rgba(212,175,55,.12);
+    }
+    .header-menu-nav .nav-item{ font-size: 13px; letter-spacing: .12em; }
+    .header-menu-nav .nav-item::after{ display: none; }
+}
+@media (max-width: 420px){
+    .brand{ gap: 9px; }
+    .brand-mark{ width: 40px; }
+    .brand-name{ font-size: 17px; }
+}
+@media (max-width: 340px){
+    .brand-name{ font-size: 15px; }
+}
+/*endregion*/
+
+
+
+
+
+
+
+
+
+
+/*GLOBE*/
+@media (max-width: 900px) {
+    .scene { height: 420px; }
+    .globe-wrapper { width: 240px; height: 240px; transform: translate3d(0, 0, -165px); }
+    .globe-sphere { width: 220px; height: 220px; }
+    .golden-threads { width: 250px; height: 250px; }
+    .orbit-ring { width: 600px; height: 600px; transform: translate3d(0, 0, -165px) rotateX(76deg); }
+    .adv-card { width: 320px; margin-left: -160px; padding: 18px; min-height: 180px; margin-top: -90px; }
+    .card-num { font-size: 52px; }
+    .card-content h3 { font-size: 16px; }
+    .card-content p { font-size: 12.5px; }
+}
+
+/*Calculator+Contacts*/
+
+
+/* ================= АДАПТИВНОСТЬ (MOBILE & TABLET) ================= */
+@media (max-width: 992px) {
+    .calc-grid,
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .calc-card,
+    .contacts-info {
+        padding: 24px 18px;
+    }
+    .form-row-2col,
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+    .summary-price {
+        font-size: 30px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
