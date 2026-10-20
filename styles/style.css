@@ -251,6 +251,8 @@ h2{
     border-radius: 40px;
     max-width: 1280px;
     position: sticky;
+    top: 0;
+    z-index: 1;
 }
 .header-container{
     width: 1280px;

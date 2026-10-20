@@ -487,3 +487,159 @@ requestAnimationFrame(animate);
     if (desktop.addEventListener) desktop.addEventListener('change', onChange);
     else desktop.addListener(onChange);
 })();
+
+
+// /* ==========================================================================
+//    ЧАСТЬ 1 И 2: ПАРАЛЛАКС ЛОГИСТИЧЕСКИХ ЭЛЕМЕНТОВ + WOW SCROLL REVEAL
+//    ========================================================================== */
+// (() => {
+//     // 1. Создаём фоновый слой с тематическими объектами (коробки, декларация, DataMatrix, пломба, вагон)
+//     const parallaxLayer = document.createElement('div');
+//     parallaxLayer.className = 'logistics-parallax-layer';
+//     parallaxLayer.setAttribute('aria-hidden', 'true');
+//
+//     parallaxLayer.innerHTML = `
+//         <!-- 1. 3D Картонная коробка с золотым скотчем -->
+//         <div class="parallax-item p-box-1" data-speed="0.22" data-rot="0.18" data-wave="18">
+//             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                 <polygon points="50,8 92,28 50,48 8,28" fill="rgba(212,175,55,0.18)" stroke="#f3df9d" stroke-width="2"/>
+//                 <polygon points="8,28 50,48 50,90 8,70" fill="rgba(11,46,38,0.65)" stroke="#d4af37" stroke-width="2"/>
+//                 <polygon points="92,28 50,48 50,90 92,70" fill="rgba(6,28,23,0.8)" stroke="#d4af37" stroke-width="2"/>
+//                 <line x1="29" y1="18" x2="71" y2="38" stroke="#fff7d6" stroke-width="3" stroke-linecap="round"/>
+//                 <rect x="58" y="55" width="18" height="12" transform="skewY(-25)" fill="rgba(243,223,157,0.25)" stroke="#f3df9d" stroke-width="1.2"/>
+//             </svg>
+//         </div>
+//
+//         <!-- 2. Таможенная декларация с гербовой печатью -->
+//         <div class="parallax-item p-decl-1" data-speed="-0.18" data-rot="-0.14" data-wave="22">
+//             <svg viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                 <rect x="8" y="6" width="74" height="98" rx="6" fill="rgba(8,42,34,0.72)" stroke="#f3df9d" stroke-width="2"/>
+//                 <path d="M22 24H68M22 36H68M22 48H54M22 60H62" stroke="rgba(243,223,157,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+//                 <circle cx="60" cy="80" r="13" fill="rgba(212,175,55,0.25)" stroke="#fff7d6" stroke-width="2" stroke-dasharray="3 2"/>
+//                 <circle cx="60" cy="80" r="7" stroke="#d4af37" stroke-width="1.5"/>
+//                 <path d="M56 80L59 83L65 77" stroke="#fff7d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+//             </svg>
+//         </div>
+//
+//         <!-- 3. Стикер маркировки DataMatrix / Честный Знак -->
+//         <div class="parallax-item p-qr-1" data-speed="0.28" data-rot="0.24" data-wave="15">
+//             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                 <rect x="10" y="10" width="80" height="80" rx="12" fill="rgba(7,35,28,0.75)" stroke="#d4af37" stroke-width="2.2"/>
+//                 <rect x="22" y="22" width="16" height="16" fill="#f3df9d"/>
+//                 <rect x="62" y="22" width="16" height="16" stroke="#f3df9d" stroke-width="3"/>
+//                 <rect x="22" y="62" width="16" height="16" stroke="#f3df9d" stroke-width="3"/>
+//                 <rect x="44" y="22" width="10" height="10" fill="rgba(243,223,157,0.6)"/>
+//                 <rect x="44" y="44" width="14" height="14" fill="#d4af37"/>
+//                 <rect x="22" y="44" width="12" height="10" fill="rgba(243,223,157,0.75)"/>
+//                 <rect x="64" y="46" width="14" height="12" fill="rgba(243,223,157,0.8)"/>
+//                 <rect x="46" y="66" width="12" height="12" fill="#f3df9d"/>
+//                 <rect x="66" y="66" width="12" height="12" fill="rgba(212,175,55,0.5)"/>
+//             </svg>
+//         </div>
+//
+//         <!-- 4. Таможенная пломба / Замок безопасности -->
+//         <div class="parallax-item p-seal-1" data-speed="-0.25" data-rot="0.20" data-wave="20">
+//             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                 <path d="M50 10L84 25V52C84 74 69 88 50 94C31 88 16 74 16 52V25L50 10Z" fill="rgba(9,45,36,0.7)" stroke="#f3df9d" stroke-width="2.2"/>
+//                 <path d="M36 52L46 62L66 40" stroke="#fff7d6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+//             </svg>
+//         </div>
+//
+//         <!-- 5. Вторая паллета / Коробка -->
+//         <div class="parallax-item p-box-2" data-speed="0.16" data-rot="-0.22" data-wave="25">
+//             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                 <polygon points="50,12 88,30 50,48 12,30" fill="rgba(243,223,157,0.22)" stroke="#d4af37" stroke-width="2"/>
+//                 <polygon points="12,30 50,48 50,86 12,68" fill="rgba(8,38,30,0.75)" stroke="#f3df9d" stroke-width="2"/>
+//                 <polygon points="88,30 50,48 50,86 88,68" fill="rgba(5,24,19,0.85)" stroke="#d4af37" stroke-width="2"/>
+//                 <line x1="31" y1="21" x2="69" y2="39" stroke="#f3df9d" stroke-width="2.5"/>
+//             </svg>
+//         </div>
+//
+//         <!-- 6. Ж/Д Контейнер -->
+//         <div class="parallax-item p-train-1" data-speed="-0.15" data-rot="0.10" data-wave="14">
+//             <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                 <rect x="8" y="14" width="104" height="46" rx="5" fill="rgba(8,44,35,0.72)" stroke="#f3df9d" stroke-width="2"/>
+//                 <line x1="28" y1="22" x2="28" y2="52" stroke="rgba(243,223,157,0.5)" stroke-width="2.5"/>
+//                 <line x1="48" y1="22" x2="48" y2="52" stroke="rgba(243,223,157,0.5)" stroke-width="2.5"/>
+//                 <line x1="68" y1="22" x2="68" y2="52" stroke="rgba(243,223,157,0.5)" stroke-width="2.5"/>
+//                 <line x1="88" y1="22" x2="88" y2="52" stroke="rgba(243,223,157,0.5)" stroke-width="2.5"/>
+//                 <circle cx="30" cy="66" r="7" fill="#06231c" stroke="#d4af37" stroke-width="2.2"/>
+//                 <circle cx="90" cy="66" r="7" fill="#06231c" stroke="#d4af37" stroke-width="2.2"/>
+//             </svg>
+//         </div>
+//     `;
+//
+//     document.body.prepend(parallaxLayer);
+//
+//     const parallaxItems = Array.from(parallaxLayer.querySelectorAll('.parallax-item'));
+//     let currentScroll = window.scrollY;
+//     let targetScroll = window.scrollY;
+//
+//     window.addEventListener('scroll', () => {
+//         targetScroll = window.scrollY;
+//     }, { passive: true });
+//
+//     // Плавный цикл параллакса (работает на ПК и смартфонах с инерцией)
+//     function updateParallax() {
+//         currentScroll += (targetScroll - currentScroll) * 0.08;
+//         const isMobile = window.innerWidth <= 768;
+//         const mobileFactor = isMobile ? 0.65 : 1; // На мобилках амплитуда аккуратнее
+//
+//         parallaxItems.forEach((item, index) => {
+//             const speed = parseFloat(item.dataset.speed) || 0.2;
+//             const rot = parseFloat(item.dataset.rot) || 0.15;
+//             const wave = parseFloat(item.dataset.wave) || 15;
+//
+//             const yOffset = currentScroll * speed * mobileFactor * 1.4;
+//             const xOffset = Math.sin((currentScroll * 0.004) + index) * wave * mobileFactor;
+//             const rotateZ = currentScroll * rot * mobileFactor;
+//             const rotateX = Math.cos((currentScroll * 0.005) + index) * 18;
+//             const rotateY = Math.sin((currentScroll * 0.005) + index) * 18;
+//
+//             item.style.transform = `translate3d(${xOffset.toFixed(1)}px, ${yOffset.toFixed(1)}px, 0) rotateZ(${rotateZ.toFixed(1)}deg) rotateX(${rotateX.toFixed(1)}deg) rotateY(${rotateY.toFixed(1)}deg)`;
+//         });
+//
+//         requestAnimationFrame(updateParallax);
+//     }
+//     requestAnimationFrame(updateParallax);
+//
+//     // 2. Автоматическая разметка блоков для ВАУ-появления при скролле (Scroll Reveal)
+//     const addReveal = (selector, revealClass, stagger = 0) => {
+//         const elements = document.querySelectorAll(selector);
+//         elements.forEach((el, idx) => {
+//             el.classList.add(revealClass);
+//             if (stagger > 0) {
+//                 el.style.setProperty('--reveal-delay', `${(idx * stagger).toFixed(2)}s`);
+//             }
+//         });
+//     };
+//
+//     // Назначаем эффектные выезды всем ключевым секциям сайта
+//     addReveal('.hero-info-title', 'reveal-left', 0);
+//     addReveal('.hero-info-text-item', 'reveal-left', 0.12);
+//     addReveal('.hero-info-button', 'reveal-up', 0.35);
+//     addReveal('.hero-render', 'reveal-right', 0.15);
+//
+//     addReveal('.section-title, .section-subtitle', 'reveal-up', 0.08);
+//     addReveal('.catalog-item', 'reveal-up', 0.12);
+//     addReveal('.advantages-section .scene', 'reveal-scale', 0.1);
+//     addReveal('.calc-card', 'reveal-up', 0.1);
+//     addReveal('.contacts-info', 'reveal-left', 0.1);
+//     addReveal('.contacts-map-wrapper', 'reveal-right', 0.2);
+//     addReveal('.footer-top > div', 'reveal-up', 0.1);
+//
+//     const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale');
+//
+//     const revealObserver = new IntersectionObserver((entries) => {
+//         entries.forEach((entry) => {
+//             if (entry.isIntersecting) {
+//                 entry.target.classList.add('is-visible');
+//             }
+//         });
+//     }, {
+//         threshold: 0.12,
+//         rootMargin: '0px 0px -40px 0px'
+//     });
+//
+//     revealElements.forEach((el) => revealObserver.observe(el));
+// })();
