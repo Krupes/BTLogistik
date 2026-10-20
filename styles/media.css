@@ -828,6 +828,12 @@
     }
 }
 
+@media (max-width: 1101px) {
+    .hide-nav-item{
+        display: flex;
+    }
+}
+
 /* ---- ≤900: колонка — текст сверху, маскот снизу по центру ---- */
 @media (max-width: 900px) {
     .hero .hero-container {

@@ -417,6 +417,9 @@ h2{
 
 
 }
+.hide-nav-item{
+    display: none;
+}
 
 .nav-item:hover{
     color: #E6C27A;
