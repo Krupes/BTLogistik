@@ -1,7 +1,11 @@
 /* ==========================================================================
-   PAGE.CSS — Базовые стили и детальный адаптив внутренней страницы
+   WAREHOUSE.CSS — Стили и адаптив для страницы Склада (СВХ и СОХ)
    Брейкпоинты: 1280px / 960px / 768px / 600px / 480px / 360px
    ========================================================================== */
+
+#svh-section, #soh-section{
+    scroll-margin-top: 130px;
+}
 
 .inner-page {
     width: 100%;
@@ -18,7 +22,7 @@
 }
 
 .header-menu-nav .nav-item.active {
-    color: var(--gold-1);
+    color: #ffe57a;
     text-shadow: 0 0 14px rgba(243, 223, 157, 0.55);
 }
 
@@ -51,11 +55,11 @@
     font-weight: 500;
 }
 
-/* ================= HERO ВНУТРЕННЕЙ СТРАНИЦЫ ================= */
+/* ================= HERO СТРАНИЦЫ СКЛАДА ================= */
 .page-hero {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 250px;
+    grid-template-columns: 1fr 260px;
     gap: 32px;
     align-items: center;
     padding: 40px 44px;
@@ -81,20 +85,73 @@
 
 .page-main-title {
     font-family: 'Ubuntu-bold', sans-serif;
-    font-size: 2.4rem;
+    font-size: 2.35rem;
     line-height: 1.18;
-    margin: 0 0 18px;
+    margin: 0 0 16px;
     text-transform: none;
     letter-spacing: 0.5px;
     overflow-wrap: break-word;
 }
 
 .page-lead {
-    font-size: 16.5px;
+    font-size: 16px;
     line-height: 1.65;
     color: rgba(255, 255, 255, 0.86);
-    margin: 0 0 28px;
-    max-width: 780px;
+    margin: 0 0 22px;
+    max-width: 800px;
+}
+
+/* Быстрый переключатель СВХ / СОХ внутри Hero */
+.warehouse-QuickNav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.quick-nav-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 20px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.14), rgba(5, 28, 22, 0.72));
+    border: 1px solid #ffffff4a;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.quick-nav-card .gold-text{
+    background: linear-gradient(to bottom, #fdf5d3 0%, #d9bb5c 40%, #ffe460 100%);
+    -webkit-background-clip: text;
+
+}
+
+@media (hover: hover) {
+    .quick-nav-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255, 231, 150, 0.9);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 22px rgba(212, 175, 55, 0.22);
+    }
+}
+
+.qn-badge {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-primary);
+    font-weight: 600;
+}
+
+.qn-title {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 20px;
+    line-height: 1.25;
+}
+
+.qn-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
 }
 
 .page-hero-stats {
@@ -116,7 +173,7 @@
 
 .stat-num {
     font-family: 'Ubuntu-bold', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     line-height: 1.1;
 }
@@ -135,18 +192,18 @@
 
 .page-hero-visual img {
     width: 100%;
-    max-width: 220px;
+    max-width: 240px;
     height: auto;
     filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 24px rgba(212, 175, 55, 0.2));
     animation: mascotFloat 6s ease-in-out infinite;
 }
 
-/* ================= ОСНОВНАЯ СЕТКА (СТАТЬЯ + САЙДБАР) ================= */
+/* ================= ОСНОВНАЯ СЕТКА (СТАТЬЯ + ЛИПКИЙ САЙДБАР) ================= */
 .page-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 350px;
     gap: 32px;
-    align-items: start;
+    /* Без align-items: start, чтобы правая колонка растягивалась на всю высоту и работал sticky */
 }
 
 /* Левая колонка: Статья */
@@ -159,16 +216,69 @@
 
 .article-section {
     margin-bottom: 44px;
-    scroll-margin-top: 110px;
+    scroll-margin-top: 32px;
 }
 
 .article-section:last-child {
     margin-bottom: 0;
 }
 
+/* Шапка каждого из двух больших разделов (СВХ и СОХ) */
+.section-tag-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tag-pill {
+    padding: 4px 12px;
+    border-radius: 50px;
+    background: var(--gold-gradient);
+    color: #1c1608;
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.tag-status {
+    font-size: 12.5px;
+    color: var(--gold-light);
+    padding: 4px 12px;
+    border-radius: 50px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Декоративный разделитель между СВХ и СОХ */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 44px 0;
+    position: relative;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.45), transparent);
+}
+
+.section-divider span {
+    padding: 0 18px;
+    color: var(--gold-primary);
+    font-size: 18px;
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
 .article-content h2 {
     font-family: 'Ubuntu-bold', sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.75rem;
     color: var(--gold-light);
     margin: 0 0 18px;
     line-height: 1.28;
@@ -200,6 +310,60 @@
     font-weight: 600;
 }
 
+/* Сетка операций СВХ (2х2) */
+.ops-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0 28px;
+}
+
+.op-card {
+    background: rgba(5, 24, 19, 0.58);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 18px;
+    padding: 22px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (hover: hover) {
+    .op-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(243, 223, 157, 0.65);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    }
+}
+
+.op-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(212, 175, 55, 0.16);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 15px;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+}
+
+.op-card h3 {
+    font-size: 17px;
+    color: var(--gold-light);
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.op-card p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin: 0;
+    color: var(--text-muted);
+}
+
 /* Выделенная цитата */
 .glass-quote {
     margin: 26px 0;
@@ -220,7 +384,7 @@
     margin-bottom: 6px;
 }
 
-/* Список с золотыми галочками */
+/* Список с золотыми галочками (для СОХ) */
 .gold-check-list {
     list-style: none;
     padding: 0;
@@ -257,9 +421,53 @@
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
 }
 
+/* Блок технических характеристик склада */
+.specs-banner {
+    background: rgba(4, 22, 18, 0.65);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 24px 26px;
+    margin-top: 28px;
+    box-sizing: border-box;
+}
+
+.specs-title {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 17px;
+    color: var(--gold-light);
+    margin: 0 0 16px;
+}
+
+.specs-items {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.spec-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.spec-val {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 19px;
+}
+
+.spec-name {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
 /* Фото-вставка в рамке */
 .article-figure {
-    margin: 32px 0;
+    margin: 32px 0 0;
     border-radius: 20px;
     overflow: hidden;
     background: rgba(4, 20, 16, 0.65);
@@ -269,7 +477,7 @@
 
 .figure-img-wrap {
     position: relative;
-    height: 290px;
+    height: 280px;
     overflow: hidden;
 }
 
@@ -291,7 +499,7 @@
     position: absolute;
     right: 24px;
     bottom: 16px;
-    width: 120px;
+    width: 115px;
     pointer-events: none;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
 }
@@ -309,51 +517,7 @@
     border-top: 1px solid rgba(212, 175, 55, 0.18);
 }
 
-/* Сетка этапов (01-04) */
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    margin-top: 22px;
-}
-
-.step-box {
-    background: rgba(5, 24, 19, 0.55);
-    border: 1px solid rgba(212, 175, 55, 0.24);
-    border-radius: 18px;
-    padding: 22px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-@media (hover: hover) {
-    .step-box:hover {
-        transform: translateY(-4px);
-        border-color: rgba(243, 223, 157, 0.65);
-    }
-}
-
-.step-num {
-    font-family: 'Ubuntu-bold', sans-serif;
-    font-size: 28px;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.step-box h3 {
-    font-size: 17px;
-    color: var(--gold-light);
-    margin: 0 0 8px;
-}
-
-.step-box p {
-    font-size: 14.5px;
-    line-height: 1.55;
-    margin: 0;
-    color: var(--text-muted);
-}
-
-/* Таблица */
+/* Сравнительная таблица СВХ vs СОХ */
 .table-responsive {
     width: 100%;
     overflow-x: auto;
@@ -391,7 +555,7 @@
     border-bottom: none;
 }
 
-/* Встроенная карточка с иллюстрацией */
+/* Встроенная карточка с иллюстрацией Ж/Д */
 .inline-media-card {
     display: flex;
     align-items: center;
@@ -405,7 +569,7 @@
 }
 
 .inline-media-card img {
-    width: 110px;
+    width: 115px;
     height: auto;
     flex-shrink: 0;
     filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
@@ -423,10 +587,15 @@
     line-height: 1.55;
 }
 
-/* ================= ПРАВЫЙ САЙДБАР ================= */
+/* ================= ПРАВЫЙ САЙДБАР (С РАБОТАЮЩИМ STICKY) ================= */
+.page-sidebar {
+    position: relative;
+    height: 100%;
+}
+
 .sidebar-sticky {
     position: sticky;
-    top: 100px;
+    top: 90px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -537,7 +706,7 @@
 
 
 /* ==========================================================================
-   ТОЧКА 1: ≤ 1280px (Ноутбуки и небольшие десктопы)
+   ТОЧКА 1: ≤ 1280px
    ========================================================================== */
 @media (max-width: 1280px) {
     .inner-page .container {
@@ -549,7 +718,7 @@
         gap: 24px;
     }
     .page-main-title {
-        font-size: clamp(1.9rem, 3vw, 2.25rem);
+        font-size: clamp(1.85rem, 2.9vw, 2.2rem);
     }
     .page-layout {
         grid-template-columns: minmax(0, 1fr) 320px;
@@ -562,7 +731,7 @@
 
 
 /* ==========================================================================
-   ТОЧКА 2: ≤ 960px (Планшеты в альбомной/портретной ориентации)
+   ТОЧКА 2: ≤ 960px
    ========================================================================== */
 @media (max-width: 960px) {
     .page-hero {
@@ -571,23 +740,28 @@
         margin-bottom: 28px;
     }
     .page-main-title {
-        font-size: 1.85rem;
+        font-size: 1.8rem;
     }
     .page-lead {
         font-size: 15.5px;
-        margin-bottom: 22px;
+    }
+    .qn-title {
+        font-size: 16.5px;
     }
     .stat-pill {
         padding: 12px 14px;
     }
     .stat-num {
-        font-size: 21px;
+        font-size: 20px;
     }
 
-    /* Переход на 1 колонку: Статья сверху, Сайдбар плиткой 2x2 снизу */
+    /* Статья сверху, Сайдбар плиткой 2x2 снизу */
     .page-layout {
         grid-template-columns: 1fr;
         gap: 28px;
+    }
+    .page-sidebar {
+        height: auto;
     }
     .sidebar-sticky {
         position: static;
@@ -595,7 +769,6 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
     }
-    /* Карточка с Бобром занимает всю нижнюю полосу и становится горизонтальной */
     .sidebar-cta {
         grid-column: 1 / -1;
         display: grid;
@@ -625,7 +798,7 @@
 
 
 /* ==========================================================================
-   ТОЧКА 3: ≤ 768px (Малые планшеты и крупные фаблеты)
+   ТОЧКА 3: ≤ 768px
    ========================================================================== */
 @media (max-width: 768px) {
     .inner-page {
@@ -636,7 +809,6 @@
         font-size: 13px;
     }
 
-    /* В Hero картинка уходит наверх рядом с бейджем или компактно над заголовком */
     .page-hero {
         grid-template-columns: 1fr;
         padding: 26px 24px;
@@ -647,18 +819,22 @@
         justify-content: flex-start;
     }
     .page-hero-visual img {
-        max-width: 125px;
+        max-width: 135px;
     }
     .page-main-title {
-        font-size: 2.5rem;
+        font-size: 1.6rem;
         margin-bottom: 14px;
+    }
+    .warehouse-QuickNav {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
     .page-hero-stats {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
     }
     .stat-num {
-        font-size: 19px;
+        font-size: 18px;
     }
     .stat-label {
         font-size: 11.5px;
@@ -667,9 +843,6 @@
     .article-content {
         padding: 28px 24px;
     }
-    .article-section {
-        margin-bottom: 36px;
-    }
     .article-content h2 {
         font-size: 1.45rem;
     }
@@ -677,29 +850,26 @@
     .gold-check-list li {
         font-size: 15px;
     }
-    .figure-img-wrap {
-        height: 240px;
+    .specs-items {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
-    .figure-overlay-icon {
-        width: 96px;
-        right: 16px;
-        bottom: 12px;
+    .figure-img-wrap {
+        height: 230px;
     }
 }
 
 
 /* ==========================================================================
-   ТОЧКА 4: ≤ 600px (Смартфоны — перестроение сеток и таблиц в карточки!)
+   ТОЧКА 4: ≤ 600px
    ========================================================================== */
 @media (max-width: 600px) {
-    /* Плавные скругления для больших блоков на мобилках */
     .page-hero.glass-card,
     .article-content.glass-card,
     .sidebar-box.glass-card {
         border-radius: 22px;
     }
 
-    /* Статистика в Hero в 1 колонку (плашки с цифрой слева и текстом справа) */
     .page-hero-stats {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -712,24 +882,24 @@
         padding: 12px 16px;
     }
     .stat-num {
-        font-size: 20px;
-        min-width: 72px;
+        font-size: 18px;
+        min-width: 82px;
         flex-shrink: 0;
     }
     .stat-label {
         font-size: 13px;
     }
 
-    /* Сетка шагов (01-04) в 1 колонку */
-    .steps-grid {
+    /* Карточки операций СВХ в 1 колонку */
+    .ops-grid {
         grid-template-columns: 1fr;
         gap: 14px;
     }
-    .step-box {
+    .op-card {
         padding: 18px;
     }
 
-    /* ТРАНСФОРМАЦИЯ ТАБЛИЦЫ В МОБИЛЬНЫЕ КАРТОЧКИ (без горизонтального скролла) */
+    /* Трансформация сравнительной таблицы СВХ/СОХ в карточки */
     .table-responsive {
         border: none;
         border-radius: 0;
@@ -748,7 +918,7 @@
         background: transparent;
     }
     .glass-table thead {
-        display: none; /* Скрываем шапку таблицы, вместо неё работают data-label */
+        display: none;
     }
     .glass-table tbody tr {
         background: rgba(5, 25, 20, 0.68);
@@ -781,7 +951,6 @@
         margin-bottom: 3px;
     }
 
-    /* Встроенный блок с картинкой Маркировки */
     .inline-media-card {
         flex-direction: column;
         text-align: center;
@@ -789,10 +958,9 @@
         gap: 14px;
     }
     .inline-media-card img {
-        width: 96px;
+        width: 100px;
     }
 
-    /* Сайдбар полностью в 1 колонку */
     .sidebar-sticky {
         grid-template-columns: 1fr;
         gap: 18px;
@@ -819,7 +987,7 @@
 
 
 /* ==========================================================================
-   ТОЧКА 5: ≤ 480px (Стандартные экраны смартфонов)
+   ТОЧКА 5: ≤ 480px
    ========================================================================== */
 @media (max-width: 480px) {
     .inner-page {
@@ -843,10 +1011,10 @@
         margin-bottom: 12px;
     }
     .page-hero-visual img {
-        max-width: 105px;
+        max-width: 115px;
     }
     .page-main-title {
-        font-size: 1.9rem;
+        font-size: 1.42rem;
         line-height: 1.22;
     }
     .page-lead {
@@ -854,12 +1022,18 @@
         line-height: 1.55;
         margin-bottom: 18px;
     }
+    .quick-nav-card {
+        padding: 14px 16px;
+    }
+    .qn-title {
+        font-size: 15.5px;
+    }
 
     .article-content {
         padding: 22px 18px;
     }
-    .article-section {
-        margin-bottom: 30px;
+    .section-divider {
+        margin: 32px 0;
     }
     .article-content h2 {
         font-size: 1.28rem;
@@ -880,8 +1054,8 @@
         font-size: 14px;
         margin: 20px 0;
     }
-    .quote-title {
-        font-size: 15px;
+    .specs-banner {
+        padding: 18px 16px;
     }
 
     .figure-img-wrap {
@@ -904,7 +1078,7 @@
 
 
 /* ==========================================================================
-   ТОЧКА 6: ≤ 360px (Компактные смартфоны 320px–360px)
+   ТОЧКА 6: ≤ 360px
    ========================================================================== */
 @media (max-width: 360px) {
     .inner-page .container {
@@ -924,7 +1098,7 @@
         letter-spacing: 0.04em;
     }
     .page-main-title {
-        font-size: 1.28rem;
+        font-size: 1.26rem;
     }
     .page-lead {
         font-size: 13.8px;
@@ -934,8 +1108,8 @@
         gap: 10px;
     }
     .stat-num {
-        font-size: 18px;
-        min-width: 62px;
+        font-size: 16px;
+        min-width: 70px;
     }
     .stat-label {
         font-size: 12px;
@@ -951,10 +1125,10 @@
     .gold-check-list li {
         font-size: 14px;
     }
-    .step-box {
+    .op-card {
         padding: 15px 14px;
     }
-    .step-box h3 {
+    .op-card h3 {
         font-size: 16px;
     }
     .figure-img-wrap {

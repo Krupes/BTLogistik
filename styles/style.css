@@ -135,6 +135,27 @@ h2{
     filter: blur(.4px);
     pointer-events: none;
 }
+.catalog-calculate-link{
+    gap: 5px;
+    font-size: 15px;
+    color: #d9b103;
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+}
+.catalog-calculate-link svg g{
+    fill: #d9b103;
+}
+.catalog-calculate-link:hover{
+    color: #b39203;
+}
+
+
+.catalog-calculate-link:hover g{
+    fill: #b39203;
+}
+
+
 
 /*endregion*/
 /*endregion*/
@@ -335,6 +356,10 @@ h2{
     background: linear-gradient(90deg, transparent, rgba(255,247,214,.95), transparent);
     filter: blur(.4px);
     pointer-events: none;
+}
+.header.glass-header{
+    top: 15px;
+    z-index: 2;
 }
 
 
@@ -659,14 +684,14 @@ h2{
 }
 
 .section-title {
-    font-size: 30px;
+    font-size: 38px;
     font-weight: 700;
     color: #d4af37;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
-    margin-bottom: 10px;
-    z-index: 20;
+    /*margin-bottom: 10px;*/
+    z-index: 0;
 }
 
 .section-title::after {
