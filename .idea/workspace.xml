@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcba9d45-d510-458f-a7c7-04c95d69bbf9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/catalog/warehouse/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/warehouse.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalog/marking/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/marking.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/customsclearance/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/customsclearance/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/page.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/customsclearence.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/customsclearance.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +95,8 @@
       <workItem from="1792524667686" duration="51000" />
       <workItem from="1792602751799" duration="3099000" />
       <workItem from="1792608471771" duration="1070000" />
-      <workItem from="1792616635543" duration="5608000" />
+      <workItem from="1792616635543" duration="6051000" />
+      <workItem from="1792695547439" duration="720000" />
     </task>
     <servers />
   </component>
