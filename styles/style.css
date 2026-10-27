@@ -636,7 +636,7 @@ h2{
     margin-top: 150px;
 }
 .catalog-item{
-    height: 280px;
+    height: 260px;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -673,13 +673,25 @@ h2{
 
 
 }
+.catalog-item:nth-child(2) .catalog-item-title{
+    max-width: 200px;
+
+}
+.catalog-item:nth-child(2) img{
+    width: 200px;
+    top: -94px;
+    left: 40px;
+
+}
+
 .catalog-item-title{
+    max-width: 236px;
     height: 80px;
     text-align: center;
     font-family: 'Ubuntu-bold', sans-serif;
     font-size: 30px;
     color: #af901b;
-    margin-top: 120px;
+    margin-top: 96px;
     padding: 0 5px;
 
 }
@@ -721,14 +733,14 @@ h2{
     z-index: 0;
 }
 
-.section-title::after {
-    content: '';
-    display: block;
-    width: 260px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent);
-    margin: 8px auto 0;
-}
+/*.section-title::after {*/
+/*    content: '';*/
+/*    display: block;*/
+/*    width: 260px;*/
+/*    height: 2px;*/
+/*    background: linear-gradient(90deg, transparent, #d4af37, transparent);*/
+/*    margin: 8px auto 0;*/
+/*}*/
 
 /* 3D Сцена */
 .scene {
@@ -1095,6 +1107,7 @@ h2{
 
 .controls-panel{
     margin-top: 10px;
+    z-index: 1;
 }
 
 

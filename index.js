@@ -643,3 +643,72 @@ requestAnimationFrame(animate);
 //
 //     revealElements.forEach((el) => revealObserver.observe(el));
 // })();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const headerElements = document.querySelectorAll('[data-parallax-header]');
+    if (!headerElements.length) return;
+
+    // Кэшируем DOM-узлы и скорости один раз при старте
+    const headersData = new Map();
+    const activeHeaders = new Set();
+
+    headerElements.forEach(header => {
+        const layers = Array.from(header.querySelectorAll('[data-parallax-speed]')).map(el => ({
+            el,
+            speed: parseFloat(el.dataset.parallaxSpeed) || 0
+        }));
+        headersData.set(header, layers);
+    });
+
+    let ticking = false;
+
+    const updateActiveHeaders = () => {
+        const windowHeight = window.innerHeight;
+
+        activeHeaders.forEach(header => {
+            const rect = header.getBoundingClientRect();
+            const layers = headersData.get(header);
+
+            // 1. Считаем параллакс для слоев текущего заголовка
+            const centerOffset = (rect.top + rect.height / 2) - (windowHeight / 2);
+            layers.forEach(({ el, speed }) => {
+                const yPos = (centerOffset * speed).toFixed(1);
+                el.style.setProperty('--py', `${yPos}px`);
+            });
+
+            // 2. Считаем позицию блика
+            const totalTravel = windowHeight + rect.height;
+            const currentPos = windowHeight - rect.top;
+            const progress = Math.min(Math.max(currentPos / totalTravel, 0), 1);
+
+            const shinePercentage = (130 - progress * 160).toFixed(1);
+            header.style.setProperty('--shine-pos', `${shinePercentage}%`);
+        });
+
+        ticking = false;
+    };
+
+    const requestTick = () => {
+        if (!ticking && activeHeaders.size > 0) {
+            window.requestAnimationFrame(updateActiveHeaders);
+            ticking = true;
+        }
+    };
+
+    // Отслеживаем только видимые на экране заголовки (с запасом 100px сверху/снизу)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                activeHeaders.add(entry.target);
+            } else {
+                activeHeaders.delete(entry.target);
+            }
+        });
+        requestTick();
+    }, { rootMargin: '100px 0px' });
+
+    headerElements.forEach(header => observer.observe(header));
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick, { passive: true });
+});
