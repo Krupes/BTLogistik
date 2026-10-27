@@ -18,7 +18,7 @@
  <section class="header glass-header">
      <div class="header-container">
          <div class="header-logo">
-             <a href="#">
+             <a href="index.html">
                  <img src="img/header_logo3.png" alt="">
                  <div class="brand-name">Белтаможлогистик</div>
 
@@ -26,18 +26,43 @@
          </div>
 
 
-             <nav class="header-menu-nav"  id="headerNav">
-                <a href="catalog/customsclearance/" class="nav-item">Таможенное оформление</a>
-                <a href="catalog/warehouse/" class="nav-item">Услуги склада</a>
-                <a href="catalog/marking/" class="nav-item">Маркировка</a>
-                <a href="" class="nav-item">Контакты</a>
-                <a href="#calculator" class="nav-item hide-nav-item">Калькулятор</a>
-                <a href="" class="nav-item">О Нас</a>
-             </nav>
+         <nav class="header-menu-nav" id="headerNav">
+             <a href="#" class="nav-item">О Нас</a>
+             <a href="catalog/customsclearance/" class="nav-item">Таможенное оформление</a>
+
+             <!-- Выпадающее меню для Склада -->
+             <div class="nav-dropdown">
+                 <a href="catalog/warehouse/" class="nav-item nav-dropdown-trigger" aria-expanded="false">
+                     <span>Услуги склада</span>
+                     <svg class="dropdown-arrow" viewBox="0 0 12 8" fill="none">
+                         <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                     </svg>
+                 </a>
+                 <div class="dropdown-menu">
+                     <a href="catalog/warehouse/index.html#svh-section" class="dropdown-link">
+                         <div class="dd-info">
+                             <span class="dd-title">Склад временного хранения</span>
+                             <span class="dd-sub">Таможенный контроль, досмотр, перецепка</span>
+                         </div>
+                     </a>
+                     <a href="catalog/warehouse/index.html#soh-section" class="dropdown-link">
+                         <div class="dd-info">
+                             <span class="dd-title">Склад общего хранения</span>
+                             <span class="dd-sub">Ответственное хранение, WMS-учёт, 3PL</span>
+                         </div>
+                     </a>
+                 </div>
+             </div>
+
+             <a href="catalog/marking/" class="nav-item">Маркировка</a>
+             <a href="catalog/railway/" class="nav-item">Ж/Д поставки</a>
+<!--             <a href="index.html#contacts" class="nav-item">Контакты</a>-->
+
+         </nav>
 
          <div class="header-contacts ">
              <button class="premium-gold-btn">
-                 <span>Связаться с нами</span></button>
+                 <span>Контакты</span></button>
 
          </div>
          <button class="burger" id="burgerBtn" type="button"
@@ -282,7 +307,7 @@
 <!--                </div>-->
                 <div class="catalog-item-action premium-gold-btn">
                     <span>
-                        <a href="">Подробнее
+                        <a href="catalog/railway/">Подробнее
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="12pt" height="12pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="" stroke="none">
@@ -629,10 +654,10 @@
              <div class="footer-col">
                  <h4 class="footer-heading">Услуги</h4>
                  <ul class="footer-links">
-                     <li><a href="#">Таможенное оформление</a></li>
-                     <li><a href="#">Услуги склада</a></li>
-                     <li><a href="#">Маркировка товаров</a></li>
-                     <li><a href="#">Обработка Ж/Д поставок</a></li>
+                     <li><a href="catalog/customsclearance/">Таможенное оформление</a></li>
+                     <li><a href="catalog/warehouse/">Услуги склада</a></li>
+                     <li><a href="catalog/marking/">Маркировка товаров</a></li>
+                     <li><a href="catalog/railway">Обработка Ж/Д поставок</a></li>
                  </ul>
              </div>
 

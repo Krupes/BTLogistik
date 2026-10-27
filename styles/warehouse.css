@@ -21,10 +21,50 @@
     padding-inline: 20px;
 }
 
-.header-menu-nav .nav-item.active {
-    color: #ffe57a;
-    text-shadow: 0 0 14px rgba(243, 223, 157, 0.55);
+/*.header-menu-nav .nav-item.active {*/
+/*    color: #ffe57a;*/
+/*    text-shadow: 0 0 14px rgba(243, 223, 157, 0.55);*/
+/*}*/
+
+
+.nav-dropdown {
+    position: relative;
 }
+
+.nav-item.active {
+    color: #ebd085;
+}
+
+.nav-dropdown.active::before {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 3%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ebd085;
+    /*box-shadow: 0 0 8px 2px rgba(235, 208, 133, 0.75);*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ================= ХЛЕБНЫЕ КРОШКИ ================= */
 .breadcrumbs {

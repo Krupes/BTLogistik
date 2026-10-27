@@ -25,17 +25,42 @@
         </div>
 
         <nav class="header-menu-nav" id="headerNav">
+            <a href="#" class="nav-item">О Нас</a>
             <a href="index.html" class="nav-item active">Таможенное оформление</a>
-            <a href="../warehouse/index.html" class="nav-item">Услуги склада</a>
-            <a href="" class="nav-item">Маркировка</a>
-            <a href="index.html#contacts" class="nav-item">Контакты</a>
-            <a href="../../index.html#calculator" class="nav-item hide-nav-item">Калькулятор</a>
-            <a href="service.html" class="nav-item">О Нас</a>
+
+            <!-- Выпадающее меню для Склада -->
+            <div class="nav-dropdown">
+                <a href="../warehouse/" class="nav-item nav-dropdown-trigger" aria-expanded="false">
+                    <span>Услуги склада</span>
+                    <svg class="dropdown-arrow" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="../warehouse/index.html#svh-section" class="dropdown-link">
+                        <div class="dd-info">
+                            <span class="dd-title">Склад временного хранения</span>
+                            <span class="dd-sub">Таможенный контроль, досмотр, перецепка</span>
+                        </div>
+                    </a>
+                    <a href="../warehouse/index.html#soh-section" class="dropdown-link">
+                        <div class="dd-info">
+                            <span class="dd-title">Склад общего хранения</span>
+                            <span class="dd-sub">Ответственное хранение, WMS-учёт, 3PL</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <a href="../marking/" class="nav-item">Маркировка</a>
+            <a href="../railway/" class="nav-item">Ж/Д поставки</a>
+<!--            <a href="../../index.html#contacts" class="nav-item">Контакты</a>-->
+
         </nav>
 
         <div class="header-contacts">
             <button class="premium-gold-btn">
-                <span>Связаться с нами</span>
+                <span>Контакты</span>
             </button>
         </div>
         <button class="burger" id="burgerBtn" type="button"
@@ -50,7 +75,7 @@
     <div class="container">
 
         <nav class="breadcrumbs reveal-up" aria-label="Хлебные крошки">
-            <a href="../../index.html">Главная</a>
+            <a href="../../">Главная</a>
             <span class="crumb-sep">/</span>
             <span class="crumb-current">Таможенное оформление</span>
         </nav>
@@ -249,10 +274,10 @@
                     <div class="glass-card sidebar-box reveal-right">
                         <h3 class="sidebar-title">Другие наши услуги</h3>
                         <ul class="other-services-list">
-                            <li><a href="../warehouse/index.html"><span>Услуги склада (СВХ / СОХ)</span> <span>→</span></a></li>
-                            <li><a href="service.html"><span>Маркировка DataMatrix и УКЗ</span> <span>→</span></a></li>
-                            <li><a href="service.html"><span>Обработка Ж/Д составов</span> <span>→</span></a></li>
-                            <li><a href="index.html#calculator"><span>Калькулятор стоимости</span> <span>→</span></a></li>
+                            <li><a href="../warehouse/"><span>Услуги склада (СВХ / СОХ)</span> <span>→</span></a></li>
+                            <li><a href="../marking/"><span>Маркировка DataMatrix и УКЗ</span> <span>→</span></a></li>
+                            <li><a href="../railway/"><span>Обработка Ж/Д составов</span> <span>→</span></a></li>
+                            <li><a href="../../index.html#calculator"><span>Калькулятор стоимости</span> <span>→</span></a></li>
                         </ul>
                     </div>
 
@@ -281,7 +306,7 @@
     <div class="container">
         <div class="footer-top">
             <div class="footer-brand">
-                <a href="index.html" class="footer-logo">
+                <a href="../../index.html" class="footer-logo">
                     <img src="../../img/header_logo2.png" alt="Белтаможлогистик" class="footer-logo-img">
                 </a>
                 <p class="footer-tagline">Компания является членом <br> <a href="https://beltamas.by/" class="footer-tagline-link">Ассоциации таможенных представителей Республики Беларусь</a></p>
@@ -290,20 +315,20 @@
             <div class="footer-col">
                 <h4 class="footer-heading">Услуги</h4>
                 <ul class="footer-links">
-                    <li><a href="service.html">Таможенное оформление</a></li>
-                    <li><a href="service.html">Услуги склада</a></li>
-                    <li><a href="service.html">Маркировка товаров</a></li>
-                    <li><a href="service.html">Обработка Ж/Д поставок</a></li>
+                    <li><a href="../customsclearance/">Таможенное оформление</a></li>
+                    <li><a href="../warehouse/">Услуги склада</a></li>
+                    <li><a href="../marking/">Маркировка товаров</a></li>
+                    <li><a href="../railway/">Обработка Ж/Д поставок</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4 class="footer-heading">Компания</h4>
                 <ul class="footer-links">
-                    <li><a href="service.html">О компании</a></li>
-                    <li><a href="index.html#calculator">Калькулятор стоимости</a></li>
-                    <li><a href="service.html">Документы и тарифы</a></li>
-                    <li><a href="index.html#contacts">Контакты и схема проезда</a></li>
+                    <li><a href="#">О компании</a></li>
+                    <li><a href="../../index.html#calculator">Калькулятор стоимости</a></li>
+                    <li><a href="#">Документы и тарифы</a></li>
+                    <li><a href="../../index.html#contacts">Контакты и схема проезда</a></li>
                 </ul>
             </div>
 

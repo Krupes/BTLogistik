@@ -41,3 +41,23 @@
     if (desktop.addEventListener) desktop.addEventListener('change', onChange);
     else desktop.addListener(onChange);
 })();
+/* ===== Мобильное подменю для «Услуги склада» (СВХ / СОХ) ===== */
+(() => {
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    const mobileQuery = window.matchMedia('(max-width: 1100px)');
+
+    dropdowns.forEach((dd) => {
+        const trigger = dd.querySelector('.nav-dropdown-trigger');
+        if (!trigger) return;
+
+        // Используем capture: true, чтобы на мобилке перехватить клик до закрытия бургера
+        trigger.addEventListener('click', (e) => {
+            if (mobileQuery.matches) {
+                e.preventDefault();
+                e.stopPropagation();
+                const isOpen = dd.classList.toggle('is-sub-open');
+                trigger.setAttribute('aria-expanded', String(isOpen));
+            }
+        }, true);
+    });
+})();

@@ -1,0 +1,1139 @@
+/* ==========================================================================
+   RAILWAY.CSS — Стили и адаптив для страницы «Обработка Ж/Д поставок»
+   Брейкпоинты: 1280px / 960px / 768px / 600px / 480px / 360px
+   ========================================================================== */
+
+.inner-page {
+    width: 100%;
+    padding: 28px 0 80px;
+    box-sizing: border-box;
+}
+
+.inner-page .container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 20px;
+}
+
+/*.header-menu-nav .nav-item.active {*/
+/*    color: var(--gold-1);*/
+/*    text-shadow: 0 0 14px rgba(243, 223, 157, 0.55);*/
+/*}*/
+
+/* ================= ХЛЕБНЫЕ КРОШКИ ================= */
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.breadcrumbs a {
+    color: var(--text-muted);
+    transition: color 0.25s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--gold-light);
+}
+
+.crumb-sep {
+    color: rgba(212, 175, 55, 0.45);
+}
+
+.crumb-current {
+    color: var(--gold-light);
+    font-weight: 500;
+}
+
+/* ================= HERO СТРАНИЦЫ Ж/Д ПОСТАВОК ================= */
+.page-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 32px;
+    align-items: center;
+    padding: 40px 44px;
+    margin-bottom: 36px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.page-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: rgba(212, 175, 55, 0.14);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.page-main-title {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 2.3rem;
+    line-height: 1.18;
+    margin: 0 0 16px;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    overflow-wrap: break-word;
+}
+
+.page-lead {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.86);
+    margin: 0 0 26px;
+    max-width: 800px;
+}
+
+.page-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.stat-pill {
+    background: rgba(4, 22, 18, 0.58);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 16px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-sizing: border-box;
+}
+
+.stat-num {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 12.5px;
+    line-height: 1.35;
+    color: var(--text-muted);
+}
+
+.page-hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-hero-visual img {
+    width: 100%;
+    max-width: 245px;
+    height: auto;
+    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 24px rgba(212, 175, 55, 0.2));
+    animation: mascotFloat 6s ease-in-out infinite;
+}
+
+/* ================= ОСНОВНАЯ СЕТКА (СТАТЬЯ + ЛИПКИЙ САЙДБАР) ================= */
+.page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 350px;
+    gap: 32px;
+}
+
+.article-content {
+    position: relative;
+    padding: 44px 48px;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.article-section {
+    margin-bottom: 48px;
+    scroll-margin-top: 32px;
+}
+
+.article-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-tag-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tag-pill {
+    padding: 4px 12px;
+    border-radius: 50px;
+    background: var(--gold-gradient);
+    color: #1c1608;
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.tag-status {
+    font-size: 12.5px;
+    color: var(--gold-light);
+    padding: 4px 12px;
+    border-radius: 50px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.article-content h2 {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 1.72rem;
+    color: var(--gold-light);
+    margin: 0 0 18px;
+    line-height: 1.28;
+    position: relative;
+    padding-left: 16px;
+}
+
+.article-content h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 4px;
+    border-radius: 4px;
+    background: var(--gold-gradient);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.article-content p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 0 18px;
+}
+
+.article-content strong {
+    color: var(--gold-1);
+    font-weight: 600;
+}
+
+/* Выделенная цитата */
+.glass-quote {
+    margin: 26px 0 0;
+    padding: 22px 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.14), rgba(6, 32, 25, 0.65));
+    border-left: 4px solid var(--gold-primary);
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.quote-title {
+    font-family: 'Ubuntu-bold', sans-serif;
+    color: var(--gold-light);
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+
+/* ==========================================================================
+   УНИКАЛЬНЫЙ БЛОК 1: ЖЕЛЕЗНОДОРОЖНЫЙ ТРЕК-ХАБ В ЗТК (.rail-hub-showcase)
+   ========================================================================== */
+.rail-hub-showcase {
+    background: linear-gradient(135deg, rgba(4, 22, 18, 0.82), rgba(10, 44, 35, 0.58));
+    border: 1px solid rgba(212, 175, 55, 0.38);
+    border-radius: 22px;
+    padding: 28px;
+    margin-top: 24px;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 18px 40px rgba(0, 0, 0, 0.42);
+}
+
+/* Анимированное железнодорожное полотно со шпалами и импульсом поезда */
+.rail-track-line {
+    position: relative;
+    height: 18px;
+    margin-bottom: 26px;
+    border-top: 2px solid rgba(212, 175, 55, 0.55);
+    border-bottom: 2px solid rgba(212, 175, 55, 0.55);
+    background: rgba(2, 14, 11, 0.65);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Имитация железнодорожных шпал */
+.rail-ties {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 14px,
+            rgba(212, 175, 55, 0.28) 14px,
+            rgba(212, 175, 55, 0.28) 18px
+    );
+}
+
+/* Бегущий золотой экспресс-импульс по путям */
+.train-pulse {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    width: 110px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, transparent, rgba(243, 223, 157, 0.85), #ffffff, rgba(212, 175, 55, 0.9), transparent);
+    box-shadow: 0 0 20px 4px rgba(243, 223, 157, 0.75);
+    animation: trainMove 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes trainMove {
+    0% { left: -120px; }
+    100% { left: 100%; }
+}
+
+.rail-nodes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.rail-node {
+    background: rgba(5, 28, 22, 0.72);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    border-radius: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (hover: hover) {
+    .rail-node:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 231, 150, 0.85);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.node-step {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--gold-primary);
+}
+
+.node-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold-1);
+    background: rgba(212, 175, 55, 0.16);
+    border: 1px solid rgba(212, 175, 55, 0.38);
+    padding: 3px 10px;
+    border-radius: 50px;
+}
+
+.rail-node h3 {
+    font-size: 16.5px;
+    color: var(--gold-light);
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.rail-node p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+
+/* ==========================================================================
+   УНИКАЛЬНЫЙ БЛОК 2: ТИПЫ ВАГОНОВ И КОНТЕЙНЕРОВ (.wagons-grid)
+   ========================================================================== */
+.wagons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 22px 0 32px;
+}
+
+.wagon-card {
+    background: rgba(5, 24, 19, 0.58);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 18px;
+    padding: 22px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (hover: hover) {
+    .wagon-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(243, 223, 157, 0.65);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+    }
+}
+
+.wagon-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+}
+
+.wagon-code {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 21px;
+}
+
+.wagon-type {
+    font-size: 11.5px;
+    color: var(--gold-light);
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 4px 10px;
+    border-radius: 50px;
+}
+
+.wagon-card h3 {
+    font-size: 16.5px;
+    color: var(--gold-light);
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.wagon-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Список с золотыми галочками */
+.gold-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.gold-check-list li {
+    position: relative;
+    padding-left: 34px;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.gold-check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.18);
+    border: 1px solid var(--gold-primary);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+}
+
+/* Фото-вставка в рамке */
+.article-figure {
+    margin: 32px 0 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(4, 20, 16, 0.65);
+    border: 1px solid rgba(212, 175, 55, 0.32);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.figure-img-wrap {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+}
+
+.figure-img-wrap > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+@media (hover: hover) {
+    .article-figure:hover .figure-img-wrap > img {
+        transform: scale(1.04);
+    }
+}
+
+.figure-overlay-icon {
+    position: absolute;
+    right: 24px;
+    bottom: 16px;
+    width: 125px;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+}
+
+.figure-overlay-icon img {
+    width: 100%;
+    height: auto;
+}
+
+.article-figure figcaption {
+    padding: 14px 22px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    border-top: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+/* Сравнительная таблица */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin: 22px 0 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    box-sizing: border-box;
+}
+
+.glass-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(5, 25, 20, 0.55);
+}
+
+.glass-table th,
+.glass-table td {
+    padding: 15px 18px;
+    text-align: left;
+    font-size: 14.5px;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+}
+
+.glass-table th {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--gold-light);
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.glass-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Встроенная карточка с иллюстрацией */
+.inline-media-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 20px;
+    background: linear-gradient(120deg, rgba(11, 48, 39, 0.75), rgba(212, 175, 55, 0.12));
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    margin-top: 28px;
+    box-sizing: border-box;
+}
+
+.inline-media-card img {
+    width: 115px;
+    height: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+}
+
+.inline-media-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: var(--gold-light);
+}
+
+.inline-media-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+}
+
+/* ================= ПРАВЫЙ САЙДБАР (С РАБОТАЮЩИМ STICKY) ================= */
+.page-sidebar {
+    position: relative;
+    height: 100%;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sidebar-box {
+    position: relative;
+    padding: 26px;
+    box-sizing: border-box;
+}
+
+.sidebar-title {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    margin: 0 0 16px;
+}
+
+.toc-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.toc-link {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    font-size: 14.5px;
+    color: var(--text-muted);
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+}
+
+.toc-link:hover {
+    color: var(--gold-light);
+    border-color: rgba(212, 175, 55, 0.35);
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateX(4px);
+}
+
+.other-services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.other-services-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(4, 22, 18, 0.55);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    font-size: 14px;
+    color: var(--text-light);
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+}
+
+.other-services-list a:hover {
+    border-color: var(--gold-primary);
+    color: var(--gold-light);
+    transform: translateX(4px);
+}
+
+.sidebar-cta {
+    text-align: center;
+}
+
+.sidebar-mascot img {
+    width: 135px;
+    height: auto;
+    margin: -6px auto 10px;
+    display: block;
+    filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.5));
+}
+
+.sidebar-text {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+}
+
+.sidebar-phone {
+    display: block;
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+}
+
+.sidebar-btn {
+    width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================================
+   ТОЧКА 1: ≤ 1280px
+   ========================================================================== */
+@media (max-width: 1280px) {
+    .inner-page .container {
+        padding-inline: clamp(16px, 2.5vw, 24px);
+    }
+    .page-hero {
+        padding: 34px 36px;
+        grid-template-columns: 1fr 220px;
+        gap: 24px;
+    }
+    .page-main-title {
+        font-size: clamp(1.85rem, 2.9vw, 2.2rem);
+    }
+    .page-layout {
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 24px;
+    }
+    .article-content {
+        padding: 36px 36px;
+    }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 2: ≤ 960px
+   ========================================================================== */
+@media (max-width: 960px) {
+    .page-hero {
+        grid-template-columns: 1fr 180px;
+        padding: 30px 28px;
+        margin-bottom: 28px;
+    }
+    .page-main-title {
+        font-size: 1.8rem;
+    }
+    .page-lead {
+        font-size: 15.5px;
+    }
+    .stat-pill {
+        padding: 12px 14px;
+    }
+    .stat-num {
+        font-size: 20px;
+    }
+
+    .page-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .page-sidebar {
+        height: auto;
+    }
+    .sidebar-sticky {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+    .sidebar-cta {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        align-items: center;
+        text-align: left;
+        gap: 20px;
+        padding: 24px 28px;
+    }
+    .sidebar-mascot {
+        grid-row: 1 / 5;
+    }
+    .sidebar-mascot img {
+        margin: 0 auto;
+        width: 130px;
+    }
+    .sidebar-cta .sidebar-title,
+    .sidebar-cta .sidebar-text,
+    .sidebar-cta .sidebar-phone,
+    .sidebar-cta .sidebar-btn {
+        grid-column: 2;
+    }
+    .sidebar-cta .sidebar-btn {
+        max-width: 280px;
+    }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 3: ≤ 768px
+   ========================================================================== */
+@media (max-width: 768px) {
+    .inner-page {
+        padding: 20px 0 60px;
+    }
+    .breadcrumbs {
+        margin-bottom: 18px;
+        font-size: 13px;
+    }
+
+    .page-hero {
+        grid-template-columns: 1fr;
+        padding: 26px 24px;
+        gap: 18px;
+    }
+    .page-hero-visual {
+        order: -1;
+        justify-content: flex-start;
+    }
+    .page-hero-visual img {
+        max-width: 145px;
+    }
+    .page-main-title {
+        font-size: 1.6rem;
+        margin-bottom: 14px;
+    }
+    .page-hero-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .stat-num {
+        font-size: 18px;
+    }
+    .stat-label {
+        font-size: 11.5px;
+    }
+
+    .article-content {
+        padding: 28px 24px;
+    }
+    .article-content h2 {
+        font-size: 1.45rem;
+    }
+    .article-content p,
+    .gold-check-list li {
+        font-size: 15px;
+    }
+
+    .rail-hub-showcase {
+        padding: 22px 18px;
+    }
+    .figure-img-wrap {
+        height: 230px;
+    }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 4: ≤ 600px
+   ========================================================================== */
+@media (max-width: 600px) {
+    .page-hero.glass-card,
+    .article-content.glass-card,
+    .sidebar-box.glass-card {
+        border-radius: 22px;
+    }
+
+    .page-hero-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .stat-pill {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 14px;
+        padding: 12px 16px;
+    }
+    .stat-num {
+        font-size: 18px;
+        min-width: 82px;
+        flex-shrink: 0;
+    }
+    .stat-label {
+        font-size: 13px;
+    }
+
+    /* Узлы Ж/Д конвейера и типы вагонов в 1 колонку */
+    .rail-nodes-grid,
+    .wagons-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .rail-node,
+    .wagon-card {
+        padding: 18px;
+    }
+
+    /* Трансформация сравнительной таблицы в мобильные карточки */
+    .table-responsive {
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        margin: 18px 0 24px;
+    }
+    .glass-table,
+    .glass-table tbody,
+    .glass-table tr,
+    .glass-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .glass-table {
+        background: transparent;
+    }
+    .glass-table thead {
+        display: none;
+    }
+    .glass-table tbody tr {
+        background: rgba(5, 25, 20, 0.68);
+        border: 1px solid rgba(212, 175, 55, 0.28);
+        border-radius: 16px;
+        padding: 14px 16px;
+        margin-bottom: 14px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+    }
+    .glass-table tbody tr:last-child {
+        margin-bottom: 0;
+    }
+    .glass-table td {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+        font-size: 14px;
+    }
+    .glass-table td:last-child {
+        border-bottom: none;
+        padding-bottom: 2px;
+    }
+    .glass-table td::before {
+        content: attr(data-label);
+        display: block;
+        font-family: 'Ubuntu-bold', sans-serif;
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--gold-light);
+        margin-bottom: 3px;
+    }
+
+    .inline-media-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 18px;
+        gap: 14px;
+    }
+    .inline-media-card img {
+        width: 105px;
+    }
+
+    .sidebar-sticky {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .sidebar-cta {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 22px 18px;
+        gap: 10px;
+    }
+    .sidebar-mascot {
+        grid-row: auto;
+    }
+    .sidebar-cta .sidebar-title,
+    .sidebar-cta .sidebar-text,
+    .sidebar-cta .sidebar-phone,
+    .sidebar-cta .sidebar-btn {
+        grid-column: 1;
+    }
+    .sidebar-cta .sidebar-btn {
+        max-width: 100%;
+    }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 5: ≤ 480px
+   ========================================================================== */
+@media (max-width: 480px) {
+    .inner-page {
+        padding: 14px 0 48px;
+    }
+    .inner-page .container {
+        padding-inline: 16px;
+    }
+    .breadcrumbs {
+        font-size: 12.5px;
+        gap: 6px 8px;
+    }
+
+    .page-hero {
+        padding: 22px 18px;
+        margin-bottom: 22px;
+    }
+    .page-badge {
+        font-size: 10.5px;
+        padding: 5px 11px;
+        margin-bottom: 12px;
+    }
+    .page-hero-visual img {
+        max-width: 120px;
+    }
+    .page-main-title {
+        font-size: 1.4rem;
+        line-height: 1.22;
+    }
+    .page-lead {
+        font-size: 14.5px;
+        line-height: 1.55;
+        margin-bottom: 18px;
+    }
+
+    .article-content {
+        padding: 22px 18px;
+    }
+    .article-section {
+        margin-bottom: 34px;
+    }
+    .article-content h2 {
+        font-size: 1.28rem;
+        padding-left: 12px;
+        margin-bottom: 14px;
+    }
+    .article-content p,
+    .gold-check-list li {
+        font-size: 14.5px;
+        line-height: 1.65;
+    }
+    .gold-check-list li {
+        padding-left: 30px;
+    }
+
+    .rail-hub-showcase {
+        padding: 18px 14px;
+        border-radius: 18px;
+    }
+    .glass-quote {
+        padding: 16px 18px;
+        font-size: 14px;
+    }
+
+    .figure-img-wrap {
+        height: 185px;
+    }
+    .figure-overlay-icon {
+        width: 82px;
+        right: 12px;
+        bottom: 10px;
+    }
+    .article-figure figcaption {
+        padding: 12px 14px;
+        font-size: 12.5px;
+    }
+
+    .sidebar-box {
+        padding: 20px 18px;
+    }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 6: ≤ 360px
+   ========================================================================== */
+@media (max-width: 360px) {
+    .inner-page .container {
+        padding-inline: 12px;
+    }
+    .page-hero.glass-card,
+    .article-content.glass-card,
+    .sidebar-box.glass-card {
+        border-radius: 18px;
+    }
+
+    .page-hero {
+        padding: 18px 14px;
+    }
+    .page-badge {
+        font-size: 10px;
+        letter-spacing: 0.04em;
+    }
+    .page-main-title {
+        font-size: 1.25rem;
+    }
+    .page-lead {
+        font-size: 13.8px;
+    }
+    .stat-pill {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+    .stat-num {
+        font-size: 16px;
+        min-width: 72px;
+    }
+    .stat-label {
+        font-size: 12px;
+    }
+
+    .article-content {
+        padding: 18px 14px;
+    }
+    .article-content h2 {
+        font-size: 1.18rem;
+    }
+    .article-content p,
+    .gold-check-list li {
+        font-size: 14px;
+    }
+    .rail-node,
+    .wagon-card {
+        padding: 15px 14px;
+    }
+    .rail-node h3,
+    .wagon-card h3 {
+        font-size: 15.5px;
+    }
+    .figure-img-wrap {
+        height: 160px;
+    }
+    .sidebar-box {
+        padding: 18px 14px;
+    }
+    .sidebar-phone {
+        font-size: 18px;
+    }
+    .gold-btn.sidebar-btn {
+        padding: 14px 18px;
+        font-size: 12.5px;
+    }
+}

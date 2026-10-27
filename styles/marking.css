@@ -20,10 +20,10 @@
     padding-inline: 20px;
 }
 
-.header-menu-nav .nav-item.active {
-    color: var(--gold-1);
-    text-shadow: 0 0 14px rgba(243, 223, 157, 0.55);
-}
+/*.header-menu-nav .nav-item.active {*/
+/*    color: var(--gold-1);*/
+/*    text-shadow: 0 0 14px rgba(243, 223, 157, 0.55);*/
+/*}*/
 
 /* ================= ХЛЕБНЫЕ КРОШКИ ================= */
 .breadcrumbs {

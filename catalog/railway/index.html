@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Обработка Ж/Д поставок в ЗТК — Белтаможлогистик</title>
+
+    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/responsive.css">
+    <link rel="stylesheet" href="../../styles/media.css">
+    <link rel="stylesheet" href="../../styles/railway.css">
+</head>
+<body>
+
+<!-- ================= ШАПКА ================= -->
+<section class="header glass-header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="../../index.html">
+                <img src="../../img/header_logo3.png" alt="Белтаможлогистик">
+                <div class="brand-name">Белтаможлогистик</div>
+            </a>
+        </div>
+
+        <nav class="header-menu-nav" id="headerNav">
+            <a href="#" class="nav-item">О Нас</a>
+            <a href="../customsclearance/" class="nav-item">Таможенное оформление</a>
+
+            <!-- Выпадающее меню для Склада -->
+            <div class="nav-dropdown">
+                <a href="../warehouse/" class="nav-item nav-dropdown-trigger" aria-expanded="false">
+                    <span>Услуги склада</span>
+                    <svg class="dropdown-arrow" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="../warehouse/index.html#svh-section" class="dropdown-link">
+<!--                        <span class="dd-tag">СВХ</span>-->
+                        <div class="dd-info">
+                            <span class="dd-title">Склад временного хранения</span>
+                            <span class="dd-sub">Таможенный контроль, досмотр, перецепка</span>
+                        </div>
+                    </a>
+                    <a href="../warehouse/index.html#soh-section" class="dropdown-link">
+<!--                        <span class="dd-tag">СОХ</span>-->
+                        <div class="dd-info">
+                            <span class="dd-title">Склад общего хранения</span>
+                            <span class="dd-sub">Ответственное хранение, WMS-учёт, 3PL</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <a href="../marking/" class="nav-item">Маркировка</a>
+            <a href="index.html" class="nav-item active">Ж/Д поставки</a>
+<!--            <a href="../../index.html#contacts" class="nav-item">Контакты</a>-->
+
+        </nav>
+
+        <div class="header-contacts">
+            <button class="premium-gold-btn">
+                <span>Контакты</span>
+            </button>
+        </div>
+        <button class="burger" id="burgerBtn" type="button"
+                aria-label="Открыть меню" aria-expanded="false" aria-controls="headerNav">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</section>
+
+<!-- ================= ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ Ж/Д ПОСТАВОК ================= -->
+<main class="inner-page">
+    <div class="container">
+
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumbs reveal-up" aria-label="Хлебные крошки">
+            <a href="../../index.html">Главная</a>
+            <span class="crumb-sep">/</span>
+<!--            <a href="index.html#catalog">Услуги</a>-->
+<!--            <span class="crumb-sep">/</span>-->
+            <span class="crumb-current">Обработка Ж/Д поставок</span>
+        </nav>
+
+        <!-- Верхний Hero-блок -->
+        <header class="page-hero glass-card reveal-up">
+            <div class="page-hero-content">
+                <div class="page-badge">Собственный Ж/Д тупик внутри зоны таможенного контроля</div>
+                <h1 class="page-main-title gold-text-title">Обработка железнодорожных поставок напрямую в ЗТК и на СВХ</h1>
+                <p class="page-lead">
+                    Часть железнодорожных путей терминала «Белтаможлогистик» официально включена в зону таможенного контроля (ЗТК). Мы принимаем вагоны и контейнеры напрямую с поезда к складской рампе, выполняем выгрузку, таможенное оформление, маркировку DataMatrix/УКЗ и размещение на СВХ или СОХ на одной площадке.
+                </p>
+
+                <div class="page-hero-stats">
+                    <div class="stat-pill">
+                        <span class="stat-num gold-text">0 BYN</span>
+                        <span class="stat-label">Затрат на автовывоз контейнера со станции в ЗТК</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-num gold-text">Прямая</span>
+                        <span class="stat-label">Выгрузка из вагона на рампу СВХ или СОХ</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-num gold-text">4 в 1</span>
+                        <span class="stat-label">Приём поезда, склад, маркировка и растаможка</span>
+                    </div>
+                </div>
+            </div>
+            <div class="page-hero-visual">
+                <img src="img/catalog_4.png" alt="Обработка Ж/Д составов и контейнеров">
+            </div>
+        </header>
+
+        <!-- ================= ДВУХКОЛОНОЧНЫЙ ЛЕЙАУТ: СТАТЬЯ + ЛИПКИЙ САЙДБАР ================= -->
+        <div class="page-layout">
+
+            <!-- ЛЕВАЯ КОЛОНКА -->
+            <article class="article-content glass-card reveal-up">
+
+                <!-- ==================== РАЗДЕЛ 1: СУТЬ УНИКАЛЬНОЙ ИНФРАСТРУКТУРЫ ==================== -->
+                <section id="ztk-railway" class="article-section">
+                    <div class="section-tag-header">
+                        <span class="tag-pill">Уникальная инфраструктура</span>
+                        <span class="tag-status">Ж/Д ветка в составе ЗТК</span>
+                    </div>
+                    <h2>Подача вагонов прямо в зону таможенного контроля без лишней перевалки</h2>
+                    <p>
+                        При стандартной железнодорожной доставке импортёр сталкивается с двойной логистикой: груз приходит на общую грузовую станцию, где нужно заказывать кран, оформлять внутритаможенный транзит и нанимать контейнеровоз, чтобы перевезти нерастаможенный контейнер на сторонний СВХ. Это отнимает до 2–3 суток и приводит к штрафам за сверхнормативный простой вагонов (демередж).
+                    </p>
+                    <p>
+                        В <strong>ООО «Белтаможлогистик»</strong> эта проблема решена инфраструктурно: наши подъездные железнодорожные пути интегрированы непосредственно в <strong>зону таможенного контроля (ЗТК)</strong> и примыкают вплотную к крытым складам СВХ и СОХ в г. Вилейка.
+                    </p>
+
+                    <blockquote class="glass-quote">
+                        <div class="quote-title">Главное преимущество для импортёров и экспортёров:</div>
+                        Поезд заходит прямо на закрытую таможенную территорию нашего терминала. Выгружать паллеты, короба или крупногабаритное оборудование из вагона и морского контейнера можно <strong>напрямую в склад временного хранения (СВХ)</strong> либо перегружать сразу в автотранспорт по схеме «вагон — фура»!
+                    </blockquote>
+                </section>
+
+                <!-- ==================== НОВЫЙ ВАУ-БЛОК 1: ИНТЕРАКТИВНАЯ СХЕМА ПУТИ «БЕЗШОВНЫЙ Ж/Д ХАБ» ==================== -->
+                <section id="rail-scheme" class="article-section">
+                    <h2>Как работает бесшовный Ж/Д конвейер на одной площадке</h2>
+                    <p>
+                        Весь цикл обработки железнодорожной партии — от закрытия доставки по накладной СМГС до выезда растаможенного и промаркированного товара — проходит внутри единого периметра:
+                    </p>
+
+                    <div class="rail-hub-showcase reveal-up">
+                        <!-- Анимированная линия Ж/Д рельсов с бегущим локомотивным импульсом -->
+                        <div class="rail-track-line">
+                            <div class="rail-ties"></div>
+                            <div class="train-pulse"></div>
+                        </div>
+
+                        <div class="rail-nodes-grid">
+                            <div class="rail-node">
+                                <div class="node-header">
+                                    <span class="node-step">УЗЕЛ 01</span>
+                                    <span class="node-badge">Прибытие</span>
+                                </div>
+                                <h3>Подача вагона в ЗТК</h3>
+                                <p>Приём одиночных вагонов, контейнерных сцепов и маршрутных отправок со станции БЖД прямо на таможенный путь терминала. Закрытие транзита и раскредитация СМГС.</p>
+                            </div>
+
+                            <div class="rail-node">
+                                <div class="node-header">
+                                    <span class="node-step">УЗЕЛ 02</span>
+                                    <span class="node-badge">Рампа</span>
+                                </div>
+                                <h3>Прямая выгрузка</h3>
+                                <p>Снятие пломб с участием таможни, механизированная (погрузчиками) или бережная ручная выгрузка груза из вагона/контейнера сразу на СВХ или в кузов автомобиля.</p>
+                            </div>
+
+                            <div class="rail-node">
+                                <div class="node-header">
+                                    <span class="node-step">УЗЕЛ 03</span>
+                                    <span class="node-badge">Сервис на месте</span>
+                                </div>
+                                <h3>Маркировка и досмотр</h3>
+                                <p>Взвешивание, пересчёт мест, нанесение кодов DataMatrix («Честный ЗНАК» / «Электронный знак»), УКЗ и этикеток EAC на СВХ до подачи декларации.</p>
+                            </div>
+
+                            <div class="rail-node">
+                                <div class="node-header">
+                                    <span class="node-step">УЗЕЛ 04</span>
+                                    <span class="node-badge">Выпуск</span>
+                                </div>
+                                <h3>Растаможка и СОХ</h3>
+                                <p>Подача ДТ нашими декларантами (выпуск от 2 часов). После растаможки груз сразу переводится на склад общего хранения (СОХ) или разъезжается по клиентам.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== НОВЫЙ БЛОК 2: ТИПЫ ВАГОНОВ И КОНТЕЙНЕРОВ ==================== -->
+                <section id="rolling-stock" class="article-section">
+                    <h2>С каким подвижным составом и грузами мы работаем</h2>
+                    <p>
+                        Технические возможности нашего железнодорожного фронта и погрузочной техники позволяют обрабатывать все основные виды грузовых вагонов и контейнеров, прибывающих из Китая, регионов РФ, Казахстана и средней Азии:
+                    </p>
+
+                    <div class="wagons-grid">
+                        <div class="wagon-card">
+                            <div class="wagon-top">
+                                <span class="wagon-code gold-text">20' / 40' HC</span>
+                                <span class="wagon-type">Контейнерные поезда из КНР</span>
+                            </div>
+                            <h3>Морские и Ж/Д контейнеры на фитинговых платформах</h3>
+                            <p>Растарка 20- и 40-футовых контейнеров (DV, High Cube) прямо на путях с рампы или с помощью вилочных погрузчиков малой высоты, заезжающих внутрь контейнера.</p>
+                        </div>
+
+                        <div class="wagon-card">
+                            <div class="wagon-top">
+                                <span class="wagon-code gold-text">120–158 м³</span>
+                                <span class="wagon-type">Паллетные и тарные грузы</span>
+                            </div>
+                            <h3>Крытые универсальные вагоны</h3>
+                            <p>Высокоскоростная выгрузка и погрузка товаров народного потребления, напитков, сырья в биг-бэгах, коробах и на паллетах через широкие дверные проёмы прямо на рампу склада.</p>
+                        </div>
+
+                        <div class="wagon-card">
+                            <div class="wagon-top">
+                                <span class="wagon-code gold-text">Кросс-докинг</span>
+                                <span class="wagon-type">Вагон ⇄ Автофура</span>
+                            </div>
+                            <h3>Прямая перегрузка из вагонов в еврофуры</h3>
+                            <p>Оперативная перевалка крупных железнодорожных партий на автомобильный транспорт для дальнейшей доставки в торговые сети РБ и РФ без затрат на длительное хранение.</p>
+                        </div>
+
+                        <div class="wagon-card">
+                            <div class="wagon-top">
+                                <span class="wagon-code gold-text">Экспорт</span>
+                                <span class="wagon-type">Формирование отправок</span>
+                            </div>
+                            <h3>Загрузка вагонов и крепление по ТУ (МТУ)</h3>
+                            <p>Консолидация экспортных партий на СОХ, разработка схем размещения и крепления грузов, подача порожних вагонов, погрузка и оформление железнодорожных накладных СМГС.</p>
+                        </div>
+                    </div>
+
+                    <!-- РЕДКАЯ ВСТАВКА ФОТО №1 -->
+                    <figure class="article-figure reveal-up">
+                        <div class="figure-img-wrap">
+                            <img src="img/background4.jpg" alt="Железнодорожная ветка в ЗТК Белтаможлогистик">
+                            <div class="figure-overlay-icon">
+                                <img src="img/catalog_4.png" alt="">
+                            </div>
+                        </div>
+                        <figcaption>
+                            Железнодорожный тупик на территории зоны таможенного контроля «Белтаможлогистик» (г. Вилейка). Позволяет вести выгрузку вагонов сразу в крытый терминал СВХ в любую погоду.
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <!-- ==================== РАЗДЕЛ 4: КОМПЛЕКС УСЛУГ «В ОДНОМ ОКНЕ» ==================== -->
+                <section id="all-in-one" class="article-section">
+                    <h2>Все операции на месте: что вы получаете в одном окне</h2>
+                    <p>
+                        Вам не нужно нанимать отдельных подрядчиков на станции, искать таможенного представителя и перевозить товар на склад маркировки. Как только вагон подан на наш путь, мы закрываем все задачи:
+                    </p>
+
+                    <ul class="gold-check-list">
+                        <li>
+                            <strong>Экспедирование и станционные формальности:</strong> взаимодействие с Белорусской железной дорогой (БЖД), раскредитация перевозочных документов СМГС, подача и уборка вагонов маневровым локомотивом.
+                        </li>
+                        <li>
+                            <strong>Прямая выгрузка в ЗТК / СВХ:</strong> растарка контейнеров и вагонов, паллетирование навального груза (коробов, мешков), сортировка по артикулам и взвешивание.
+                        </li>
+                        <li>
+                            <strong>Маркировка до выпуска ДТ:</strong> оклейка товаров из китайских и азиатских поездов кодами DataMatrix, контрольными знаками УКЗ и русскоязычными этикетками ТР ТС прямо на СВХ.
+                        </li>
+                        <li>
+                            <strong>Таможенное декларирование на собственном ПТО:</strong> оформление импорта (ИМ40), таможенного склада (ИМ70) или экспорта (ЭК10) штатными специалистами без очередей.
+                        </li>
+                        <li>
+                            <strong>Хранение на СОХ и дистрибуция:</strong> перевод растаможенной партии на коммерческий склад с адресным WMS-учётом и отгрузка по мере необходимости вашим покупателям.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- ==================== РАЗДЕЛ 5: ТАБЛИЦА СРАВНЕНИЯ ==================== -->
+                <section id="comparison-rail" class="article-section">
+                    <h2>Сравнение: обычная грузовая станция vs Ж/Д тупик в ЗТК «Белтаможлогистик»</h2>
+                    <p>
+                        Посмотрите, за счёт чего прямая подача поезда на наш таможенный терминал сокращает сроки обработки на 2–3 дня и экономит бюджет поставки:
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="glass-table">
+                            <thead>
+                            <tr>
+                                <th>Этап логистики</th>
+                                <th>Через городскую Ж/Д станцию</th>
+                                <th>Ж/Д тупик в ЗТК «Белтаможлогистик»</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td data-label="Этап"><strong>Доставка с рельсов на СВХ</strong></td>
+                                <td data-label="Через Ж/Д станцию">Требуется кран, оформление транзита и оплата автоперевозки контейнера до СВХ</td>
+                                <td data-label="В Белтаможлогистик">Вагон подаётся прямо внутрь ЗТК к воротам нашего склада (0 BYN за автовывоз)</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Этап"><strong>Маркировка (УКЗ / DataMatrix)</strong></td>
+                                <td data-label="Через Ж/Д станцию">Невозможна на открытых путях станции — нужно везти груз на таможенный склад</td>
+                                <td data-label="В Белтаможлогистик">Выгружаем из вагона сразу на линию маркировки внутри тёплого СВХ</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Этап"><strong>Риск простоя вагонов (демередж)</strong></td>
+                                <td data-label="Через Ж/Д станцию">Высокий из-за очередей на краны и несогласованности перевозчика и брокера</td>
+                                <td data-label="В Белтаможлогистик">Минимальный — наша бригада и погрузчики готовы к растарке в момент подачи вагона</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Этап"><strong>Хранение после растаможки</strong></td>
+                                <td data-label="Через Ж/Д станцию">Нужно срочно увозить груз со станции или искать коммерческий склад</td>
+                                <td data-label="В Белтаможлогистик">Мгновенный перевод товара со статуса СВХ на наш СОХ без перемещения паллет</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- РЕДКАЯ ВСТАВКА ФОТО №2 (Встроенная карточка) -->
+                    <div class="inline-media-card reveal-up">
+                        <img src="img/catalog_2_1.png" alt="Комплексная обработка вагонов на складе">
+                        <div>
+                            <h3>Ожидаете прибытие контейнера или вагона из Китая / РФ?</h3>
+                            <p>
+                                Свяжитесь с нашим отделом Ж/Д логистики заранее — мы предоставим реквизиты станции назначения и код получателя для заполнения накладной СМГС, чтобы ваш груз без задержек пришёл напрямую в ЗТК «Белтаможлогистик».
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </article>
+
+            <!-- ПРАВАЯ КОЛОНКА: Липкий сайдбар -->
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+
+                    <!-- Оглавление страницы -->
+                    <div class="glass-card sidebar-box reveal-right">
+                        <h3 class="sidebar-title">Навигация по разделу</h3>
+                        <nav class="toc-nav">
+                            <a href="#ztk-railway" class="toc-link">01. Ж/Д пути внутри ЗТК</a>
+                            <a href="#rail-scheme" class="toc-link">02. Схема обработки поезда</a>
+                            <a href="#rolling-stock" class="toc-link">03. Типы вагонов и контейнеров</a>
+                            <a href="#all-in-one" class="toc-link">04. Все услуги на одном месте</a>
+                            <a href="#comparison-rail" class="toc-link">05. Выгода прямой подачи в ЗТК</a>
+                        </nav>
+                    </div>
+
+                    <!-- Другие разделы сайта -->
+                    <div class="glass-card sidebar-box reveal-right">
+                        <h3 class="sidebar-title">Комплексные услуги на месте</h3>
+                        <ul class="other-services-list">
+                            <li><a href="../customsclearance/"><span>Таможенное оформление</span> <span>→</span></a></li>
+                            <li><a href="../warehouse/index.html#svh-section"><span>Склад временного хранения (СВХ)</span> <span>→</span></a></li>
+                            <li><a href="../warehouse/index.html#soh-section"><span>Склад общего хранения (СОХ)</span> <span>→</span></a></li>
+                            <li><a href="../marking/"><span>Маркировка DataMatrix и УКЗ</span> <span>→</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Быстрая форма / CTA с маскотом -->
+                    <div class="glass-card sidebar-box sidebar-cta reveal-right">
+                        <div class="sidebar-mascot">
+                            <img src="../../img/mascott2.png" alt="Консультация по Ж/Д поставкам">
+                        </div>
+                        <h3 class="sidebar-title">Запросить реквизиты станции и расчёт</h3>
+                        <p class="sidebar-text">
+                            Укажите тип вагона или контейнера (20'/40'), тоннаж и необходимые операции (выгрузка, растаможка, маркировка) — рассчитаем ставку за 15 минут.
+                        </p>
+                        <a href="tel:+375299876543" class="sidebar-phone">+375 (29) 987-65-43</a>
+                        <a href="../../index.html#calculator" class="gold-btn sidebar-btn">Рассчитать стоимость</a>
+                    </div>
+
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</main>
+
+<!-- ================= ФУТЕР ================= -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="../../index.html" class="footer-logo">
+                    <img src="img/header_logo2.png" alt="Белтаможлогистик" class="footer-logo-img">
+                </a>
+                <p class="footer-tagline">Компания является членом <br> <a href="https://beltamas.by/" class="footer-tagline-link">Ассоциации таможенных представителей Республики Беларусь</a></p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Услуги</h4>
+                <ul class="footer-links">
+                    <li><a href="../customsclearance/">Таможенное оформление</a></li>
+                    <li><a href="../warehouse/">Услуги склада (СВХ / СОХ)</a></li>
+                    <li><a href="../marking/">Маркировка товаров</a></li>
+                    <li><a href="../railway/">Обработка Ж/Д поставок</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Компания</h4>
+                <ul class="footer-links">
+                    <li><a href="#">О компании</a></li>
+                    <li><a href="../../index.html#calculator">Калькулятор стоимости</a></li>
+                    <li><a href="#">Документы и тарифы</a></li>
+                    <li><a href="../../index.html#contacts">Контакты и схема проезда</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-callback">
+                <h4 class="footer-heading">Остались вопросы?</h4>
+                <p class="footer-callback-text">Оставьте ваш телефон, и специалист свяжется с вами в течение 15 минут.</p>
+                <form class="footer-mini-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы скоро свяжемся с вами.');">
+                    <input type="tel" class="glass-input footer-input" placeholder="+375 (__) ___-__-__" required>
+                    <button type="submit" class="gold-btn footer-submit" aria-label="Отправить">→</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ООО «Белтаможлогистик». Все права защищены.</p>
+            <div class="footer-legal">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Пользовательское соглашение</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../scripts/burger.js"></script>
+</body>
+</html>

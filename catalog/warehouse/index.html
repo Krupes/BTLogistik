@@ -23,18 +23,44 @@
         </div>
 
         <nav class="header-menu-nav" id="headerNav">
-            <a href="../customsclearance/index.html" class="nav-item">Таможенное оформление</a>
-            <a href="index.html" class="nav-item active">Услуги склада</a>
-            <a href="../../catalog/marking/" class="nav-item">Маркировка</a>
-            <a href="../../index.html#contacts" class="nav-item">Контакты</a>
-            <a href="../../index.html#calculator" class="nav-item hide-nav-item">Калькулятор</a>
-
             <a href="#" class="nav-item">О Нас</a>
+            <a href="../customsclearance/" class="nav-item">Таможенное оформление</a>
+
+            <!-- Выпадающее меню для Склада -->
+            <div class="nav-dropdown active">
+                <a href="index.html" class="nav-item nav-dropdown-trigger active" aria-expanded="false">
+                    <span>Услуги склада</span>
+                    <svg class="dropdown-arrow" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="index.html#svh-section" class="dropdown-link">
+                        <!--                        <span class="dd-tag">СВХ</span>-->
+                        <div class="dd-info">
+                            <span class="dd-title">Склад временного хранения</span>
+                            <span class="dd-sub">Таможенный контроль, досмотр, перецепка</span>
+                        </div>
+                    </a>
+                    <a href="index.html#soh-section" class="dropdown-link">
+                        <!--                        <span class="dd-tag">СОХ</span>-->
+                        <div class="dd-info">
+                            <span class="dd-title">Склад общего хранения</span>
+                            <span class="dd-sub">Ответственное хранение, WMS-учёт, 3PL</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <a href="../marking/" class="nav-item">Маркировка</a>
+            <a href="../railway/" class="nav-item">Ж/Д поставки</a>
+<!--            <a href="../../index.html#contacts" class="nav-item">Контакты</a>-->
+
         </nav>
 
         <div class="header-contacts">
             <button class="premium-gold-btn">
-                <span>Связаться с нами</span>
+                <span>Контакты</span>
             </button>
         </div>
         <button class="burger" id="burgerBtn" type="button"
@@ -304,8 +330,9 @@
                         <h3 class="sidebar-title">Смежные услуги</h3>
                         <ul class="other-services-list">
                             <li><a href="../customsclearance/index.html"><span>Таможенное оформление</span> <span>→</span></a></li>
-                            <li><a href="#"><span>Маркировка DataMatrix и УКЗ</span> <span>→</span></a></li>
-                            <li><a href="../../catalog/marking/"><span>Маркировка товаров</span> <span>→</span></a></li>
+                            <li><a href="../marking/"><span>Маркировка DataMatrix и УКЗ</span> <span>→</span></a></li>
+<!--                            <li><a href="../../catalog/marking/"><span>Маркировка товаров</span> <span>→</span></a></li>-->
+                            <li><a href="../railway/"><span>Поставки по Ж/Д</span> <span>→</span></a></li>
                             <li><a href="../../index.html#calculator"><span>Калькулятор хранения</span> <span>→</span></a></li>
                         </ul>
                     </div>
@@ -344,10 +371,10 @@
             <div class="footer-col">
                 <h4 class="footer-heading">Услуги</h4>
                 <ul class="footer-links">
-                    <li><a href="../customsclearance/index.html">Таможенное оформление</a></li>
+                    <li><a href="../customsclearance/">Таможенное оформление</a></li>
                     <li><a href="index.html">Услуги склада (СВХ / СОХ)</a></li>
-                    <li><a href="#">Маркировка товаров</a></li>
-                    <li><a href="#">Обработка Ж/Д поставок</a></li>
+                    <li><a href="../marking/">Маркировка товаров</a></li>
+                    <li><a href="../railway/">Обработка Ж/Д поставок</a></li>
                 </ul>
             </div>
 
