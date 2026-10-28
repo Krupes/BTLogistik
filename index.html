@@ -806,14 +806,6 @@
 
 
 
-
-
-
-
-
-
-
- <!-- Модальное окно Контактов -->
  <div class="btl-modal-overlay" id="btlContactModal" aria-hidden="true" role="dialog" aria-modal="true">
      <div class="btl-modal-container">
 
@@ -824,16 +816,20 @@
              </svg>
          </button>
 
-         <!-- Верхний переключатель главных вкладок (Контакты / Инфо) -->
+         <!-- Верхний переключатель вкладок -->
          <div class="btl-modal-header">
              <div class="btl-tabs-nav" role="tablist">
                  <button type="button" class="btl-tab-btn active" data-tab-target="contacts" role="tab" aria-selected="true">
                      <span class="btl-tab-dot"></span>
-                     <span>Контакты</span>
+                     <span>Написать нам</span>
+                 </button>
+                 <button type="button" class="btl-tab-btn" data-tab-target="form" role="tab" aria-selected="false">
+                     <span class="btl-tab-dot"></span>
+                     <span>Оставить заявку</span>
                  </button>
                  <button type="button" class="btl-tab-btn" data-tab-target="info" role="tab" aria-selected="false">
                      <span class="btl-tab-dot"></span>
-                     <span>Инфо и схема проезда</span>
+                     <span>Инфо и карта</span>
                  </button>
              </div>
          </div>
@@ -843,14 +839,22 @@
 
              <!-- ================= ВКЛАДКА 1: КОНТАКТЫ (QR + Мессенджеры) ================= -->
              <div class="btl-tab-pane active" id="btl-tab-contacts" role="tabpanel">
-                 <h3 class="btl-modal-title">Мы на связи в мессенджерах</h3>
-                 <p class="btl-modal-subtitle">Выберите удобный способ связи для быстрой консультации со специалистом</p>
+                 <div class="btl-pane-top-row">
+                     <div>
+                         <h3 class="btl-modal-title">Мы на связи в мессенджерах</h3>
+                         <p class="btl-modal-subtitle">Отсканируйте QR-код камерой смартфона или перейдите в чат по прямой ссылке</p>
+                     </div>
+                     <!-- Быстрый переход к форме для тех, кто хочет обратный звонок -->
+                     <button type="button" class="btl-switch-to-form-btn" data-tab-Trigger="form">
+                         <span>Ждёте звонка? Оставить заявку</span>
+                         <span class="btl-arrow">→</span>
+                     </button>
+                 </div>
 
                  <div class="btl-messengers-grid" id="btlInteractiveZone">
 
                      <!-- ЛЕВАЯ ЧАСТЬ: Мини-вкладки + QR-код -->
                      <div class="btl-qr-section">
-                         <!-- Вертикальные мини-вкладки мессенджеров слева от QR -->
                          <div class="btl-qr-minis" role="tablist" aria-label="Выбор QR-кода мессенджера">
                              <button type="button" class="btl-qr-mini-btn active" data-qr-messenger="telegram">Telegram</button>
                              <button type="button" class="btl-qr-mini-btn" data-qr-messenger="whatsapp">WhatsApp</button>
@@ -859,23 +863,21 @@
                              <button type="button" class="btl-qr-mini-btn" data-qr-messenger="max">Max</button>
                          </div>
 
-                         <!-- Контейнер самого QR-кода -->
                          <div class="btl-qr-card">
                              <div class="btl-qr-badge">Сканируйте QR с телефона</div>
                              <div class="btl-qr-box">
-                                 <!-- Замени src в JS-конфиге на свои реальные картинки QR-кодов -->
                                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://t.me/btlogistik&color=08221b&bgcolor=ffffff"
                                       alt="QR-код для связи в Telegram"
                                       id="btlQrImage"
                                       class="btl-qr-img">
                              </div>
-                             <div class="btl-qr-caption" id="btlQrCaption">Наведите камеру для перехода в <strong>Telegram</strong></div>
+                             <div class="btl-qr-caption" id="btlQrCaption">Камера откроет <strong>Telegram</strong></div>
                          </div>
                      </div>
 
                      <!-- ПРАВАЯ ЧАСТЬ: Прямые кликабельные кнопки мессенджеров -->
                      <div class="btl-direct-links">
-                         <span class="btl-direct-label">Или перейдите по прямой ссылке:</span>
+                         <span class="btl-direct-label">Прямой переход с устройства:</span>
 
                          <a href="https://t.me/btlogistik" target="_blank" rel="noopener" class="btl-msg-btn btl-msg--telegram" data-messenger-sync="telegram">
               <span class="btl-msg-icon">
@@ -927,7 +929,7 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </span>
                          <div class="btl-phone-text">
-                             <span>Предпочитаете звонить? Набирайте номер:</span>
+                             <span>Предпочитаете звонить? Набирайте напрямую:</span>
                              <small>Офис: Пн–Пт 09:00 – 18:00 | СВХ: Круглосуточно</small>
                          </div>
                      </div>
@@ -937,7 +939,7 @@
                      </div>
                  </div>
 
-                 <!-- Галочка согласия с политикой обработки персональных данных (по умолчанию включена) -->
+                 <!-- Галочка согласия -->
                  <label class="btl-policy-check">
                      <input type="checkbox" id="btlPolicyConsent" checked>
                      <span class="btl-custom-checkbox">
@@ -951,11 +953,134 @@
                  </label>
              </div>
 
-             <!-- ================= ВКЛАДКА 2: ИНФО (Реквизиты + Яндекс Карта) ================= -->
+             <!-- ================= ВКЛАДКА 2: ФОРМА ОБРАТНОЙ СВЯЗИ (Равновесная) ================= -->
+             <div class="btl-tab-pane" id="btl-tab-form" role="tabpanel" hidden>
+                 <div class="btl-form-wrapper">
+
+                     <div class="btl-form-header">
+                         <h3 class="btl-modal-title">Оставьте заявку на консультацию</h3>
+                         <p class="btl-modal-subtitle">Укажите удобный способ связи — специалист отдела логистики свяжется с вами в течение 15 минут</p>
+                     </div>
+
+                     <form class="btl-lead-form" id="btlLeadForm" novalidate>
+
+                         <!-- Ряд 1: Имя + Номер телефона -->
+                         <div class="btl-form-row">
+                             <div class="btl-field-group">
+                                 <label for="btlUserName" class="btl-field-label">Ваше имя</label>
+                                 <div class="btl-input-wrap">
+                  <span class="btl-input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </span>
+                                     <input type="text" id="btlUserName" name="name" class="btl-input" placeholder="Например, Александр" required>
+                                 </div>
+                             </div>
+
+                             <div class="btl-field-group">
+                                 <label for="btlUserPhone" class="btl-field-label">Номер телефона <span class="btl-req">*</span></label>
+                                 <div class="btl-input-wrap">
+                  <span class="btl-input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </span>
+                                     <input type="tel" id="btlUserPhone" name="phone" class="btl-input" placeholder="+375 (__) ___-__-__" required>
+                                 </div>
+                             </div>
+                         </div>
+
+                         <!-- Ряд 2: Выбор удобного мессенджера или звонка (Пилюли в стиле калькулятора) -->
+                         <div class="btl-field-group">
+                             <span class="btl-field-label">Как вам удобнее получить ответ?</span>
+                             <div class="btl-channel-pills" role="radiogroup" aria-label="Способ связи">
+
+                                 <label class="btl-channel-pill">
+                                     <input type="radio" name="contact_method" value="call" checked>
+                                     <span class="btl-pill-box">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>Обычный звонок</span>
+                  </span>
+                                 </label>
+
+                                 <label class="btl-channel-pill">
+                                     <input type="radio" name="contact_method" value="telegram">
+                                     <span class="btl-pill-box">
+                    <span>Telegram</span>
+                  </span>
+                                 </label>
+
+                                 <label class="btl-channel-pill">
+                                     <input type="radio" name="contact_method" value="whatsapp">
+                                     <span class="btl-pill-box">
+                    <span>WhatsApp</span>
+                  </span>
+                                 </label>
+
+                                 <label class="btl-channel-pill">
+                                     <input type="radio" name="contact_method" value="viber">
+                                     <span class="btl-pill-box">
+                    <span>Viber</span>
+                  </span>
+                                 </label>
+
+                                 <label class="btl-channel-pill">
+                                     <input type="radio" name="contact_method" value="wechat">
+                                     <span class="btl-pill-box">
+                    <span>WeChat</span>
+                  </span>
+                                 </label>
+
+                                 <label class="btl-channel-pill">
+                                     <input type="radio" name="contact_method" value="max">
+                                     <span class="btl-pill-box">
+                    <span>Max</span>
+                  </span>
+                                 </label>
+
+                             </div>
+                         </div>
+
+                         <!-- Ряд 3: Поле для комментария -->
+                         <div class="btl-field-group">
+                             <label for="btlUserComment" class="btl-field-label">Комментарий или вопрос <span class="btl-optional">(необязательно)</span></label>
+                             <textarea id="btlUserComment" name="comment" class="btl-textarea" rows="3" placeholder="Опишите задачу: например, таможенное оформление партии, хранение на СВХ или маркировка DataMatrix..."></textarea>
+                         </div>
+
+                         <!-- Нижний бар формы: Чекбокс политики + Золотая кнопка отправки -->
+                         <div class="btl-form-bottom">
+                             <label class="btl-policy-check btl-policy-check--form">
+                                 <input type="checkbox" id="btlFormPolicyConsent" checked required>
+                                 <span class="btl-custom-checkbox">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2.5 6L5 8.5L9.5 3.5" stroke="#08221b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                                 <span class="btl-policy-label">
+                  Согласен(а) с <a href="/privacy-policy" target="_blank">Политикой обработки данных</a>
+                </span>
+                             </label>
+
+                             <button type="submit" class="btl-submit-gold-btn" id="btlFormSubmitBtn">
+                                 <span>ОТПРАВИТЬ ЗАЯВКУ</span>
+                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                             </button>
+                         </div>
+
+                     </form>
+
+                     <!-- Состояние успешной отправки (показывается после клика) -->
+                     <div class="btl-form-success" id="btlFormSuccess" hidden>
+                         <div class="btl-success-icon">✓</div>
+                         <h4>Заявка успешно отправлена!</h4>
+                         <p>Мы получили ваши контакты и свяжемся с вами выбранным способом в ближайшее время.</p>
+                         <button type="button" class="btl-qr-mini-btn active" id="btlResetFormBtn">Отправить ещё одну</button>
+                     </div>
+
+                 </div>
+             </div>
+
+             <!-- ================= ВКЛАДКА 3: ИНФО (Реквизиты + Яндекс Карта) ================= -->
              <div class="btl-tab-pane" id="btl-tab-info" role="tabpanel" hidden>
                  <div class="btl-info-layout">
 
-                     <!-- Левая колонка: Карточка с контактами (как на твоем скриншоте) -->
                      <div class="btl-info-details">
                          <h3 class="btl-info-heading">Свяжитесь с нами напрямую</h3>
                          <p class="btl-info-desc">Проконсультируем по вопросам таможенной очистки, размещения на СВХ и маркировки товаров.</p>
@@ -1004,7 +1129,6 @@
                          </ul>
                      </div>
 
-                     <!-- Правая колонка: Яндекс Карта (Вилейка, ул. Шубина, 103) -->
                      <div class="btl-info-map-wrap">
                          <iframe
                                  class="btl-yandex-iframe"
@@ -1021,7 +1145,7 @@
 
          </div>
 
-         <!-- НИЖНИЙ ФУТЕР МОДАЛКИ с аккуратной кнопкой "Закрыть" -->
+         <!-- НИЖНИЙ ФУТЕР МОДАЛКИ с кнопкой "Закрыть" -->
          <div class="btl-modal-footer">
              <button type="button" class="btl-btn-bottom-close" data-close-contact-modal>
                  Закрыть
@@ -1030,6 +1154,27 @@
 
      </div>
  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 <script src="index.js"></script>
 <script src="scripts/contacts-modal.js"></script>

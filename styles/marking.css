@@ -469,6 +469,10 @@
     padding: 20px 22px;
     box-sizing: border-box;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
 }
 
 @media (hover: hover) {
@@ -490,6 +494,56 @@
     font-size: 26px;
     line-height: 1;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+.cat-icon svg {
+    position: absolute;
+    top: -17px;
+    right: -148px;
+    width: 180px;
+    height: 180px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.1;
+}
+.cat-icon svg g{
+    fill: white;
+}
+.cat-badge-card:nth-child(1) .cat-icon svg {
+    top: -17px;
+    right: -148px;
+    width: 180px;
+    height: 180px;
+
+}
+.cat-badge-card:nth-child(2) .cat-icon svg {
+    top: -29px;
+    right: -181px;
+    width: 200px;
+    height: 200px;
+}
+.cat-badge-card:nth-child(3) .cat-icon svg {
+    top:-16px;
+    right: -163px;
+    width: 200px;
+    height: 200px;
+}
+.cat-badge-card:nth-child(4) .cat-icon svg {
+    top:-16px;
+    right: -154px;
+    width: 200px;
+    height: 200px;
+}
+.cat-badge-card:nth-child(5) .cat-icon svg {
+    top: -12px;
+    right: -181px;
+    width: 200px;
+    height: 200px;
+}
+.cat-badge-card:nth-child(6) .cat-icon svg {
+    top: 0;
+    right: -169px;
+    width: 180px;
+    height: 180px;
 }
 
 .cat-tag {

@@ -288,13 +288,17 @@
 /* Бегущий золотой экспресс-импульс по путям */
 .train-pulse {
     position: absolute;
-    top: 1px;
+    top: -11px;
+    right: 10px;
     bottom: 1px;
-    width: 110px;
+    width: 40px;
     border-radius: 4px;
     background: linear-gradient(90deg, transparent, rgba(243, 223, 157, 0.85), #ffffff, rgba(212, 175, 55, 0.9), transparent);
     box-shadow: 0 0 20px 4px rgba(243, 223, 157, 0.75);
-    animation: trainMove 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: trainMove 4.2s cubic-bezier(0.4, 0, 0.9, 1) infinite;
+}
+.train-pulse svg g{
+    fill: #544c00;
 }
 
 @keyframes trainMove {
@@ -597,7 +601,7 @@
 
 .sidebar-sticky {
     position: sticky;
-    top: 24px;
+    top: 86px;
     display: flex;
     flex-direction: column;
     gap: 24px;

@@ -154,7 +154,19 @@ h2{
 .catalog-calculate-link:hover g{
     fill: #b39203;
 }
+.btn-open-contacts{
+    color: var(--gold-light);
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
 
+    cursor: pointer;
+}
+.btn-open-contacts:hover{
+    color: #d6ad21;
+}
 
 
 /*endregion*/
