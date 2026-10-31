@@ -153,7 +153,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 16px 20px;
+    padding: 16px 18px;
     border-radius: 18px;
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.14), rgba(5, 28, 22, 0.72));
     border: 1px solid #ffffff4a;
@@ -310,7 +310,7 @@
 }
 
 .section-divider span {
-    padding: 0 18px;
+
     color: var(--gold-primary);
     font-size: 18px;
     text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
@@ -472,15 +472,17 @@
 }
 
 .specs-title {
+    text-align: center;
     font-family: 'Ubuntu-bold', sans-serif;
-    font-size: 17px;
+    font-size: 21px;
     color: var(--gold-light);
     margin: 0 0 16px;
+    padding: 10px 0;
 }
 
 .specs-items {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 16px;
 }
 
@@ -493,6 +495,12 @@
     flex-direction: column;
     gap: 4px;
 }
+
+.spec-item .article-figure{
+    margin: 15px 0 0;
+    border-radius: 11px;
+}
+
 
 .spec-val {
     font-family: 'Ubuntu-bold', sans-serif;
@@ -638,12 +646,12 @@
     top: 90px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
 .sidebar-box {
     position: relative;
-    padding: 26px;
+    padding: 22px;
     box-sizing: border-box;
 }
 
@@ -731,11 +739,16 @@
 }
 
 .sidebar-phone {
-    display: block;
+    background: transparent;
+    border: none;
     font-family: 'Ubuntu-bold', sans-serif;
     font-size: 20px;
     color: var(--gold-light);
     margin-bottom: 16px;
+}
+.sidebar-phone:hover {
+    cursor: pointer;
+    color: #cfae2f;
 }
 
 .sidebar-btn {
@@ -743,7 +756,22 @@
     min-height: 48px;
     box-sizing: border-box;
 }
-
+@media (min-width: 961px) {
+   .sidebar-sticky .glass-card:nth-child(1){
+       min-height: 190px;
+   }
+    .sidebar-sticky .glass-card:nth-child(2){
+        min-height: 290px;
+    }
+    .sidebar-sticky .glass-card:nth-child(3){
+        min-height: 450px;
+    }
+}
+@media (min-width: 1280px) {
+    .spec-item .figure-img-wrap{
+        height: 450px;
+    }
+}
 
 /* ==========================================================================
    ТОЧКА 1: ≤ 1280px
@@ -1184,4 +1212,12 @@
         padding: 14px 18px;
         font-size: 12.5px;
     }
+}
+@media (max-width: 960px) {
+    .inner-page .sidebar-box.sidebar-toc, .inner-page .sidebar-sticky > .sidebar-box:nth-child(1) {
+        display: none;
+    }
+}
+.catalog-calculate-link{
+    margin-top: 10px;
 }

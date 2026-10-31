@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>О компании — Логистический и таможенный хаб «Белтаможлогистик»</title>
+
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+  <link rel="stylesheet" href="../styles/media.css">
+  <link rel="stylesheet" href="../styles/alien_styles.css">
+  <link rel="stylesheet" href="../styles/contacts-modal.css">
+  <link rel="stylesheet" href="../styles/about.css">
+</head>
+<body>
+
+<!-- ================= ШАПКА ================= -->
+<section class="header glass-header">
+  <div class="header-container">
+    <div class="header-logo">
+      <a href="../index.html">
+        <img src="../img/header_logo3.png" alt="Белтаможлогистик">
+        <div class="brand-name">Белтаможлогистик</div>
+      </a>
+    </div>
+
+    <nav class="header-menu-nav" id="headerNav">
+      <a href="index.html" class="nav-item active">О Нас</a>
+      <a href="../catalog/customsclearance/index.html" class="nav-item">Таможенное оформление</a>
+
+      <!-- Выпадающее меню для Склада -->
+      <div class="nav-dropdown">
+        <a href="../catalog/warehouse/index.html" class="nav-item nav-dropdown-trigger" aria-expanded="false">
+          <span class="nav-dropdown-text">Услуги склада</span>
+          <svg class="dropdown-arrow" viewBox="0 0 12 8" fill="none">
+            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="dropdown-menu">
+          <a href="../catalog/warehouse/index.html#svh-section" class="dropdown-link">
+            <div class="dd-info">
+              <span class="dd-title">Склад временного хранения</span>
+              <span class="dd-sub">Таможенный контроль, досмотр, перецепка</span>
+            </div>
+          </a>
+          <a href="../catalog/warehouse/index.html#soh-section" class="dropdown-link">
+            <div class="dd-info">
+              <span class="dd-title">Склад общего хранения</span>
+              <span class="dd-sub">Ответственное хранение, WMS-учёт, 3PL</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <a href="../catalog/marking/index.html" class="nav-item">Маркировка</a>
+      <a href="../catalog/railway/index.html" class="nav-item">Ж/Д поставки</a>
+    </nav>
+
+    <div class="header-contacts">
+      <button class="premium-gold-btn header-btn" type="button" data-open-contact-modal>
+        <span>Контакты</span>
+      </button>
+    </div>
+    <button class="burger" id="burgerBtn" type="button"
+            aria-label="Открыть меню" aria-expanded="false" aria-controls="headerNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</section>
+
+<!-- ================= ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ «О НАС» ================= -->
+<main class="about-page">
+  <div class="container">
+
+    <!-- 1. HERO: КТО МЫ И В ЧЁМ НАША СИЛА -->
+    <section class="about-hero glass-card">
+      <div class="about-hero-left">
+        <div class="about-status-row">
+<!--          <span class="about-pill"><span class="about-pill-dot"></span>Терминал 4-в-1 в г. Вилейка</span>-->
+<!--          <span class="about-pill">Реестр владельцев СВХ ГТК РБ</span>-->
+        </div>
+        <h1 class="about-title gold-text-title">
+          Инфраструктурный хаб, где таможня, склад, Ж/Д ветка и маркировка работают в одном периметре
+        </h1>
+        <p class="about-lead">
+          <strong>ООО «Белтаможлогистик»</strong> — это современный таможенно-логистический комплекс (г. Вилейка, ул. Шубина, 103). Мы объединили на одной закрытой площадке пункт таможенного оформления (ПТО), крытый склад временного хранения (СВХ), коммерческий склад (СОХ), цех промышленной маркировки DataMatrix/УКЗ и собственные железнодорожные пути прямо в зоне таможенного контроля.
+        </p>
+        <div class="about-hero-actions">
+          <button type="button" class="premium-gold-btn" data-open-contact-modal="form">
+            <span>Связаться с нами</span>
+          </button>
+          <a href="../index.html#calculator" class="gold-btn" style="background: rgba(235,208,133,0.14); color: #f3df9d; border: 1px solid rgba(235,208,133,0.45);">
+            Рассчитать стоимость услуг
+          </a>
+        </div>
+      </div>
+
+      <div class="about-passport">
+        <div class="passport-header">
+          <span class="passport-tag">Паспорт терминала</span>
+          <span class="passport-loc"> г. Вилейка, ул. Шубина, 103</span>
+        </div>
+        <div class="passport-grid">
+          <div class="passport-metric">
+            <strong class="gold-text">от 2 часов</strong>
+            <span>Выпуск таможенной декларации</span>
+          </div>
+          <div class="passport-metric">
+            <strong class="gold-text">100км</strong>
+            <span>от границы с Европейским Союзом</span>
+          </div>
+          <div class="passport-metric">
+            <strong class="gold-text">24 / 7</strong>
+            <span>Круглосуточный приём фур и вагонов в ЗТК</span>
+          </div>
+          <div class="passport-metric">
+            <strong class="gold-text">Ж/Д в ЗТК</strong>
+            <span>Прямая подача вагонов и контейнеров к рампе</span>
+          </div>
+        </div>
+        <div class="passport-assoc">
+          <img src="../img/header_logo3.png" alt="" style="width: 38px; height: auto;">
+          <span>Действительный член <strong>Ассоциации таможенных представителей Республики Беларусь</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ИНТЕРАКТИВНЫЙ ГЕНПЛАН ТЕРМИНАЛА (4 УЗЛА ЭКОСИСТЕМЫ) -->
+    <section class="hub-blueprint-section">
+      <div class="section-header" data-parallax-header style="padding-top: 10px;">
+        <div class="header-glow" data-parallax-speed="0.18"></div>
+        <span class="header-watermark" data-parallax-speed="-0.12" aria-hidden="true">ECOSYSTEM</span>
+        <div class="header-content" data-parallax-speed="0.04">
+          <h2 class="section-title">Архитектура <span class="title-accent">терминала</span></h2>
+          <div class="section-divider"><span class="divider-diamond"></span></div>
+        </div>
+      </div>
+
+      <div class="blueprint-wrapper glass-card">
+        <!-- Переключатели 4 узлов -->
+        <div class="blueprint-nav" role="tablist">
+          <button type="button" class="bp-node-btn active" data-bp-node="customs">
+            <span class="bp-node-num">01</span>
+            <div>
+              <span class="bp-node-title">Таможенный представитель и ПТО</span>
+              <span class="bp-node-sub">Декларанты и инспекторы в одном здании со складом. Оформление грузов РБ и РФ «день в день».</span>
+            </div>
+          </button>
+
+          <button type="button" class="bp-node-btn" data-bp-node="warehouse">
+            <span class="bp-node-num">02</span>
+            <div>
+              <span class="bp-node-title">Складской комплекс: СВХ + СОХ</span>
+              <span class="bp-node-sub">Хранение под таможенным контролем (до 4 мес.), перецепка/перевалка и коммерческий 3PL-склад с WMS.</span>
+            </div>
+          </button>
+
+          <button type="button" class="bp-node-btn" data-bp-node="marking">
+            <span class="bp-node-num">03</span>
+            <div>
+              <span class="bp-node-title">Промышленная линия маркировки</span>
+              <span class="bp-node-sub">Оклейка DataMatrix («Электронный знак» РБ / «Честный ЗНАК» РФ), УКЗ и EAC прямо на СВХ до растаможки.</span>
+            </div>
+          </button>
+
+          <button type="button" class="bp-node-btn" data-bp-node="railway">
+            <span class="bp-node-num">04</span>
+            <div>
+              <span class="bp-node-title">Собственный Ж/Д тупик внутри ЗТК</span>
+              <span class="bp-node-sub">Приём поездов из Китая и РФ напрямую к рампе СВХ без затрат на автовывоз со станции.</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Динамический экран узла -->
+        <div class="blueprint-screen" id="bpScreen">
+          <div>
+            <span class="bp-screen-badge" id="bpBadge">УЗЕЛ 01 • ПУНКТ ТАМОЖЕННОГО ОФОРМЛЕНИЯ</span>
+            <h3 class="bp-screen-title" id="bpTitle">Декларирование без простоев и посредников</h3>
+            <p class="bp-screen-desc" id="bpDesc">
+              Мы начинаем аудит инвойсов, контрактов и упаковочных листов ещё до пересечения машиной или поездом границы. Классифицируем сложные коды ТН ВЭД ЕАЭС, рассчитываем пошлины, оформляем ИМ40, ЭК10, ИМ70 и представляем ваши интересы при таможенном досмотре на месте.
+            </p>
+            <div class="bp-specs-grid" id="bpSpecs">
+              <div class="bp-spec-box">
+                <strong>НАСЭД</strong>
+                <span>Прямое электронное декларирование</span>
+              </div>
+              <div class="bp-spec-box">
+                <strong>РБ + РФ</strong>
+                <span>Сервис «день в день» для резидентов РФ</span>
+              </div>
+              <div class="bp-spec-box">
+                <strong>100%</strong>
+                <span>Юридическая чистота кодов ТН ВЭД</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bp-screen-footer">
+            <a href="../catalog/customsclearance/index.html" class="gold-btn" id="bpLink">Перейти в раздел услуги →</a>
+            <button type="button" class="btl-switch-to-form-btn" data-open-contact-modal="form">
+              <span>Запросить ставку у специалиста</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ПОЧЕМУ ФОРМАТ «В ОДНОМ ОКНЕ» ЭКОНОМИТ ДО 30% БЮДЖЕТА -->
+    <section class="vs-section">
+      <div class="vs-grid">
+        <div class="vs-card vs-card--old">
+          <span class="vs-tag vs-tag--old">Разрозненная логистика (3–4 подрядчика)</span>
+          <h3 class="vs-title" style="color: rgba(255,255,255,0.85);">Скрытые потери времени и денег</h3>
+          <ul class="vs-list">
+            <li>Контейнер приходит на общую Ж/Д станцию — вы платите за кран, оформление транзита и автовывоз на чужой СВХ.</li>
+            <li>Брокер сидит в другом офисе: при досмотре или несовпадении веса брутто согласование документов растягивается на сутки.</li>
+            <li>После выпуска или для маркировки партию приходится перегружать и везти на отдельный склад стикеровки.</li>
+            <li>При повреждении короба или ошибке в коде DataMatrix склад и декларанты перекладывают ответственность друг на друга.</li>
+          </ul>
+        </div>
+
+        <div class="vs-card vs-card--btl glass-card">
+          <span class="vs-tag vs-tag--btl">Экосистема «Белтаможлогистик» (1 терминал)</span>
+          <h3 class="vs-title gold-text">Единая ответственность и 0 лишних перевозок</h3>
+          <ul class="vs-list">
+            <li><strong>Вагон и фура сразу в ЗТК:</strong> подача подвижного состава и автотранспорта напрямую к рампе нашего СВХ в Вилейке.</li>
+            <li><strong>Маркировка до ИМ40:</strong> наносим коды DataMatrix, УКЗ и этикетки EAC прямо под таможенным контролем силами штатной бригады.</li>
+            <li><strong>Декларант рядом с грузом:</strong> взвешивание, фотофиксация, отбор проб и подача ДТ происходят в одном здании за 2–4 часа.</li>
+            <li><strong>Мгновенный перевод на СОХ:</strong> после выпуска груз без автоперевозки перемещается в коммерческую зону хранения с WMS-учётом.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. РЕАЛЬНЫЕ ФОТО ТЕРМИНАЛА -->
+    <section class="about-gallery">
+      <article class="gallery-card">
+        <div class="gallery-img-box">
+          <img src="../img/dc_1.jpg" alt="Терминал и зона таможенного контроля">
+        </div>
+        <div class="gallery-caption">
+          <h4>Зона таможенного контроля и ПТО</h4>
+          <p>Охраняемый периметр 24/7, удобный подъезд для еврофур и прямой контакт декларантов с инспекторами.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="gallery-img-box">
+          <img src="../img/marking_1.jpg" alt="Участок промышленной маркировки">
+        </div>
+        <div class="gallery-caption">
+          <h4>Цех маркировки DataMatrix и УКЗ</h4>
+          <p>Термотрансферная печать 300 dpi (Grade A/B), поштучная проверка 2D-сканерами и паллетная агрегация.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="gallery-img-box">
+          <img src="../img/railway_1.jpg" alt="Железнодорожная ветка в ЗТК">
+        </div>
+        <div class="gallery-caption">
+          <h4>Собственный Ж/Д тупик в ЗТК</h4>
+          <p>Приём крытых вагонов и контейнеров 20'/40' напрямую к крытой складской рампе без автовывоза со станции.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- 5. ФИНАЛЬНЫЙ CTA БЛОК -->
+    <section class="about-final-cta glass-card">
+      <div>
+        <h2>Готовы передать рутину ВЭД в надёжные руки?</h2>
+        <p>Напишите нам в любой мессенджер или оставьте заявку — рассчитаем ставку под ваш груз за 15 минут.</p>
+      </div>
+      <button type="button" class="premium-gold-btn" data-open-contact-modal="contacts">
+        <span>Открыть контакты и мессенджеры</span>
+      </button>
+    </section>
+
+  </div>
+</main>
+
+<!-- ================= ФУТЕР ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-logo">
+          <img src="../img/header_logo2.png" alt="Белтаможлогистик" class="footer-logo-img">
+        </a>
+        <p class="footer-tagline">Компания является членом <br> <a href="https://beltamas.by/" class="footer-tagline-link">Ассоциации таможенных представителей Республики Беларусь</a></p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Услуги</h4>
+        <ul class="footer-links">
+          <li><a href="../catalog/customsclearance/index.html">Таможенное оформление</a></li>
+          <li><a href="../catalog/warehouse/index.html">Услуги склада (СВХ / СОХ)</a></li>
+          <li><a href="../catalog/marking/index.html">Маркировка товаров</a></li>
+          <li><a href="../catalog/railway/index.html">Обработка Ж/Д поставок</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Компания</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">О компании</a></li>
+          <li><a href="../index.html#calculator">Калькулятор стоимости</a></li>
+          <li><a href="#" data-open-policy>Политика обработки данных</a></li>
+          <li><a href="../index.html#contacts">Контакты и схема проезда</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-callback">
+        <h4 class="footer-heading">Остались вопросы?</h4>
+        <p class="footer-callback-text">Оставьте ваш телефон, и специалист свяжется с вами в течение 15 минут.</p>
+        <form class="footer-mini-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы скоро свяжемся с вами.');">
+          <input type="tel" class="glass-input footer-input" placeholder="+375 (__) ___-__-__" required>
+          <button type="submit" class="gold-btn footer-submit" aria-label="Отправить">→</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 ООО «Белтаможлогистик». Все права защищены.</p>
+      <div class="footer-legal">
+        <a href="/privacy-policy" data-open-policy>Политика конфиденциальности</a>
+        <a href="/privacy-policy" data-open-policy>Обработка персональных данных (РБ)</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Модальное окно Контактов (полная 3-вкладочная версия + встроенная Политика РБ) -->
+<div class="btl-modal-overlay" id="btlContactModal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="btl-modal-container">
+    <button type="button" class="btl-modal-close-top" data-close-contact-modal aria-label="Закрыть окно">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <div class="btl-modal-header">
+      <div class="btl-tabs-nav" role="tablist">
+        <button type="button" class="btl-tab-btn active" data-tab-target="contacts" role="tab" aria-selected="true">
+          <span class="btl-tab-dot"></span>
+          <span>Написать нам</span>
+        </button>
+        <button type="button" class="btl-tab-btn" data-tab-target="form" role="tab" aria-selected="false">
+          <span class="btl-tab-dot"></span>
+          <span>Оставить заявку</span>
+        </button>
+        <button type="button" class="btl-tab-btn" data-tab-target="info" role="tab" aria-selected="false">
+          <span class="btl-tab-dot"></span>
+          <span>Инфо и карта</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="btl-modal-body">
+      <!-- ВКЛАДКА 1 -->
+      <div class="btl-tab-pane active" id="btl-tab-contacts" role="tabpanel">
+        <div class="btl-pane-top-row">
+          <div>
+            <h3 class="btl-modal-title">Мы на связи в мессенджерах</h3>
+            <p class="btl-modal-subtitle">Отсканируйте QR-код камерой смартфона или перейдите в чат по прямой ссылке</p>
+          </div>
+          <button type="button" class="btl-switch-to-form-btn" data-tab-trigger="form">
+            <span>Ждёте звонка? Оставить заявку</span>
+            <span class="btl-arrow">→</span>
+          </button>
+        </div>
+
+        <div class="btl-messengers-grid" id="btlInteractiveZone">
+          <div class="btl-qr-section">
+            <div class="btl-qr-minis" role="tablist">
+              <button type="button" class="btl-qr-mini-btn active" data-qr-messenger="telegram">Telegram</button>
+              <button type="button" class="btl-qr-mini-btn" data-qr-messenger="whatsapp">WhatsApp</button>
+              <button type="button" class="btl-qr-mini-btn" data-qr-messenger="viber">Viber</button>
+              <button type="button" class="btl-qr-mini-btn" data-qr-messenger="wechat">WeChat</button>
+              <button type="button" class="btl-qr-mini-btn" data-qr-messenger="max">Max</button>
+            </div>
+            <div class="btl-qr-card">
+              <div class="btl-qr-badge">Сканируйте QR с телефона</div>
+              <div class="btl-qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://t.me/btlogistik&color=08221b&bgcolor=ffffff"
+                     alt="QR-код для связи в Telegram" id="btlQrImage" class="btl-qr-img">
+              </div>
+              <div class="btl-qr-caption" id="btlQrCaption">Камера откроет <strong>Telegram</strong></div>
+            </div>
+          </div>
+
+          <div class="btl-direct-links">
+            <span class="btl-direct-label">Прямой переход с устройства:</span>
+            <a href="https://t.me/btlogistik" target="_blank" rel="noopener" class="btl-msg-btn btl-msg--telegram" data-messenger-sync="telegram">
+              <span class="btl-msg-name">Telegram</span><span class="btl-msg-arrow">→</span>
+            </a>
+            <a href="https://wa.me/375299876543" target="_blank" rel="noopener" class="btl-msg-btn btl-msg--whatsapp" data-messenger-sync="whatsapp">
+              <span class="btl-msg-name">WhatsApp</span><span class="btl-msg-arrow">→</span>
+            </a>
+            <a href="viber://chat?number=%2B375299876543" target="_blank" rel="noopener" class="btl-msg-btn btl-msg--viber" data-messenger-sync="viber">
+              <span class="btl-msg-name">Viber</span><span class="btl-msg-arrow">→</span>
+            </a>
+            <a href="weixin://dl/chat?btlogistik" target="_blank" rel="noopener" class="btl-msg-btn btl-msg--wechat" data-messenger-sync="wechat">
+              <span class="btl-msg-name">WeChat</span><span class="btl-msg-arrow">→</span>
+            </a>
+            <a href="https://max.ru/" target="_blank" rel="noopener" class="btl-msg-btn btl-msg--max" data-messenger-sync="max">
+              <span class="btl-msg-name">Max</span><span class="btl-msg-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="btl-phone-banner">
+          <div class="btl-phone-banner-left">
+            <div class="btl-phone-text">
+              <span>Предпочитаете звонить? Набирайте напрямую:</span>
+              <small>Офис: Пн–Пт 09:00 – 18:00 | СВХ: Круглосуточно</small>
+            </div>
+          </div>
+          <div class="btl-phone-numbers">
+            <a href="tel:+375171234567" class="btl-phone-call">+375 (17) 123-45-67</a>
+            <a href="tel:+375299876543" class="btl-phone-call">+375 (29) 987-65-43</a>
+          </div>
+        </div>
+
+        <label class="btl-policy-check">
+          <input type="checkbox" id="btlPolicyConsent" checked>
+          <span class="btl-custom-checkbox">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M2.5 6L5 8.5L9.5 3.5" stroke="#08221b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+          <span class="btl-policy-label">
+                        Я прочитал(а) и согласен(а) с <a href="/privacy-policy" data-open-policy>Политикой обработки персональных данных</a>
+                    </span>
+        </label>
+      </div>
+
+      <!-- ВКЛАДКА 2: ФОРМА -->
+      <div class="btl-tab-pane" id="btl-tab-form" role="tabpanel" hidden>
+        <div class="btl-form-wrapper">
+          <div class="btl-form-header">
+            <h3 class="btl-modal-title">Оставьте заявку на консультацию</h3>
+            <p class="btl-modal-subtitle">Специалист отдела логистики свяжется с вами в течение 15 минут</p>
+          </div>
+          <form class="btl-lead-form" id="btlLeadForm" novalidate>
+            <div class="btl-form-row">
+              <div class="btl-field-group">
+                <label for="btlUserName" class="btl-field-label">Ваше имя</label>
+                <div class="btl-input-wrap">
+                  <input type="text" id="btlUserName" name="name" class="btl-input" style="padding-left:14px;" placeholder="Например, Александр" required>
+                </div>
+              </div>
+              <div class="btl-field-group">
+                <label for="btlUserPhone" class="btl-field-label">Номер телефона <span class="btl-req">*</span></label>
+                <div class="btl-input-wrap">
+                  <input type="tel" id="btlUserPhone" name="phone" class="btl-input" style="padding-left:14px;" placeholder="+375 (__) ___-__-__" required>
+                </div>
+              </div>
+            </div>
+            <div class="btl-field-group">
+              <label for="btlUserComment" class="btl-field-label">Комментарий или задача</label>
+              <textarea id="btlUserComment" name="comment" class="btl-textarea" rows="3" placeholder="Опишите ваш груз или интересующую услугу..."></textarea>
+            </div>
+            <div class="btl-form-bottom">
+              <label class="btl-policy-check btl-policy-check--form">
+                <input type="checkbox" id="btlFormPolicyConsent" checked required>
+                <span class="btl-custom-checkbox">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2.5 6L5 8.5L9.5 3.5" stroke="#08221b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                <span class="btl-policy-label">
+                                    Согласен(а) с <a href="/privacy-policy" data-open-policy>Политикой обработки данных</a>
+                                </span>
+              </label>
+              <button type="submit" class="btl-submit-gold-btn" id="btlFormSubmitBtn">
+                <span>ОТПРАВИТЬ ЗАЯВКУ</span>
+              </button>
+            </div>
+          </form>
+          <div class="btl-form-success" id="btlFormSuccess" hidden>
+            <div class="btl-success-icon">✓</div>
+            <h4>Заявка успешно отправлена!</h4>
+            <p>Мы свяжемся с вами в ближайшее время.</p>
+            <button type="button" class="btl-qr-mini-btn active" id="btlResetFormBtn">Отправить ещё одну</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ВКЛАДКА 3: ИНФО -->
+      <div class="btl-tab-pane" id="btl-tab-info" role="tabpanel" hidden>
+        <div class="btl-info-layout">
+          <div class="btl-info-details">
+            <h3 class="btl-info-heading">Реквизиты и адрес терминала</h3>
+            <p class="btl-info-desc">Республика Беларусь, Минская обл., г. Вилейка, ул. Шубина, 103</p>
+            <ul class="btl-info-list">
+              <li><div><span class="btl-info-meta">Телефоны:</span><a href="tel:+375171234567" class="btl-info-val">+375 (17) 123-45-67</a><a href="tel:+375299876543" class="btl-info-val">+375 (29) 987-65-43</a></div></li>
+              <li><div><span class="btl-info-meta">Email:</span><a href="mailto:info@btlogistik.by" class="btl-info-val">info@btlogistik.by</a></div></li>
+              <li><div><span class="btl-info-meta">Режим работы:</span><span class="btl-info-val">Офис: Пн–Пт 09:00 – 18:00 | СВХ: 24/7</span></div></li>
+            </ul>
+          </div>
+          <div class="btl-info-map-wrap">
+            <iframe class="btl-yandex-iframe" data-src="https://yandex.ru/map-widget/v1/?ll=26.936652%2C54.498842&z=16&pt=26.936652,54.498842,pm2gnm" title="Карта" allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btl-modal-footer">
+      <button type="button" class="btl-btn-bottom-close" data-close-contact-modal>Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="../scripts/burger.js"></script>
+<script src="../scripts/contacts-modal.js"></script>
+<script>
+  // Интерактивное переключение 4 узлов генплана на странице «О нас»
+  (() => {
+    const nodesData = {
+      customs: {
+        badge: 'УЗЕЛ 01 • ПУНКТ ТАМОЖЕННОГО ОФОРМЛЕНИЯ',
+        title: 'Декларирование без простоев и посредников',
+        desc: 'Мы начинаем аудит инвойсов, контрактов и упаковочных листов ещё до пересечения машиной или поездом границы. Классифицируем сложные коды ТН ВЭД ЕАЭС, рассчитываем пошлины, оформляем ИМ40, ЭК10, ИМ70 и представляем ваши интересы при таможенном досмотре на месте.',
+        specs: [
+          ['НАСЭД', 'Прямое электронное декларирование'],
+          ['РБ + РФ', 'Сервис «день в день» для резидентов РФ'],
+          ['100%', 'Юридическая чистота кодов ТН ВЭД']
+        ],
+        link: '../catalog/customsclearance/index.html'
+      },
+      warehouse: {
+        badge: 'УЗЕЛ 02 • СКЛАД ВРЕМЕННОГО (СВХ) И ОБЩЕГО ХРАНЕНИЯ (СОХ)',
+        title: 'Таможенное и коммерческое хранение с WMS-учётом',
+        desc: 'Оперативная перецепка и перевалка в ЗТК, взвешивание и хранение иностранных грузов до 4 месяцев без уплаты пошлин. После выпуска по ИМ40 партия за минуты переводится на наш коммерческий склад (СОХ) с адресным учётом паллет и комплектацией по FIFO/FEFO.',
+        specs: [
+          ['до 4 мес.', 'Временное хранение на СВХ'],
+          ['WMS 3PL', 'Адресный учёт каждой паллеты'],
+          ['Охрана 24/7', 'Видеонаблюдение и КПП']
+        ],
+        link: '../catalog/warehouse/index.html'
+      },
+      marking: {
+        badge: 'УЗЕЛ 03 • ПРОМЫШЛЕННАЯ МАРКИРОВКА DATAMATRIX И УКЗ',
+        title: 'Стикеровка до 50 000 единиц в сутки прямо на СВХ',
+        desc: 'Печатаем этикетки на промышленных термотрансферных принтерах 300 dpi (класс считывания Grade A/B). Совмещаем коды «Электронный знак» (РБ) и «Честный ЗНАК» (РФ) с русскоязычным стикером EAC, проверяем каждый код 2D-сканером и формируем файлы агрегации «короб — паллета».',
+        specs: [
+          ['300 DPI', 'Стойкая термотрансферная печать'],
+          ['Grade A/B', '100% валидация сканерами ТСД'],
+          ['SSCC', 'Поштучно-паллетная агрегация']
+        ],
+        link: '../catalog/marking/index.html'
+      },
+      railway: {
+        badge: 'УЗЕЛ 04 • СОБСТВЕННЫЙ Ж/Д ТУПИК В ЗОНЕ ТАМОЖЕННОГО КОНТРОЛЯ',
+        title: 'Подача вагонов и контейнеров напрямую к складской рампе',
+        desc: 'Часть железнодорожных путей нашего терминала официально входит в состав ЗТК. Контейнерные поезда из КНР и крытые вагоны подаются сразу к рампе СВХ/СОХ — вы не платите за автовывоз контейнеров со станции и избегаете сверхнормативного простоя вагонов.',
+        specs: [
+          ['20\' / 40\' HC', 'Приём морских и Ж/Д контейнеров'],
+          ['120–158 м³', 'Растарка крытых вагонов у рампы'],
+          ['СМГС', 'Полное станционное экспедирование']
+        ],
+        link: '../catalog/railway/index.html'
+      }
+    };
+
+    const btns = document.querySelectorAll('[data-bp-node]');
+    const badgeEl = document.getElementById('bpBadge');
+    const titleEl = document.getElementById('bpTitle');
+    const descEl = document.getElementById('bpDesc');
+    const specsEl = document.getElementById('bpSpecs');
+    const linkEl = document.getElementById('bpLink');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const data = nodesData[btn.dataset.bpNode];
+        if (!data) return;
+
+        btns.forEach(b => b.classList.toggle('active', b === btn));
+        badgeEl.textContent = data.badge;
+        titleEl.textContent = data.title;
+        descEl.textContent = data.desc;
+        linkEl.setAttribute('href', data.link);
+
+        specsEl.innerHTML = data.specs.map(([val, label]) => `
+                    <div class="bp-spec-box">
+                        <strong>${val}</strong>
+                        <span>${label}</span>
+                    </div>
+                `).join('');
+      });
+    });
+  })();
+</script>
+</body>
+</html>

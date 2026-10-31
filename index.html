@@ -16,62 +16,59 @@
 <body>
 
 
- <section class="header glass-header">
-     <div class="header-container">
-         <div class="header-logo">
-             <a href="index.html">
-                 <img src="img/header_logo3.png" alt="">
-                 <div class="brand-name">Белтаможлогистик</div>
+<!-- ================= ШАПКА НА ГЛАВНОЙ (index.html) ================= -->
+<section class="header glass-header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="index.html">
+                <img src="img/header_logo3.png" alt="Белтаможлогистик">
+                <div class="brand-name">Белтаможлогистик</div>
+            </a>
+        </div>
 
-             </a>
-         </div>
+        <nav class="header-menu-nav" id="headerNav">
+            <a href="about/index.html" class="nav-item">О Нас</a>
+            <a href="catalog/customsclearance/index.html" class="nav-item">Таможенное оформление</a>
 
+            <!-- Выпадающее меню для Склада -->
+            <div class="nav-dropdown">
+                <a href="catalog/warehouse/index.html" class="nav-item nav-dropdown-trigger" aria-expanded="false">
+                    <span class="nav-dropdown-text">Услуги склада</span>
+                    <svg class="dropdown-arrow" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="catalog/warehouse/index.html#svh-section" class="dropdown-link">
+                        <div class="dd-info">
+                            <span class="dd-title">Склад временного хранения</span>
+                            <span class="dd-sub">Таможенный контроль, досмотр, перецепка</span>
+                        </div>
+                    </a>
+                    <a href="catalog/warehouse/index.html#soh-section" class="dropdown-link">
+                        <div class="dd-info">
+                            <span class="dd-title">Склад общего хранения</span>
+                            <span class="dd-sub">Ответственное хранение, WMS-учёт, 3PL</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-         <nav class="header-menu-nav" id="headerNav">
-             <a href="#" class="nav-item">О Нас</a>
-             <a href="catalog/customsclearance/" class="nav-item">Таможенное оформление</a>
+            <a href="catalog/marking/index.html" class="nav-item">Маркировка</a>
+            <a href="catalog/railway/index.html" class="nav-item">Ж/Д поставки</a>
+        </nav>
 
-             <!-- Выпадающее меню для Склада -->
-             <div class="nav-dropdown">
-                 <a href="catalog/warehouse/" class="nav-item nav-dropdown-trigger" aria-expanded="false">
-                     <span>Услуги склада</span>
-                     <svg class="dropdown-arrow" viewBox="0 0 12 8" fill="none">
-                         <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                     </svg>
-                 </a>
-                 <div class="dropdown-menu">
-                     <a href="catalog/warehouse/index.html#svh-section" class="dropdown-link">
-                         <div class="dd-info">
-                             <span class="dd-title">Склад временного хранения</span>
-                             <span class="dd-sub">Таможенный контроль, досмотр, перецепка</span>
-                         </div>
-                     </a>
-                     <a href="catalog/warehouse/index.html#soh-section" class="dropdown-link">
-                         <div class="dd-info">
-                             <span class="dd-title">Склад общего хранения</span>
-                             <span class="dd-sub">Ответственное хранение, WMS-учёт, 3PL</span>
-                         </div>
-                     </a>
-                 </div>
-             </div>
-
-             <a href="catalog/marking/" class="nav-item">Маркировка</a>
-             <a href="catalog/railway/" class="nav-item">Ж/Д поставки</a>
-<!--             <a href="index.html#contacts" class="nav-item">Контакты</a>-->
-
-         </nav>
-
-         <div class="header-contacts ">
-             <button class="premium-gold-btn header-btn" type="button" data-open-contact-modal>
-                 <span>Контакты</span></button>
-
-         </div>
-         <button class="burger" id="burgerBtn" type="button"
-                 aria-label="Открыть меню" aria-expanded="false" aria-controls="headerNav">
-             <span></span><span></span><span></span>
-         </button>
-     </div>
- </section>
+        <div class="header-contacts">
+            <button class="premium-gold-btn header-btn" type="button" data-open-contact-modal>
+                <span>Контакты</span>
+            </button>
+        </div>
+        <button class="burger" id="burgerBtn" type="button"
+                aria-label="Открыть меню" aria-expanded="false" aria-controls="headerNav">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</section>
  <section class="hero">
      <div class="hero-container">
      <div class="hero-info">
@@ -260,120 +257,175 @@
 
 
 
-<section class="catalog">
+<!-- ================= НОВЫЙ КАТАЛОГ УСЛУГ (BENTO SHOWCASE) ================= -->
+<section class="catalog" id="catalog">
     <div class="catalog-container">
-<!--        <div class="catalog-title-wrapper">-->
-<!--            <h2 class="catalog-title section-title gold-text-title">Наши услуги</h2>-->
-<!--        </div>-->
         <div class="catalog-items">
-            <div class="catalog-item glass-card">
+
+            <!-- КАРТОЧКА 01: ТАМОЖЕННОЕ ОФОРМЛЕНИЕ -->
+            <article class="catalog-item glass-card">
+<!--                <div class="catalog-card-top">-->
+<!--&lt;!&ndash;                    <span class="catalog-card-num">01</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="catalog-card-badge">ПТО • НАСЭД • 24/7</span>&ndash;&gt;-->
+<!--                </div>-->
+
+                <div class="catalog-card-body">
+                    <h3 class="catalog-item-title gold-text">Таможенное оформление</h3>
+                    <p class="catalog-card-desc">
+                        Полный цикл декларирования импорта, экспорта и транзита. Подбор кодов ТН ВЭД, расчёт платежей и выпуск «день в день» для резидентов РБ и РФ.
+                    </p>
+<!--                    <ul class="catalog-card-tags">-->
+<!--                        <li>ИМ40 / ЭК10 / ИМ70</li>-->
+<!--                        <li>Коды ТН ВЭД</li>-->
+<!--                        <li>Статдекларации</li>-->
+<!--                    </ul>-->
+                </div>
+
                 <div class="catalog-item-img">
-                    <img src="img/catalog_1.png" alt="">
-                </div>
-                <div class="catalog-item-title gold-text">
-                    Таможенное оформление
+                    <img src="img/catalog_1.png" alt="Таможенное оформление грузов">
                 </div>
 
-                <a class="catalog-item-action premium-gold-btn" href="catalog/customsclearance">
-                    <span>
-                        <div>Подробнее
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="12pt" height="12pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                <div class="catalog-card-footer">
+                    <div class="catalog-card-metric">
+                        <strong>от 2 часов</strong>
+                        <span>среднее время выпуска ДТ</span>
+                    </div>
+                    <a class="catalog-item-action premium-gold-btn" href="catalog/customsclearance/index.html">
+                        <span>
+                            Подробнее
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12pt" height="12pt" viewBox="0 0 512 512">
+                                <g transform="translate(0,512) scale(0.1,-0.1)">
+                                    <path d="M1400 5098 c-44 -17 -77 -44 -171 -137 -144 -143 -163 -177 -164 -286 0 -58 5 -91 19 -120 13 -27 333 -355 995 -1018 l976 -977 -977 -978 c-760 -760 -982 -987 -997 -1022 -14 -30 -21 -67 -21 -110 0 -103 29 -153 168 -291 98 -97 127 -119 175 -137 73 -28 131 -28 204 -1 56 20 108 71 1230 1193 1297 1296 1223 1214 1223 1346 0 132 74 50 -1223 1346 -1123 1123 -1174 1173 -1230 1193 -72 26 -136 26 -207 -1z"/>
+                                </g>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </article>
 
-<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="" stroke="none">
-<path d="M1400 5098 c-44 -17 -77 -44 -171 -137 -144 -143 -163 -177 -164 -286 0 -58 5 -91 19 -120 13 -27 333 -355 995 -1018 l976 -977 -977 -978 c-760 -760 -982 -987 -997 -1022 -14 -30 -21 -67 -21 -110 0 -103 29 -153 168 -291 98 -97 127 -119 175 -137 73 -28 131 -28 204 -1 56 20 108 71 1230 1193 1297 1296 1223 1214 1223 1346 0 132 74 50 -1223 1346 -1123 1123 -1174 1173 -1230 1193 -72 26 -136 26 -207 -1z"/>
-</g>
-</svg>
-                            </div>
-                    </span>
+            <!-- КАРТОЧКА 02: УСЛУГИ СКЛАДА (СВХ И СОХ) -->
+            <article class="catalog-item glass-card">
+<!--                <div class="catalog-card-top">-->
+<!--                    <span class="catalog-card-num">02</span>-->
+<!--                    <span class="catalog-card-badge">СВХ + СОХ • WMS • 3PL</span>-->
+<!--                </div>-->
 
-                </a>
-            </div>
-            <div class="catalog-item glass-card">
+                <div class="catalog-card-body">
+                    <h3 class="catalog-item-title gold-text">Услуги склада (СВХ / СОХ)</h3>
+                    <p class="catalog-card-desc">
+                        Размещение транспорта в ЗТК, перецепка и перевалка под таможенным контролем, а также коммерческое ответственное хранение с адресным WMS-учётом.
+                    </p>
+<!--                    <ul class="catalog-card-tags">-->
+<!--                        <li>Перецепка и досмотр</li>-->
+<!--                        <li>Хранение до 4 мес.</li>-->
+<!--                        <li>Кросс-докинг</li>-->
+<!--                    </ul>-->
+                </div>
+
                 <div class="catalog-item-img">
-                    <img src="img/catalog_2_1.png" alt="">
+                    <img src="img/catalog_2_1.png" alt="Услуги склада СВХ и СОХ">
                 </div>
-                <div class="catalog-item-title gold-text">
-                    Услуги Склада
+
+                <div class="catalog-card-footer">
+                    <div class="catalog-card-metric">
+                        <strong>24 / 7</strong>
+                        <span>приём фур и вагонов в ЗТК</span>
+                    </div>
+                    <a class="catalog-item-action premium-gold-btn" href="catalog/warehouse/index.html">
+                        <span>
+                            Подробнее
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12pt" height="12pt" viewBox="0 0 512 512">
+                                <g transform="translate(0,512) scale(0.1,-0.1)">
+                                    <path d="M1400 5098 c-44 -17 -77 -44 -171 -137 -144 -143 -163 -177 -164 -286 0 -58 5 -91 19 -120 13 -27 333 -355 995 -1018 l976 -977 -977 -978 c-760 -760 -982 -987 -997 -1022 -14 -30 -21 -67 -21 -110 0 -103 29 -153 168 -291 98 -97 127 -119 175 -137 73 -28 131 -28 204 -1 56 20 108 71 1230 1193 1297 1296 1223 1214 1223 1346 0 132 74 50 -1223 1346 -1123 1123 -1174 1173 -1230 1193 -72 26 -136 26 -207 -1z"/>
+                                </g>
+                            </svg>
+                        </span>
+                    </a>
                 </div>
-<!--                <div class="catalog-item-text">-->
-<!--                    Размещение и нахождение транспортных средств с товаром, находящимся под таможенным контролем; выгрузка и временное хранение иностранных товаров; совершение перевалок/перецепок, включая документальное сопровождение; взвешивание товаров-->
+            </article>
+
+            <!-- КАРТОЧКА 03: МАРКИРОВКА ТОВАРОВ -->
+            <article class="catalog-item glass-card">
+<!--                <div class="catalog-card-top">-->
+<!--                    <span class="catalog-card-num">03</span>-->
+<!--                    <span class="catalog-card-badge">DataMatrix • УКЗ • Честный ЗНАК</span>-->
 <!--                </div>-->
-                <a class="catalog-item-action premium-gold-btn" href="catalog/warehouse/">
-                    <span>
-                        <div>Подробнее
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="12pt" height="12pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
-<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="" stroke="none">
-<path d="M1400 5098 c-44 -17 -77 -44 -171 -137 -144 -143 -163 -177 -164 -286 0 -58 5 -91 19 -120 13 -27 333 -355 995 -1018 l976 -977 -977 -978 c-760 -760 -982 -987 -997 -1022 -14 -30 -21 -67 -21 -110 0 -103 29 -153 168 -291 98 -97 127 -119 175 -137 73 -28 131 -28 204 -1 56 20 108 71 1230 1193 1297 1296 1223 1214 1223 1346 0 132 74 50 -1223 1346 -1123 1123 -1174 1173 -1230 1193 -72 26 -136 26 -207 -1z"/>
-</g>
-</svg>
-                            </div>
-                    </span>
+                <div class="catalog-card-body">
+                    <h3 class="catalog-item-title gold-text">Маркировка товара</h3>
+                    <p class="catalog-card-desc">
+                        Полный цикл промышленной маркировки импортных грузов. Интеграция с системами «Электронный знак» (РБ) и «Честный ЗНАК» (РФ).
+                    </p>
+<!--                    <ul class="catalog-card-tags">-->
+<!--                        <li>Электронный знак РБ</li>-->
+<!--                        <li>Честный ЗНАК РФ</li>-->
+<!--                        <li>Этикетки EAC</li>-->
+<!--                    </ul>-->
+                </div>
 
-                </a>
-            </div>
-            <div class="catalog-item glass-card">
                 <div class="catalog-item-img">
-                    <img src="img/catalog_3.png" alt="">
-
-
+                    <img src="img/catalog_3.png" alt="Маркировка товаров DataMatrix и УКЗ">
                 </div>
-                <div class="catalog-item-title gold-text">
-                    Маркировка товара
+
+                <div class="catalog-card-footer">
+                    <div class="catalog-card-metric">
+                        <strong>до 50 000 шт.</strong>
+                        <span>производительность в сутки</span>
+                    </div>
+                    <a class="catalog-item-action premium-gold-btn" href="catalog/marking/index.html">
+                        <span>
+                            Подробнее
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12pt" height="12pt" viewBox="0 0 512 512">
+                                <g transform="translate(0,512) scale(0.1,-0.1)">
+                                    <path d="M1400 5098 c-44 -17 -77 -44 -171 -137 -144 -143 -163 -177 -164 -286 0 -58 5 -91 19 -120 13 -27 333 -355 995 -1018 l976 -977 -977 -978 c-760 -760 -982 -987 -997 -1022 -14 -30 -21 -67 -21 -110 0 -103 29 -153 168 -291 98 -97 127 -119 175 -137 73 -28 131 -28 204 -1 56 20 108 71 1230 1193 1297 1296 1223 1214 1223 1346 0 132 74 50 -1223 1346 -1123 1123 -1174 1173 -1230 1193 -72 26 -136 26 -207 -1z"/>
+                                </g>
+                            </svg>
+                        </span>
+                    </a>
                 </div>
-<!--                <div class="catalog-item-text">-->
-<!--                    Железнодорожные перевозки наряду с автомобильными являются популярным вариантом перемещения самых разнообразных грузов.-->
+            </article>
+
+            <!-- КАРТОЧКА 04: ОБРАБОТКА Ж/Д ПОСТАВОК -->
+            <article class="catalog-item glass-card">
+<!--                <div class="catalog-card-top">-->
+<!--                    <span class="catalog-card-num">04</span>-->
+<!--                    <span class="catalog-card-badge">Собственная Ж/Д ветка в ЗТК</span>-->
 <!--                </div>-->
-                <div class="catalog-item-action premium-gold-btn">
-                     <span>
-                        <a href="">Подробнее
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="12pt" height="12pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
-<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="" stroke="none">
-<path d="M1400 5098 c-44 -17 -77 -44 -171 -137 -144 -143 -163 -177 -164 -286 0 -58 5 -91 19 -120 13 -27 333 -355 995 -1018 l976 -977 -977 -978 c-760 -760 -982 -987 -997 -1022 -14 -30 -21 -67 -21 -110 0 -103 29 -153 168 -291 98 -97 127 -119 175 -137 73 -28 131 -28 204 -1 56 20 108 71 1230 1193 1297 1296 1223 1214 1223 1346 0 132 74 50 -1223 1346 -1123 1123 -1174 1173 -1230 1193 -72 26 -136 26 -207 -1z"/>
-</g>
-</svg>
-                            </a>
-                    </span>
+                <div class="catalog-card-body">
+                    <h3 class="catalog-item-title gold-text">Обработка Ж/Д поставок</h3>
+                    <p class="catalog-card-desc">
+                        Приём вагонов и контейнеров напрямую в зону таможенного контроля к рампе склада. Выгрузка, таможенное оформление, маркировка DataMatrix/УКЗ и размещение на склад на одной площадке.
+                    </p>
+<!--                    <ul class="catalog-card-tags">-->
+<!--                        <li>Контейнеры из КНР</li>-->
+<!--                        <li>Крытые вагоны</li>-->
+<!--                        <li>Вагон ⇄ Еврофура</li>-->
+<!--                    </ul>-->
                 </div>
-            </div>
-            <div class="catalog-item glass-card">
+
                 <div class="catalog-item-img">
-                    <img src="img/catalog_4.png" alt="">
+                    <img src="img/catalog_4.png" alt="Обработка Ж/Д поставок">
                 </div>
-                <div class="catalog-item-title gold-text">
-                    Обработка Ж/Д поставок
+
+                <div class="catalog-card-footer">
+                    <div class="catalog-card-metric">
+                        <strong>0 BYN</strong>
+                        <span>за автовывоз контейнера со станции</span>
+                    </div>
+                    <a class="catalog-item-action premium-gold-btn" href="catalog/railway/index.html">
+                        <span>
+                            Подробнее
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12pt" height="12pt" viewBox="0 0 512 512">
+                                <g transform="translate(0,512) scale(0.1,-0.1)">
+                                    <path d="M1400 5098 c-44 -17 -77 -44 -171 -137 -144 -143 -163 -177 -164 -286 0 -58 5 -91 19 -120 13 -27 333 -355 995 -1018 l976 -977 -977 -978 c-760 -760 -982 -987 -997 -1022 -14 -30 -21 -67 -21 -110 0 -103 29 -153 168 -291 98 -97 127 -119 175 -137 73 -28 131 -28 204 -1 56 20 108 71 1230 1193 1297 1296 1223 1214 1223 1346 0 132 74 50 -1223 1346 -1123 1123 -1174 1173 -1230 1193 -72 26 -136 26 -207 -1z"/>
+                                </g>
+                            </svg>
+                        </span>
+                    </a>
                 </div>
-<!--                <div class="catalog-item-text">-->
-<!--                    Предоставляем полный комплекс услуг по импорту и экспорту товаров (грузов).-->
-<!--                </div>-->
-                <div class="catalog-item-action premium-gold-btn">
-                    <span>
-                        <a href="catalog/railway/">Подробнее
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="12pt" height="12pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+            </article>
 
-<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="" stroke="none">
-<path d="M1400 5098 c-44 -17 -77 -44 -171 -137 -144 -143 -163 -177 -164 -286 0 -58 5 -91 19 -120 13 -27 333 -355 995 -1018 l976 -977 -977 -978 c-760 -760 -982 -987 -997 -1022 -14 -30 -21 -67 -21 -110 0 -103 29 -153 168 -291 98 -97 127 -119 175 -137 73 -28 131 -28 204 -1 56 20 108 71 1230 1193 1297 1296 1223 1214 1223 1346 0 132 74 50 -1223 1346 -1123 1123 -1174 1173 -1230 1193 -72 26 -136 26 -207 -1z"/>
-</g>
-</svg>
-                            </a>
-                    </span>
-                </div>
-            </div>
-<!--            <div class="catalog-item">-->
-<!--                <div class="catalog-item-img">-->
-
-<!--                </div>-->
-<!--                <div class="catalog-item-title">-->
-
-<!--                </div>-->
-<!--                <div class="catalog-item-text">-->
-
-<!--                </div>-->
-<!--                <div class="catalog-item-action">-->
-<!--                    <a href="">Подробнее</a>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </div>
 </section>
@@ -719,7 +771,7 @@
 
              <!-- Правая колонка: Стилизованная карта -->
              <div class="glass-card contacts-map-wrapper">
-                 <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2363ec0b86cd50469779f0265c2a32d895330c6b9445ae652e07442de05010b0&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+                 <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2363ec0b86cd50469779f0265c2a32d895330c6b9445ae652e07442de05010b0&amp;width=668&amp;height=517&amp;lang=ru_RU&amp;scroll=false"></script>
                  <div class="map-badge">
                      <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="15px" height="15px" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 

@@ -455,6 +455,25 @@
     box-sizing: border-box;
 }
 
+@media (min-width: 961px) {
+    .sidebar-sticky .glass-card:nth-child(1){
+        min-height: 273px;
+    }
+    .sidebar-sticky .glass-card:nth-child(2){
+        min-height: 288px;
+    }
+    .sidebar-sticky .glass-card:nth-child(3){
+        min-height: 445px;
+    }
+}
+@media (min-width: 1280px) {
+    .spec-item .figure-img-wrap{
+        height: 450px;
+    }
+}
+
+
+
 .sidebar-title {
     font-family: 'Ubuntu-bold', sans-serif;
     font-size: 18px;
@@ -988,3 +1007,191 @@
         font-size: 12.5px;
     }
 }
+
+
+
+
+
+
+
+
+/*SLIDERSLIDERSLIDERSLIDERSLIDERSLIDERSLIDERSLIDERSLIDERSLIDERSLIDERSLIDERSLIDERSLIDER*/
+/* ==========================================================================
+   КОМПАКТНЫЙ СПОЙЛЕР / АККОРДЕОН (BTL SPOILER)
+   ========================================================================== */
+.btl-spoiler {
+    width: 100%;
+    margin: 18px 0;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(6, 30, 24, 0.72) 0%, rgba(4, 20, 16, 0.88) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btl-spoiler:hover {
+    border-color: rgba(243, 223, 157, 0.55);
+}
+
+.btl-spoiler.is-open {
+    border-color: rgba(243, 223, 157, 0.75);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.42), 0 0 22px rgba(212, 175, 55, 0.14);
+}
+
+/* Кнопка-плашка (в сложенном виде) */
+.btl-spoiler-trigger {
+    width: 100%;
+    min-height: 54px;
+    padding: 13px 20px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    text-align: left;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.25s ease;
+}
+
+.btl-spoiler-trigger:hover {
+    background: rgba(212, 175, 55, 0.06);
+}
+
+.btl-spoiler-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+/* Золотая точка-индикатор слева */
+.btl-spoiler-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold-primary, #d8b467);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btl-spoiler.is-open .btl-spoiler-dot {
+    background: var(--gold-light, #f3df9d);
+    transform: scale(1.25);
+}
+
+.btl-spoiler-title {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 16px;
+    line-height: 1.35;
+    color: var(--gold-light, #f3df9d);
+    transition: color 0.25s ease;
+}
+
+/* Круглая капсула со стрелочкой справа */
+.btl-spoiler-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.32);
+    color: var(--gold-light, #f3df9d);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease, border-color 0.25s ease;
+}
+
+.btl-spoiler-icon svg {
+    width: 12px;
+    height: 8px;
+}
+
+.btl-spoiler-trigger:hover .btl-spoiler-icon {
+    background: rgba(212, 175, 55, 0.22);
+    border-color: var(--gold-light, #f3df9d);
+}
+
+.btl-spoiler.is-open .btl-spoiler-icon {
+    transform: rotate(180deg);
+    background: var(--gold-gradient, linear-gradient(90deg, #f3df9d 0%, #c69d45 100%));
+    color: #07221b;
+    border-color: transparent;
+}
+
+/* Плавное вертикальное раскрытие через CSS Grid 0fr -> 1fr */
+.btl-spoiler-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+            grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.28s ease;
+}
+
+.btl-spoiler.is-open .btl-spoiler-body {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.btl-spoiler-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.btl-spoiler-content {
+    padding: 4px 20px 20px;
+    border-top: 1px solid rgba(212, 175, 55, 0.14);
+    margin-top: 2px;
+    padding-top: 16px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.btl-spoiler-content > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Адаптив под мобильные экраны */
+@media (max-width: 600px) {
+    .btl-spoiler {
+        border-radius: 14px;
+        margin: 14px 0;
+    }
+
+    .btl-spoiler-trigger {
+        min-height: 48px;
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .btl-spoiler-left {
+        gap: 10px;
+    }
+
+    .btl-spoiler-title {
+        font-size: 14.5px;
+    }
+
+    .btl-spoiler-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+    }
+
+    .btl-spoiler-content {
+        padding: 14px 14px 16px;
+        font-size: 14px;
+    }
+}
+
+

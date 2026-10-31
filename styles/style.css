@@ -272,6 +272,176 @@ h2{
 
 
 /*endregion */
+/*region Тайтлы с переливами*/
+
+
+.section-header {
+    --shine-pos: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 20px 50px;
+    text-align: center;
+    overflow: visible;
+    z-index: 1;
+}
+.advantages-section .section-header{
+    padding: 70px 20px 0;
+}
+.calc-section .section-header{
+    padding: 0 20px 50px;
+}
+
+.header-glow {
+    position: absolute;
+    width: 480px;
+    height: 160px;
+    /*background: radial-gradient(*/
+    /*        ellipse at center,*/
+    /*        rgba(235, 208, 133, 0.16) 0%,*/
+    /*        rgba(16, 75, 60, 0.05) 60%,*/
+    /*        transparent 80%*/
+    /*);*/
+    filter: blur(25px);
+    pointer-events: none;
+    z-index: -2;
+    transform: translate3d(0, var(--py, 0px), 0);
+    will-change: transform;
+}
+
+.header-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, calc(-55% + var(--py, 0px)), 0);
+    font-size: clamp(4rem, 9.5vw, 8.5rem);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(235, 208, 133, 0.08);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 45%, transparent 95%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 45%, transparent 95%);
+    pointer-events: none;
+    user-select: none;
+    z-index: -1;
+    will-change: transform;
+}
+
+.header-content {
+    transform: translate3d(0, var(--py, 0px), 0);
+    will-change: transform;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    margin-bottom: 14px;
+    border-radius: 999px;
+    background: rgba(10, 46, 38, 0.65);
+    border: 1px solid rgba(235, 208, 133, 0.3);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 4px 15px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ebd085;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ebd085;
+    box-shadow: 0 0 8px 2px rgba(235, 208, 133, 0.8);
+}
+
+.section-title {
+    margin: 0;
+    font-size: 45px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image:
+            linear-gradient(
+                    115deg,
+                    transparent 0%,
+                    transparent 40%,
+                    rgba(255, 246, 214, 0.95) 47%,
+                    #ffffff 50%,
+                    rgba(235, 208, 133, 0.9) 53%,
+                    transparent 60%,
+                    transparent 100%
+            ),
+            linear-gradient(135deg, #f3dc99 0%, #ebd085 50%, #b88f32 100%);
+    background-size: 260% 100%, 100% 100%;
+    background-position: var(--shine-pos) 0, 0 0;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.45));
+    will-change: background-position;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 0;
+}
+
+.title-accent {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image:
+            linear-gradient(
+                    115deg,
+                    transparent 0%,
+                    transparent 42%,
+                    rgba(255, 255, 255, 0.9) 48%,
+                    #ffffff 50%,
+                    rgba(255, 250, 220, 0.9) 52%,
+                    transparent 58%,
+                    transparent 100%
+            ),
+            linear-gradient(135deg, #f3dc99 0%, #ebd085 50%, #b88f32 100%);
+    background-size: 260% 100%, 100% 100%;
+    background-position: calc(var(--shine-pos) + 12%) 0, 0 0;
+    background-repeat: no-repeat;
+}
+
+.section-divider {
+    position: relative;
+    width: 180px;
+    height: 1px;
+    margin: 20px auto 0;
+    background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(235, 208, 133, 0.7) 50%,
+            transparent 100%
+    );
+}
+
+.divider-diamond {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    background: #ebd085;
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow: 0 0 10px rgba(235, 208, 133, 0.9);
+}
+
+
+
+
+/*endregion*/
 
  /* region HEADER*/
 
@@ -618,9 +788,7 @@ h2{
 
 /* region CATALOG*/
 
-.catalog{
-    margin-bottom: 50px;
-}
+
 
 .catalog-container {
     max-width: 1280px;
@@ -734,16 +902,7 @@ h2{
     user-select: none;
 }
 
-.section-title {
-    font-size: 38px;
-    font-weight: 700;
-    color: #d4af37;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    /*margin-bottom: 10px;*/
-    z-index: 0;
-}
+
 
 /*.section-title::after {*/
 /*    content: '';*/
@@ -1871,3 +2030,549 @@ h2{
 }
 /*endregion*/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   GLOBAL FIXES & UPGRADES (2026):
+   1. Устранение пустоты справа на мобильных (Overflow Fix)
+   2. Единое меню Header + 1 золотая точка слева (Десктоп и Бургер)
+   3. Новые премиальные карточки услуг (Catalog Bento Grid) на главной
+   4. Внутренний скролл для Sticky Sidebar на ноутбуках
+   5. Мобильная перестановка блоков сайдбара (<= 960px)
+   ========================================================================== */
+
+/* ---- 1. ЗАЩИТА ОТ ГОРИЗОНТАЛЬНОГО СКРОЛЛА И ПУСТОТЫ СПРАВА ---- */
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+.site-footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+.section-header {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ---- 2. ЕДИНЫЙ ВИД МЕНЮ В ШАПКЕ И ОДНА ТОЧКА СЛЕВА ---- */
+.header-menu-nav .nav-item,
+.header-menu-nav .nav-dropdown-trigger {
+    position: relative;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 0 clamp(10px, 1.1vw, 16px);
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em !important;
+    color: rgba(255, 255, 255, 0.84);
+    text-decoration: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.header-menu-nav .nav-dropdown-text {
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+/* Отключаем любую вторую точку на обёртке .nav-dropdown */
+.nav-dropdown::before,
+.nav-dropdown.active::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* Активный пункт меню — цвет и ОДНА золотая точка строго СЛЕВА от названия */
+.header-menu-nav .nav-item.active,
+.header-menu-nav .nav-dropdown.active > .nav-dropdown-trigger {
+    color: #ebd085 !important;
+    padding-left: clamp(18px, 1.6vw, 24px) !important;
+}
+
+.header-menu-nav .nav-item.active::before,
+.header-menu-nav .nav-dropdown.active > .nav-dropdown-trigger::before {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    left: 6px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50% !important;
+    background-color: #ebd085 !important;
+    box-shadow: 0 0 8px rgba(235, 208, 133, 0.85) !important;
+}
+
+/* Адаптация меню и точки в мобильном бургере (<= 1100px) */
+@media (max-width: 1100px) {
+    .header-menu-nav .nav-item,
+    .header-menu-nav .nav-dropdown-trigger {
+        width: 100%;
+        min-height: 52px;
+        padding: 0 18px !important;
+        font-size: 14px !important;
+        justify-content: flex-start;
+    }
+
+    .header-menu-nav .nav-dropdown-trigger {
+        justify-content: space-between !important;
+        cursor: pointer;
+    }
+
+    /* Зона клика по тонкому тексту "Услуги склада" для перехода */
+    .header-menu-nav .nav-dropdown-text {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 8px 6px 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    .header-menu-nav .nav-dropdown-text:hover,
+    .header-menu-nav .nav-dropdown-text:active {
+        color: var(--gold-1);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    /* Одна золотая точка слева от названия пункта в мобильном меню */
+    .header-menu-nav .nav-item.active,
+    .header-menu-nav .nav-dropdown.active > .nav-dropdown-trigger {
+        padding-left: 32px !important;
+    }
+
+    .header-menu-nav .nav-item.active::before,
+    .header-menu-nav .nav-dropdown.active > .nav-dropdown-trigger::before {
+        left: 16px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+}
+
+/* ---- 3. НОВЫЕ ПРЕМИАЛЬНЫЕ БЛОКИ УСЛУГ НА ГЛАВНОЙ (BENTO SHOWCASE) ---- */
+.catalog {
+    width: 100%;
+    /*margin-bottom: 70px;*/
+}
+
+.catalog .catalog-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.catalog .catalog-items {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px !important;
+    margin-top: 20px !important;
+}
+
+.catalog .catalog-item {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 310px !important;
+    padding: 30px 32px !important;
+    margin-top: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1.35fr 0.85fr !important;
+    grid-template-rows: auto 1fr auto !important;
+    gap: 14px 20px !important;
+    align-items: start !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+}
+
+/* Радиальное золотое свечение в углу карточки */
+.catalog .catalog-item::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    left: auto;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(235, 208, 133, 0.18) 0%, rgba(16, 185, 129, 0.05) 55%, transparent 75%);
+    filter: blur(12px);
+    pointer-events: none;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+}
+
+@media (hover: hover) {
+    .catalog .catalog-item:hover {
+        transform: translateY(-6px) !important;
+        box-shadow:
+                0 26px 60px rgba(0, 0, 0, 0.65),
+                0 0 50px rgba(212, 175, 55, 0.24),
+                inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+    }
+
+    .catalog .catalog-item:hover::before {
+        transform: scale(1.25);
+    }
+
+    .catalog .catalog-item:hover .catalog-item-img img {
+        transform: translateY(-6px) scale(1.06) !important;
+        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 25px rgba(235, 208, 133, 0.35));
+    }
+}
+
+/* Верхняя строка карточки: номер + бейдж */
+.catalog-card-top {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.catalog-card-num {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: rgba(235, 208, 133, 0.16);
+    border: 1px solid rgba(235, 208, 133, 0.45);
+    color: var(--gold-light);
+    letter-spacing: 0.06em;
+}
+
+.catalog-card-badge {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Центральная текстовая часть карточки */
+.catalog-card-body {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2;
+}
+
+.catalog .catalog-item-title {
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: clamp(1.45rem, 2vw, 1.85rem) !important;
+    line-height: 1.2 !important;
+}
+
+.catalog-card-desc {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.58;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+/* Теги-чипсы фич внутри карточки */
+.catalog-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    list-style: none;
+    padding: 0;
+    margin: 2px 0 0;
+}
+
+.catalog-card-tags li {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold-light);
+    background: rgba(5, 26, 20, 0.72);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    padding: 5px 11px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.catalog-card-tags li::before {
+    content: "✦";
+    font-size: 10px;
+    color: var(--gold-primary);
+}
+
+/* Нижний футер карточки: метрика + кнопка */
+.catalog-card-footer {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 16px;
+    margin-top: 6px;
+    border-top: 1px solid rgba(235, 208, 133, 0.16);
+    z-index: 2;
+    width: 100%;
+}
+
+.catalog-card-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.catalog-card-metric strong {
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 18px;
+    color: var(--gold-light);
+}
+
+.catalog-card-metric span {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.catalog .catalog-item-action {
+    position: relative;
+    z-index: 3;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: 175px;
+    height: 46px !important;
+    min-height: 46px !important;
+    padding: 0 24px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none;
+}
+
+.catalog .catalog-item-action span {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 13.5px !important;
+}
+
+/* Правая зона с 3D-иллюстрацией */
+.catalog .catalog-item-img {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 / 3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 180px;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none;
+}
+
+.catalog .catalog-item-img img {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 185px !important;
+    height: auto !important;
+    object-fit: contain;
+    filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.55));
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.catalog .catalog-item:nth-child(2) .catalog-item-img img {
+    max-width: 205px !important;
+}
+
+/* Адаптив новых карточек услуг */
+@media (max-width: 1024px) {
+    .catalog .catalog-items {
+        grid-template-columns: 1fr !important;
+        gap: 22px !important;
+    }
+    .catalog .catalog-item {
+        min-height: 260px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .catalog .catalog-item {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto auto auto !important;
+        padding: 22px 20px !important;
+        gap: 12px !important;
+    }
+
+    .catalog-card-top {
+        grid-column: 1;
+        grid-row: 1;
+        justify-content: space-between;
+    }
+
+    .catalog .catalog-item-img {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        min-height: 135px;
+        margin: 4px 0;
+    }
+
+    .catalog .catalog-item-img img,
+    .catalog .catalog-item:nth-child(2) .catalog-item-img img {
+        max-width: 145px !important;
+    }
+
+    .catalog-card-body {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .catalog-card-footer {
+        grid-column: 1;
+        grid-row: 4;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .catalog-card-metric {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+
+    .catalog .catalog-item-action {
+        width: 100% !important;
+    }
+}
+
+/* ---- 4. ОТДЕЛЬНЫЙ СКРОЛЛ ДЛЯ STICKY SIDEBAR НА ЭКРАНАХ НОУТБУКОВ (> 960px) ---- */
+@media (min-width: 961px) {
+    .sidebar-sticky {
+        position: sticky;
+        top: 92px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        padding-right: 6px;
+        padding-bottom: 12px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(212, 175, 55, 0.45) rgba(5, 28, 22, 0.35);
+    }
+
+    .sidebar-sticky::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .sidebar-sticky::-webkit-scrollbar-track {
+        background: rgba(5, 28, 22, 0.35);
+        border-radius: 10px;
+    }
+
+    .sidebar-sticky::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #f3df9d 0%, #c69d45 100%);
+        border-radius: 10px;
+    }
+}
+
+/* ---- 5. ПЕРЕСТАНОВКА БЛОКОВ САЙДБАРА НА МОБИЛЬНЫХ И ПЛАНШЕТАХ (<= 960px) ----
+   Порядок:
+   1. Хлебные крошки (.breadcrumbs)
+   2. Hero блок (.page-hero)
+   3. Навигация по разделу (.sidebar-toc) — сразу после первого hero блока!
+   4. Основная статья (.article-content)
+   5. Предложение о расчёте стоимости (.sidebar-cta)
+   6. Другие наши услуги (.sidebar-other) — после блока с расчётом!
+   ------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+    .inner-page > .container {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .inner-page .breadcrumbs {
+        order: 1;
+        margin-bottom: 0 !important;
+    }
+
+    .inner-page .page-hero {
+        order: 2;
+        margin-bottom: 0 !important;
+    }
+
+    /* Растворяем обёртки .page-layout, .page-sidebar и .sidebar-sticky,
+       чтобы их дочерние блоки выстроились в единый flex-поток .container */
+    .inner-page .page-layout,
+    .inner-page .page-sidebar,
+    .inner-page .sidebar-sticky {
+        display: contents !important;
+    }
+
+    .inner-page .sidebar-box.sidebar-toc,
+    .inner-page .sidebar-sticky > .sidebar-box:nth-child(1) {
+        order: 3;
+    }
+
+    .inner-page .article-content {
+        order: 4;
+    }
+
+    .inner-page .sidebar-box.sidebar-cta,
+    .inner-page .sidebar-sticky > .sidebar-box:nth-child(3) {
+        order: 5;
+    }
+
+    .inner-page .sidebar-box.sidebar-other,
+    .inner-page .sidebar-sticky > .sidebar-box:nth-child(2) {
+        order: 6;
+    }
+}

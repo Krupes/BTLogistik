@@ -25,12 +25,76 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const modalBody = modal.querySelector('.btl-modal-body');
+
+    // Автоматически создаём панель Политики обработки персональных данных РБ внутри модалки, если её ещё нет
+    let policyPane = document.getElementById('btl-tab-policy');
+    if (!policyPane && modalBody) {
+        policyPane = document.createElement('div');
+        policyPane.className = 'btl-tab-pane';
+        policyPane.id = 'btl-tab-policy';
+        policyPane.setAttribute('role', 'tabpanel');
+        policyPane.setAttribute('hidden', '');
+        policyPane.innerHTML = `
+            <div class="btl-policy-view-header">
+                <div>
+                    <span class="btl-policy-meta">Закон Республики Беларусь № 99-З «О защите персональных данных»</span>
+                    <h3 class="btl-modal-title" style="margin-top:8px;">Политика обработки персональных данных</h3>
+                </div>
+                <button type="button" class="btl-policy-back-btn" data-policy-back>
+                    ← Вернуться назад
+                </button>
+            </div>
+            <div class="btl-policy-doc">
+                <h4>1. Общие положения и статус Оператора</h4>
+                <p>1.1. Настоящая Политика в отношении обработки персональных данных (далее — Политика) разработана во исполнение требований <strong>Закона Республики Беларусь от 7 мая 2021 г. № 99-З «О защите персональных данных»</strong> и определяет порядок обработки персональных данных и меры по обеспечению их безопасности в <strong>Обществе с ограниченной ответственностью «Белтаможлогистик»</strong> (далее — Оператор).</p>
+                <p>1.2. <strong>Сведения об Операторе:</strong> ООО «Белтаможлогистик», место нахождения: Республика Беларусь, Минская обл., г. Вилейка, ул. Шубина, 103. Электронная почта: <a href="mailto:info@btlogistik.by" style="color:#ebd085;">info@btlogistik.by</a>, тел.: +375 (17) 123-45-67, +375 (29) 987-65-43.</p>
+                <p>1.3. Политика применяется ко всей информации, которую Оператор получает о пользователях веб-сайта Белтаможлогистик при заполнении форм обратной связи, использовании онлайн-калькулятора, а также при обращении через подключённые мессенджеры (Telegram, WhatsApp, Viber, WeChat, Max) и по телефонной связи.</p>
+
+                <h4>2. Цели, объём, правовые основания и сроки обработки данных</h4>
+                <ul>
+                    <li><strong>Обработка заявок на консультацию и расчёт стоимости услуг (СВХ, СОХ, таможенное оформление, маркировка, Ж/Д логистика):</strong> обрабатываются имя (при указании), номер контактного телефона, выбранный способ связи, сведения о грузе в комментарии. <em>Правовое основание:</em> согласие субъекта персональных данных (ст. 5 Закона № 99-З) либо совершение действий для заключения договора по инициативе субъекта (абз. 15 ст. 6 Закона № 99-З). <em>Срок хранения:</em> 1 год с момента последнего взаимодействия либо до отзыва согласия.</li>
+                    <li><strong>Коммуникация через мессенджеры и по электронной почте:</strong> обрабатываются идентификатор пользователя (username/номер телефона), текст обращения и прикреплённые товаросопроводительные документы. <em>Срок хранения:</em> в течение срока ведения преддоговорной работы и 3 года после исполнения договорных обязательств.</li>
+                    <li><strong>Обеспечение корректной работы сайта (технические данные):</strong> IP-адрес, файлы cookie, параметры браузера и устройства. <em>Срок хранения:</em> до 12 месяцев.</li>
+                </ul>
+
+                <h4>3. Порядок и условия обработки персональных данных</h4>
+                <p>3.1. Обработка осуществляется с использованием средств автоматизации и без их использования путём сбора, систематизации, хранения, изменения, использования, обезличивания, блокирования и удаления персональных данных.</p>
+                <p>3.2. Оператор не передаёт персональные данные третьим лицам, за исключением случаев, прямо предусмотренных законодательством Республики Беларусь (в том числе таможенным органам при заключении договора поручения/таможенного представительства).</p>
+                <p>3.3. При переходе пользователя по ссылкам или QR-кодам во внешние мессенджеры (Telegram, WhatsApp, Viber, WeChat, Max) возможна трансграничная передача данных на серверы соответствующих платформ. Проставляя отметку о согласии и инициируя диалог, пользователь подтверждает, что проинформирован о возможных рисках трансграничной передачи данных в соответствии со ст. 9 Закона № 99-З.</p>
+
+                <h4>4. Права субъекта персональных данных (ст. 10–13 Закона № 99-З)</h4>
+                <p>Субъект персональных данных имеет право в любое время:</p>
+                <ul>
+                    <li><strong>Отозвать своё согласие</strong> на обработку персональных данных (ст. 10 Закона № 99-З);</li>
+                    <li><strong>Получить информацию</strong>, касающуюся обработки своих персональных данных, в течение 5 рабочих дней с момента подачи заявления (ст. 11 Закона № 99-З);</li>
+                    <li><strong>Требовать внесения изменений</strong> в свои данные в случае их неполноты, устаревания или неточности (в 15-дневный срок);</li>
+                    <li><strong>Получать информацию о предоставлении</strong> своих персональных данных третьим лицам один раз в календарный год бесплатно (ст. 12 Закона № 99-З);</li>
+                    <li><strong>Требовать бесплатного прекращения обработки и (или) удаления</strong> своих персональных данных при отсутствии оснований для обработки (ст. 13 Закона № 99-З);</li>
+                    <li><strong>Обжаловать действия (бездействие) Оператора</strong> в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</li>
+                </ul>
+
+                <h4>5. Механизм реализации прав</h4>
+                <p>Для реализации одного или нескольких прав субъекту необходимо направить Оператору заявление в письменной форме по адресу: <strong>222410, Республика Беларусь, Минская обл., г. Вилейка, ул. Шубина, 103</strong>, либо в виде электронного документа на адрес <strong>info@btlogistik.by</strong>. Заявление должно содержать ФИО, адрес места жительства (места пребывания), дату рождения, суть требований и личную (либо электронную цифровую) подпись согласно ст. 14 Закона № 99-З.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap;">
+                <button type="button" class="btl-submit-gold-btn" data-policy-accept style="padding: 10px 24px; font-size: 0.8rem;">
+                    <span>Принять и вернуться</span>
+                </button>
+            </div>
+        `;
+        modalBody.appendChild(policyPane);
+    }
+
     const tabBtns = modal.querySelectorAll('[data-tab-target]');
     const tabPanes = {
         contacts: document.getElementById('btl-tab-contacts'),
         form: document.getElementById('btl-tab-form'),
-        info: document.getElementById('btl-tab-info')
+        info: document.getElementById('btl-tab-info'),
+        policy: document.getElementById('btl-tab-policy')
     };
+
+    let lastActiveTabBeforePolicy = 'contacts';
 
     const qrMiniBtns = modal.querySelectorAll('[data-qr-messenger]');
     const qrImg = document.getElementById('btlQrImage');
@@ -46,9 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const formSuccessBox = document.getElementById('btlFormSuccess');
     const resetFormBtn = document.getElementById('btlResetFormBtn');
 
-    // Переключение между 3 главными вкладками (contacts / form / info)
+    // Переключение между главными вкладками (contacts / form / info / policy)
     const switchMainTab = (targetKey) => {
         const validKey = tabPanes[targetKey] ? targetKey : 'contacts';
+
+        if (validKey !== 'policy') {
+            lastActiveTabBeforePolicy = validKey;
+        }
 
         tabBtns.forEach(btn => {
             const isMatch = btn.dataset.tabTarget === validKey;
@@ -68,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Ленивая загрузка карты при переходе на "Инфо"
-        if (validKey === 'info' && mapIframe && !mapIframe.getAttribute('src')) {
+        if (validKey === 'info' && mapIframe && !mapIframe.getAttribute('src') && mapIframe.dataset.src) {
             mapIframe.setAttribute('src', mapIframe.dataset.src);
         }
     };
@@ -86,8 +154,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     };
 
-    // Обработка кликов по триггерам открытия и закрытия
+    // Кнопка калькулятора на главной странице открывает сразу форму заявки
+    const calcOrderBtn = document.getElementById('openOrderModalBtn');
+    if (calcOrderBtn) {
+        calcOrderBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(tabPanes.form ? 'form' : 'contacts');
+        });
+    }
+
+    // Обработка кликов по триггерам открытия, закрытия и ссылкам Политики
     document.addEventListener('click', (e) => {
+        // Перехват клика по кнопке/ссылке Политики обработки персональных данных
+        const policyLink = e.target.closest('a[href*="privacy-policy"], [data-open-policy]');
+        if (policyLink) {
+            e.preventDefault();
+            openModal('policy');
+            return;
+        }
+
+        if (e.target.closest('[data-policy-back]')) {
+            e.preventDefault();
+            switchMainTab(lastActiveTabBeforePolicy);
+            return;
+        }
+
+        if (e.target.closest('[data-policy-accept]')) {
+            e.preventDefault();
+            if (policyCheckbox) {
+                policyCheckbox.checked = true;
+                policyCheckbox.dispatchEvent(new Event('change'));
+            }
+            if (formPolicyCheckbox) {
+                formPolicyCheckbox.checked = true;
+                formPolicyCheckbox.dispatchEvent(new Event('change'));
+            }
+            switchMainTab(lastActiveTabBeforePolicy);
+            return;
+        }
+
         const openTrigger = e.target.closest('[data-open-contact-modal]');
         if (openTrigger) {
             e.preventDefault();
@@ -96,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Внутренние кнопки быстрого переключения на вкладку формы
+        // Внутренние кнопки быстрого переключения на вкладку формы (учитываем регистр data-tab-trigger)
         const internalSwitch = e.target.closest('[data-tab-trigger]');
         if (internalSwitch) {
             switchMainTab(internalSwitch.dataset.tabTrigger);
@@ -121,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Логика смены QR-кодов
     const setActiveMessenger = (key) => {
         const item = qrData[key];
-        if (!item) return;
+        if (!item || !qrImg || !qrCaption) return;
 
         qrMiniBtns.forEach(b => b.classList.toggle('active', b.dataset.qrMessenger === key));
         qrImg.style.opacity = '0.3';
@@ -171,17 +276,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const payload = Object.fromEntries(formData.entries());
             console.log('Заявка Белтаможлогистик:', payload);
 
-            // Показываем экран успеха
             leadForm.setAttribute('hidden', '');
-            formSuccessBox.removeAttribute('hidden');
+            if (formSuccessBox) formSuccessBox.removeAttribute('hidden');
         });
     }
 
     if (resetFormBtn) {
         resetFormBtn.addEventListener('click', () => {
             leadForm.reset();
-            formSubmitBtn.disabled = false;
-            formSuccessBox.setAttribute('hidden', '');
+            if (formSubmitBtn) formSubmitBtn.disabled = false;
+            if (formSuccessBox) formSuccessBox.setAttribute('hidden', '');
             leadForm.removeAttribute('hidden');
         });
     }
