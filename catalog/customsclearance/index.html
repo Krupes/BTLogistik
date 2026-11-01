@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="../../styles/customsclearence.css">
     <link rel="stylesheet" href="../../styles/contacts-modal.css">
+    <link rel="stylesheet" href="../../libs/aos/aos.css">
 </head>
 <body>
 
@@ -73,7 +74,7 @@
 </section>
 
 <!-- ================= ХЛЕБНЫЕ КРОШКИ И ЗАГОЛОВОК СТРАНИЦЫ ================= -->
-<main class="inner-page">
+<main class="inner-page" data-aos="zoom-in">
     <div class="container">
 
         <nav class="breadcrumbs reveal-up" aria-label="Хлебные крошки">
@@ -172,22 +173,22 @@
                     </p>
 
                     <div class="steps-grid">
-                        <div class="step-box">
+                        <div class="step-box" data-aos="flip-up">
                             <span class="step-num gold-text">01</span>
                             <h3>Предварительный расчёт</h3>
                             <p>Рассчитываем стоимость таможенных платежей и НДС для выпуска товара в свободное обращение.</p>
                         </div>
-                        <div class="step-box">
+                        <div class="step-box" data-aos="flip-up">
                             <span class="step-num gold-text">02</span>
                             <h3>Прибытие на ПТО</h3>
                             <p>Размещение транспортного средства или подача Ж/Д вагона на наш терминал, закрытие процедуры таможенного транзита.</p>
                         </div>
-                        <div class="step-box">
+                        <div class="step-box" data-aos="flip-up">
                             <span class="step-num gold-text">03</span>
                             <h3>Маркировка и обработка</h3>
                             <p>При необходимости — выгрузка на таможенный склад, нанесение марок УКЗ и СИ.</p>
                         </div>
-                        <div class="step-box">
+                        <div class="step-box" data-aos="flip-up">
                             <span class="step-num gold-text">04</span>
                             <h3>Подача ДТ и выпуск</h3>
                             <p>Электронное декларирование в системе НАСЭД, контроль списания платежей, выпуск и передача товаросопроводительных документов водителю.</p>
@@ -290,7 +291,7 @@
 
 
                     <!-- РЕДКАЯ ВСТАВКА ФОТО №2 (Компактная карточка с иллюстрацией и текстом) -->
-                    <div class="inline-media-card reveal-up">
+                    <div class="inline-media-card reveal-up" data-aos="fade-right">
                         <img src="../../img/catalog_3.png" alt="Маркировка DataMatrix">
                         <div>
                             <h3>Нужна маркировка товара перед выпуском?</h3>
@@ -318,7 +319,7 @@
                 <div class="sidebar-sticky">
 
                     <!-- Оглавление страницы -->
-                    <div class="glass-card sidebar-box reveal-right">
+                    <div class="glass-card sidebar-box reveal-right" data-aos="fade-left">
                         <h3 class="sidebar-title">Содержание раздела</h3>
                         <nav class="toc-nav">
                             <a href="#overview" class="toc-link">Комплексное сопровождение ВЭД</a>
@@ -329,7 +330,7 @@
                     </div>
 
                     <!-- Другие разделы сайта -->
-                    <div class="glass-card sidebar-box reveal-right">
+                    <div class="glass-card sidebar-box reveal-right" data-aos="fade-left">
                         <h3 class="sidebar-title">Другие наши услуги</h3>
                         <ul class="other-services-list">
                             <li><a href="../warehouse/"><span>Услуги склада (СВХ / СОХ)</span> <span>→</span></a></li>
@@ -340,7 +341,7 @@
                     </div>
 
                     <!-- Быстрая форма / CTA с маскотом -->
-                    <div class="glass-card sidebar-box sidebar-cta reveal-right">
+                    <div class="glass-card sidebar-box sidebar-cta reveal-right" data-aos="fade-left">
                         <div class="sidebar-mascot">
                             <img src="../../img/mascott_customs.png" alt="Консультация специалиста">
                         </div>
@@ -361,7 +362,7 @@
 </main>
 
 <!-- ================= ФУТЕР ================= -->
-<footer class="site-footer">
+<footer class="site-footer" data-aos="fade-up">
     <div class="container">
         <div class="footer-top">
             <div class="footer-brand">
@@ -773,6 +774,12 @@
 
 <script src="../../scripts/burger.js"></script>
 <script src="../../scripts/contacts-modal.js"></script>
+<script src="../../libs/aos/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+
 
 </body>
 </html>

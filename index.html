@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="styles/responsive.css">
     <link rel="stylesheet" href="styles/alien_styles.css">
     <link rel="stylesheet" href="styles/contacts-modal.css">
+    <link rel="stylesheet" href="libs/aos/aos.css">
 
 
 </head>
 <body>
+
 
 
 <!-- ================= ШАПКА НА ГЛАВНОЙ (index.html) ================= -->
@@ -258,12 +260,12 @@
 
 
 <!-- ================= НОВЫЙ КАТАЛОГ УСЛУГ (BENTO SHOWCASE) ================= -->
-<section class="catalog" id="catalog">
+<section class="catalog" id="catalog" data-aos="fade-up">
     <div class="catalog-container">
         <div class="catalog-items">
 
             <!-- КАРТОЧКА 01: ТАМОЖЕННОЕ ОФОРМЛЕНИЕ -->
-            <article class="catalog-item glass-card">
+            <article class="catalog-item glass-card" data-aos="fade-down-right">
 <!--                <div class="catalog-card-top">-->
 <!--&lt;!&ndash;                    <span class="catalog-card-num">01</span>&ndash;&gt;-->
 <!--&lt;!&ndash;                    <span class="catalog-card-badge">ПТО • НАСЭД • 24/7</span>&ndash;&gt;-->
@@ -304,7 +306,7 @@
             </article>
 
             <!-- КАРТОЧКА 02: УСЛУГИ СКЛАДА (СВХ И СОХ) -->
-            <article class="catalog-item glass-card">
+            <article class="catalog-item glass-card" data-aos="fade-down-left">
 <!--                <div class="catalog-card-top">-->
 <!--                    <span class="catalog-card-num">02</span>-->
 <!--                    <span class="catalog-card-badge">СВХ + СОХ • WMS • 3PL</span>-->
@@ -315,11 +317,6 @@
                     <p class="catalog-card-desc">
                         Размещение транспорта в ЗТК, перецепка и перевалка под таможенным контролем, а также коммерческое ответственное хранение с адресным WMS-учётом.
                     </p>
-<!--                    <ul class="catalog-card-tags">-->
-<!--                        <li>Перецепка и досмотр</li>-->
-<!--                        <li>Хранение до 4 мес.</li>-->
-<!--                        <li>Кросс-докинг</li>-->
-<!--                    </ul>-->
                 </div>
 
                 <div class="catalog-item-img">
@@ -345,7 +342,7 @@
             </article>
 
             <!-- КАРТОЧКА 03: МАРКИРОВКА ТОВАРОВ -->
-            <article class="catalog-item glass-card">
+            <article class="catalog-item glass-card" data-aos="fade-up-right">
 <!--                <div class="catalog-card-top">-->
 <!--                    <span class="catalog-card-num">03</span>-->
 <!--                    <span class="catalog-card-badge">DataMatrix • УКЗ • Честный ЗНАК</span>-->
@@ -386,7 +383,7 @@
             </article>
 
             <!-- КАРТОЧКА 04: ОБРАБОТКА Ж/Д ПОСТАВОК -->
-            <article class="catalog-item glass-card">
+            <article class="catalog-item glass-card" data-aos="fade-up-left">
 <!--                <div class="catalog-card-top">-->
 <!--                    <span class="catalog-card-num">04</span>-->
 <!--                    <span class="catalog-card-badge">Собственная Ж/Д ветка в ЗТК</span>-->
@@ -438,7 +435,7 @@
 
 
 
- <section class="advantages-section" id="advSection">
+ <section class="advantages-section" id="advSection" data-aos="fade-up">
      <div class="section-header" data-parallax-header>
          <div class="header-glow" data-parallax-speed="0.18"></div>
 
@@ -447,7 +444,7 @@
   </span>
 
          <div class="header-content" data-parallax-speed="0.04">
-             <h2 class="section-title">
+             <h2 class="section-title" data-aos="zoom-in">
                  Почему выбирают <span class="title-accent">НАС</span>
              </h2>
              <div class="section-divider">
@@ -551,7 +548,7 @@
  <!-- ================= БЛОК РАСЧЕТА СТОИМОСТИ ================= -->
 
 
- <section class="calc-section" id="calculator">
+ <section class="calc-section" id="calculator" data-aos="fade-up">
      <div class="container">
          <div class="section-header" data-parallax-header>
              <div class="header-glow" data-parallax-speed="0.18"></div>
@@ -677,7 +674,7 @@
  <!-- ================= БЛОК КОНТАКТОВ ================= -->
 
 
- <section class="contacts-section" id="contacts">
+ <section class="contacts-section" id="contacts" data-aos="fade-up">
      <div class="container">
          <div class="section-header" data-parallax-header>
              <div class="header-glow" data-parallax-speed="0.18"></div>
@@ -790,7 +787,7 @@
  </section>
 
  <!-- ================= ФУТЕР ================= -->
- <footer class="site-footer">
+ <footer class="site-footer" data-aos="fade-up">
      <div class="container">
          <div class="footer-top">
 
@@ -1228,6 +1225,11 @@
 
 
 </body>
+
 <script src="index.js"></script>
 <script src="scripts/contacts-modal.js"></script>
+<script src="libs/aos/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 </html>

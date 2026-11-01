@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../styles/media.css">
   <link rel="stylesheet" href="../../styles/marking.css">
   <link rel="stylesheet" href="../../styles/contacts-modal.css">
+  <link rel="stylesheet" href="../../libs/aos/aos.css">
 </head>
 <body>
 
@@ -70,7 +71,7 @@
 </section>
 
 <!-- ================= ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ МАРКИРОВКИ ================= -->
-<main class="inner-page">
+<main class="inner-page" data-aos="zoom-in">
   <div class="container">
 
     <!-- Хлебные крошки -->
@@ -130,17 +131,17 @@
           </p>
 
           <div class="marking-types-grid">
-            <div class="m-type-card">
+            <div class="m-type-card" data-aos="flip-up">
               <span class="m-type-code gold-text">DataMatrix</span>
               <h3>Средства идентификации (СИ)</h3>
               <p>Двумерные криптографические коды для белорусской системы «Электронный знак» и российской системы «Честный ЗНАК» для беспрепятственного ввоза в РФ.</p>
             </div>
-            <div class="m-type-card">
+            <div class="m-type-card" data-aos="flip-up">
               <span class="m-type-code gold-text">УКЗ</span>
               <h3>Унифицированные контрольные знаки</h3>
               <p>Нанесение защищённых бумажных стикеров УКЗ на строгой отчётности для товаров, подлежащих контролю легальности ввоза в Республику Беларусь.</p>
             </div>
-            <div class="m-type-card">
+            <div class="m-type-card" data-aos="flip-up">
               <span class="m-type-code gold-text">EAC + BY</span>
               <h3>Информационные этикетки и контрэтикетки</h3>
               <p>Печать и оклейка потребительских стикеров на русском и белорусском языках (состав, импортёр, дата производства, знак обращения ЕАС) согласно ТР ТС.</p>
@@ -215,7 +216,7 @@
           </p>
 
           <div class="cargo-cats-grid">
-            <div class="cat-badge-card">
+            <div class="cat-badge-card" data-aos="flip-up">
               <div class="cat-top">
                 <span class="cat-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="25px" height="25px" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -234,7 +235,7 @@
               <p>Оклейка бутылок, алюминиевых банок, ПЭТ-тары и пивных кег с последующей переупаковкой в термоусадочную плёнку или гофрокороба.</p>
             </div>
 
-            <div class="cat-badge-card">
+            <div class="cat-badge-card" data-aos="flip-down"">
               <div class="cat-top">
                 <span class="cat-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -250,7 +251,7 @@
               <p>Нанесение этикеток на индивидуальные обувные коробки, вшивные ярлыки или полиэтиленовые пакеты с поштучной привязкой к артикулу и размеру.</p>
             </div>
 
-            <div class="cat-badge-card">
+            <div class="cat-badge-card" data-aos="flip-up">
               <div class="cat-top">
                 <span class="cat-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -269,7 +270,7 @@
               <p>Использование специальных этикеток с усиленным каучуковым клеевым слоем, который надёжно держится на резиновом протекторе при любых температурах.</p>
             </div>
 
-            <div class="cat-badge-card">
+            <div class="cat-badge-card" data-aos="flip-down">
               <div class="cat-top">
                 <span class="cat-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -286,7 +287,7 @@
               <p>Аккуратная стикеровка флаконов, туб и подарочных боксов прозрачными или полуглянцевыми этикетками без повреждения заводского дизайна.</p>
             </div>
 
-            <div class="cat-badge-card">
+            <div class="cat-badge-card" data-aos="flip-up">
               <div class="cat-top">
                 <span class="cat-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -312,7 +313,7 @@
               <p>Высокоскоростная маркировка банок, пачек и снеков на паллетах с соблюдением санитарных норм и контролем партий по срокам годности (FEFO).</p>
             </div>
 
-            <div class="cat-badge-card">
+            <div class="cat-badge-card" data-aos="flip-down">
               <div class="cat-top">
                 <span class="cat-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -355,22 +356,22 @@
           </p>
 
           <div class="steps-grid">
-            <div class="step-box">
+            <div class="step-box" data-aos="flip-down">
               <span class="step-num gold-text">01</span>
               <h3>Приём кодов или знаков УКЗ</h3>
               <p>Вы передаёте нам выгруженные из личного кабинета «Электронный знак» / «Честный ЗНАК» файлы с кодами или бумажные бобины УКЗ по акту приёма-передачи.</p>
             </div>
-            <div class="step-box">
+            <div class="step-box" data-aos="flip-down">
               <span class="step-num gold-text">02</span>
               <h3>Выгрузка и распаковка</h3>
               <p>Бережно разукомплектовываем паллеты и вскрываем заводские короба на СВХ (до растаможки) или на СОХ, сортируя товар по артикулам (GTIN).</p>
             </div>
-            <div class="step-box">
+            <div class="step-box" data-aos="flip-down">
               <span class="step-num gold-text">03</span>
               <h3>Печать, нанесение и валидация</h3>
               <p>Наносим DataMatrix / УКЗ и русскоязычный стикер ТР ТС на каждую единицу. Сотрудник сканирует код терминалом сбора данных для проверки читаемости.</p>
             </div>
-            <div class="step-box">
+            <div class="step-box" data-aos="flip-down">
               <span class="step-num gold-text">04</span>
               <h3>Агрегация (Короб → Паллета) и отчёт</h3>
               <p>Формируем групповые этикетки SSCC на короба и паллеты, паллетируем груз и передаём вам готовый электронный файл агрегации для подачи в таможенную декларацию.</p>
@@ -387,7 +388,7 @@
 
 
           <!-- РЕДКАЯ ВСТАВКА ФОТО №2 (Встроенная карточка) -->
-          <div class="inline-media-card reveal-up">
+          <div class="inline-media-card reveal-up" data-aos="fade-right">
             <img src="../../img/catalog_1.png" alt="Таможенное оформление после маркировки">
             <div>
               <h3>Пакетное предложение: Маркировка + Декларирование</h3>
@@ -405,7 +406,7 @@
         <div class="sidebar-sticky">
 
           <!-- Оглавление страницы -->
-          <div class="glass-card sidebar-box reveal-right">
+          <div class="glass-card sidebar-box reveal-right" data-aos="fade-left">
             <h3 class="sidebar-title">Навигация по разделу</h3>
             <nav class="toc-nav">
               <a href="#types" class="toc-link">01. Виды маркировки (СИ, УКЗ, EAC)</a>
@@ -417,7 +418,7 @@
           </div>
 
           <!-- Другие разделы сайта -->
-          <div class="glass-card sidebar-box reveal-right">
+          <div class="glass-card sidebar-box reveal-right" data-aos="fade-left">
             <h3 class="sidebar-title">Другие наши услуги</h3>
             <ul class="other-services-list">
               <li><a href="../../catalog/customsclearance/"><span>Таможенное оформление</span> <span>→</span></a></li>
@@ -428,7 +429,7 @@
           </div>
 
           <!-- Быстрая форма / CTA с маскотом -->
-          <div class="glass-card sidebar-box sidebar-cta reveal-right">
+          <div class="glass-card sidebar-box sidebar-cta reveal-right" data-aos="fade-left">
             <div class="sidebar-mascot">
               <img src="../../img/mascott_customs.png" alt="Расчёт стоимости маркировки">
             </div>
@@ -448,7 +449,7 @@
 </main>
 
 <!-- ================= ФУТЕР ================= -->
-<footer class="site-footer">
+<footer class="site-footer" data-aos="fade-up">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
@@ -866,6 +867,10 @@
 
 <script src="../../scripts/burger.js"></script>
 <script src="../../scripts/contacts-modal.js"></script>
+<script src="../../libs/aos/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 
 </body>
 </html>
