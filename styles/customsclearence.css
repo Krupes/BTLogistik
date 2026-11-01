@@ -454,7 +454,19 @@
     padding: 26px;
     box-sizing: border-box;
 }
-
+.sidebar-phone {
+    background: transparent;
+    border: none;
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin: 0 auto;
+    margin-bottom: 16px;
+}
+.sidebar-phone:hover {
+    cursor: pointer;
+    color: #cfae2f;
+}
 @media (min-width: 961px) {
     .sidebar-sticky .glass-card:nth-child(1){
         min-height: 273px;
