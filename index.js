@@ -265,6 +265,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const existingSaved = localStorage.getItem(STORAGE_KEY);
     calculateTotal(!existingSaved, true);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*ГЛОБУС*/
 
 const scene = document.getElementById('orbitScene');
@@ -521,6 +534,15 @@ function animate(now) {
     const tiltY   = isMobile ? 35  : 52;
 
     const snappedIndex = ((-Math.round(currentAngle / stepAngle) % totalCards) + totalCards) % totalCards;
+    let isGlobeSectionVisible = false;
+    const globeObserver = new IntersectionObserver((entries) => {
+        isGlobeSectionVisible = entries[0].isIntersecting;
+        if (isGlobeSectionVisible) {
+            if (isGlobeSectionVisible) {
+                requestAnimationFrame(animate);
+            };
+        }
+    }, { rootMargin: '150px 0px' });
 
     dots.forEach((dot, idx) => {
         dot.classList.toggle('active', idx === snappedIndex);
@@ -638,6 +660,18 @@ scene.addEventListener('touchend', () => {
 }, { passive: true });
 
 requestAnimationFrame(animate);
+
+
+
+
+
+
+
+
+
+
+
+
 /* ===== Бургер-меню ===== */
 (() => {
     const header = document.querySelector('.header');

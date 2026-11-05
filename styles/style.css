@@ -2666,7 +2666,7 @@ body {
 
 .calc-sublabel {
     font-size: 13.5px;
-    color: var(--text-light);
+    color: #e1e1e1e8;
     font-weight: 500;
     margin: 0 !important;
 }
