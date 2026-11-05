@@ -263,9 +263,104 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Обработка отправки формы
+    // ================= ОТПРАВКА ЗАЯВОК (EMAIL + TELEGRAM READY + СЛЕПОК КАЛЬКУЛЯТОРА) =================
+    const LEAD_CONFIG = {
+        // Для мгновенной работы без бэкенда можно использовать https://formsubmit.co/ajax/info@btlogistik.by
+        // либо указать путь к своему скрипту: '/send-mail.php'
+        EMAIL_ENDPOINT: 'https://formsubmit.co/ajax/info@btlogistik.by',
+        TELEGRAM_ENABLED: false,
+        TELEGRAM_WEBHOOK_URL: '' // Сюда при необходимости вставляется URL Cloudflare Worker / Telegram API
+    };
+
+    const getSavedCalculation = () => {
+        try {
+            const raw = localStorage.getItem('btl_last_calculation');
+            return raw ? JSON.parse(raw) : null;
+        } catch (e) {
+            return null;
+        }
+    };
+
+    // Готовый адаптер под Telegram-бота (совместимость заложена)
+    const sendToTelegramBot = async (payload) => {
+        if (!LEAD_CONFIG.TELEGRAM_ENABLED || !LEAD_CONFIG.TELEGRAM_WEBHOOK_URL) return;
+
+        const calc = payload.hiddenCalculation;
+        const calcBlock = calc
+            ? [
+                `\n📊 <b>Данные последнего расчёта калькулятора:</b>`,
+                `• Направление: ${calc.serviceName || '-'}`,
+                calc.pallets ? `• Паллет: ${calc.pallets} шт. | Дней: ${calc.days}` : '',
+                calc.category ? `• Категория: ${calc.category} | Кодов: ${calc.quantity} шт.` : '',
+                `• Экспресс: ${calc.expressOption || 'Нет'}`,
+                calc.manualUnloadOption ? `• Ручная выгрузка: ${calc.manualUnloadOption}` : '',
+                `• Формула: ${calc.formula || '-'}`,
+                `• <b>Расчётная сумма: ~${calc.estimatedTotalBYN || '-'}</b> (${calc.timestamp || ''})`
+            ].filter(Boolean).join('\n')
+            : '\n📊 <i>Калькулятор не использовался</i>';
+
+        const text = [
+            `🔥 <b>Новая заявка с сайта Белтаможлогистик</b>`,
+            `👤 Имя: ${payload.name || 'Не указано'}`,
+            `📞 Телефон: <b>${payload.phone}</b>`,
+            `💬 Способ связи: ${payload.contact_method || 'Звонок'}`,
+            `📝 Комментарий: ${payload.comment || '—'}`,
+            `🌐 Страница: ${payload.pageUrl}`,
+            calcBlock
+        ].join('\n');
+
+        try {
+            await fetch(LEAD_CONFIG.TELEGRAM_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text, parse_mode: 'HTML', rawPayload: payload })
+            });
+        } catch (err) {
+            console.warn('Ошибка отправки в Telegram:', err);
+        }
+    };
+
+    // Отправка на Email со скрытыми результатами калькулятора
+    const sendLeadToEmail = async (payload) => {
+        const calc = payload.hiddenCalculation;
+
+        // Плоская структура полей, чтобы письмо на почте читалось идеально
+        const emailBody = {
+            _subject: `Заявка с сайта Белтаможлогистик: ${payload.phone} (${payload.name || 'Клиент'})`,
+            _template: 'table',
+            'Имя клиента': payload.name || 'Не указано',
+            'Телефон': payload.phone,
+            'Предпочтительный способ связи': payload.contact_method || 'Обычный звонок',
+            'Комментарий клиента': payload.comment || 'Не указан',
+            'Страница отправки': payload.pageUrl,
+            '--- ДАННЫЕ КАЛЬКУЛЯТОРА (СКРЫТЫЕ) ---': calc ? 'Прикреплены ниже' : 'Пользователь не считал на калькуляторе',
+            'Калькулятор — Услуга': calc?.serviceName || '—',
+            'Калькулятор — Параметры': calc?.pallets
+                ? `${calc.pallets} палл. × ${calc.days} дн. (тариф ${calc.ratePerPalletDay})`
+                : (calc?.category ? `${calc.category}, ${calc.quantity} шт. (${calc.ratePerUnit})` : '—'),
+            'Калькулятор — Экспресс-обработка': calc?.expressOption || '—',
+            'Калькулятор — Ручная выгрузка': calc?.manualUnloadOption || '—',
+            'Калькулятор — Формула расчёта': calc?.formula || '—',
+            'Калькулятор — ИТОГОВАЯ СУММА': calc?.estimatedTotalBYN || '—',
+            'Время расчёта': calc?.timestamp || '—'
+        };
+
+        try {
+            await fetch(LEAD_CONFIG.EMAIL_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(emailBody)
+            });
+        } catch (err) {
+            console.warn('Email endpoint warning:', err);
+        }
+    };
+
     if (leadForm) {
-        leadForm.addEventListener('submit', (e) => {
+        leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             if (!leadForm.checkValidity()) {
                 leadForm.reportValidity();
@@ -273,20 +368,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const formData = new FormData(leadForm);
-            const payload = Object.fromEntries(formData.entries());
-            console.log('Заявка Белтаможлогистик:', payload);
+            const savedCalc = getSavedCalculation();
+
+            const fullLeadPayload = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                contact_method: formData.get('contact_method'),
+                comment: formData.get('comment'),
+                pageUrl: window.location.href,
+                hiddenCalculation: savedCalc ? savedCalc.detailsForStaff : null
+            };
+
+            if (formSubmitBtn) {
+                formSubmitBtn.disabled = true;
+                formSubmitBtn.querySelector('span').textContent = 'ОТПРАВКА...';
+            }
+
+            // Параллельная отправка на Почту и в ТГ-бота (если включён)
+            await Promise.allSettled([
+                sendLeadToEmail(fullLeadPayload),
+                sendToTelegramBot(fullLeadPayload)
+            ]);
+
+            if (formSubmitBtn) {
+                formSubmitBtn.disabled = false;
+                formSubmitBtn.querySelector('span').textContent = 'ОТПРАВИТЬ ЗАЯВКУ';
+            }
 
             leadForm.setAttribute('hidden', '');
             if (formSuccessBox) formSuccessBox.removeAttribute('hidden');
-        });
-    }
-
-    if (resetFormBtn) {
-        resetFormBtn.addEventListener('click', () => {
-            leadForm.reset();
-            if (formSubmitBtn) formSubmitBtn.disabled = false;
-            if (formSuccessBox) formSuccessBox.setAttribute('hidden', '');
-            leadForm.removeAttribute('hidden');
         });
     }
 });

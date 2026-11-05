@@ -17,8 +17,7 @@
 <body>
 
 
-
-<!-- ================= ШАПКА НА ГЛАВНОЙ (index.html) ================= -->
+<!--HEADER-->
 <section class="header glass-header">
     <div class="header-container">
         <div class="header-logo">
@@ -32,7 +31,6 @@
             <a href="about/index.html" class="nav-item">О Нас</a>
             <a href="catalog/customsclearance/index.html" class="nav-item">Таможенное оформление</a>
 
-            <!-- Выпадающее меню для Склада -->
             <div class="nav-dropdown">
                 <a href="catalog/warehouse/index.html" class="nav-item nav-dropdown-trigger" aria-expanded="false">
                     <span class="nav-dropdown-text">Услуги склада</span>
@@ -55,7 +53,6 @@
                     </a>
                 </div>
             </div>
-
             <a href="catalog/marking/index.html" class="nav-item">Маркировка</a>
             <a href="catalog/railway/index.html" class="nav-item">Ж/Д поставки</a>
         </nav>
@@ -71,6 +68,11 @@
         </button>
     </div>
 </section>
+
+
+
+
+<!--HERO-->
  <section class="hero">
      <div class="hero-container">
      <div class="hero-info">
@@ -207,80 +209,35 @@
 
 
 
+<!--CATALOG-->
+<section class="catalog" id="catalog" data-aos="fade-up">
+    <div class="catalog-container">
+        <div class="section-header" data-parallax-header>
+            <div class="header-glow" data-parallax-speed="0.18"></div>
 
-
-
-
-
- <!-- Пример 1: Секция услуг -->
- <div class="section-header" data-parallax-header>
-     <div class="header-glow" data-parallax-speed="0.18"></div>
-
-     <span class="header-watermark" data-parallax-speed="-0.12" aria-hidden="true">
+            <span class="header-watermark" data-parallax-speed="-0.12" aria-hidden="true">
     BT LOGISTIK
   </span>
 
-     <div class="header-content" data-parallax-speed="0.04">
-         <h2 class="section-title">
-             Наши <span class="title-accent">услуги</span>
-         </h2>
-         <div class="section-divider">
-             <span class="divider-diamond"></span>
-         </div>
-     </div>
- </div>
+            <div class="header-content" data-parallax-speed="0.04">
+                <h2 class="section-title">
+                    Наши <span class="title-accent">услуги</span>
+                </h2>
+                <div class="section-divider">
+                    <span class="divider-diamond"></span>
+                </div>
+            </div>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ================= НОВЫЙ КАТАЛОГ УСЛУГ (BENTO SHOWCASE) ================= -->
-<section class="catalog" id="catalog" data-aos="fade-up">
-    <div class="catalog-container">
         <div class="catalog-items">
 
             <!-- КАРТОЧКА 01: ТАМОЖЕННОЕ ОФОРМЛЕНИЕ -->
             <article class="catalog-item glass-card" data-aos="fade-down-right">
-<!--                <div class="catalog-card-top">-->
-<!--&lt;!&ndash;                    <span class="catalog-card-num">01</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <span class="catalog-card-badge">ПТО • НАСЭД • 24/7</span>&ndash;&gt;-->
-<!--                </div>-->
-
                 <div class="catalog-card-body">
                     <h3 class="catalog-item-title gold-text">Таможенное оформление</h3>
                     <p class="catalog-card-desc">
                         Полный цикл декларирования импорта, экспорта и транзита. Подбор кодов ТН ВЭД, расчёт платежей и выпуск «день в день» для резидентов РБ и РФ.
                     </p>
-<!--                    <ul class="catalog-card-tags">-->
-<!--                        <li>ИМ40 / ЭК10 / ИМ70</li>-->
-<!--                        <li>Коды ТН ВЭД</li>-->
-<!--                        <li>Статдекларации</li>-->
-<!--                    </ul>-->
                 </div>
 
                 <div class="catalog-item-img">
@@ -305,13 +262,9 @@
                 </div>
             </article>
 
+
             <!-- КАРТОЧКА 02: УСЛУГИ СКЛАДА (СВХ И СОХ) -->
             <article class="catalog-item glass-card" data-aos="fade-down-left">
-<!--                <div class="catalog-card-top">-->
-<!--                    <span class="catalog-card-num">02</span>-->
-<!--                    <span class="catalog-card-badge">СВХ + СОХ • WMS • 3PL</span>-->
-<!--                </div>-->
-
                 <div class="catalog-card-body">
                     <h3 class="catalog-item-title gold-text">Услуги склада (СВХ / СОХ)</h3>
                     <p class="catalog-card-desc">
@@ -341,23 +294,14 @@
                 </div>
             </article>
 
+
             <!-- КАРТОЧКА 03: МАРКИРОВКА ТОВАРОВ -->
             <article class="catalog-item glass-card" data-aos="fade-up-right">
-<!--                <div class="catalog-card-top">-->
-<!--                    <span class="catalog-card-num">03</span>-->
-<!--                    <span class="catalog-card-badge">DataMatrix • УКЗ • Честный ЗНАК</span>-->
-<!--                </div>-->
-
                 <div class="catalog-card-body">
                     <h3 class="catalog-item-title gold-text">Маркировка товара</h3>
                     <p class="catalog-card-desc">
                         Полный цикл промышленной маркировки импортных грузов. Интеграция с системами «Электронный знак» (РБ) и «Честный ЗНАК» (РФ).
                     </p>
-<!--                    <ul class="catalog-card-tags">-->
-<!--                        <li>Электронный знак РБ</li>-->
-<!--                        <li>Честный ЗНАК РФ</li>-->
-<!--                        <li>Этикетки EAC</li>-->
-<!--                    </ul>-->
                 </div>
 
                 <div class="catalog-item-img">
@@ -382,23 +326,14 @@
                 </div>
             </article>
 
+
             <!-- КАРТОЧКА 04: ОБРАБОТКА Ж/Д ПОСТАВОК -->
             <article class="catalog-item glass-card" data-aos="fade-up-left">
-<!--                <div class="catalog-card-top">-->
-<!--                    <span class="catalog-card-num">04</span>-->
-<!--                    <span class="catalog-card-badge">Собственная Ж/Д ветка в ЗТК</span>-->
-<!--                </div>-->
-
                 <div class="catalog-card-body">
                     <h3 class="catalog-item-title gold-text">Обработка Ж/Д поставок</h3>
                     <p class="catalog-card-desc">
                         Приём вагонов и контейнеров напрямую в зону таможенного контроля к рампе склада. Выгрузка, таможенное оформление, маркировка DataMatrix/УКЗ и размещение на склад на одной площадке.
                     </p>
-<!--                    <ul class="catalog-card-tags">-->
-<!--                        <li>Контейнеры из КНР</li>-->
-<!--                        <li>Крытые вагоны</li>-->
-<!--                        <li>Вагон ⇄ Еврофура</li>-->
-<!--                    </ul>-->
                 </div>
 
                 <div class="catalog-item-img">
@@ -432,9 +367,7 @@
 
 
 
-
-
-
+<!--GLOBE-->
  <section class="advantages-section" id="advSection" data-aos="fade-up">
      <div class="section-header" data-parallax-header>
          <div class="header-glow" data-parallax-speed="0.18"></div>
@@ -477,8 +410,6 @@
                  </div>
                  <div class="globe-shade"></div>
              </div>
-
-<!--             <span class="globe-brand">BELTAMOZHLOGISTIK</span>-->
          </div>
 
          <!-- Вращающиеся карточки -->
@@ -538,142 +469,208 @@
 
 
 
+<!-- CALCULATOR-->
+<!-- ================= БЛОК РАСЧЕТА СТОИМОСТИ (БЕЗ ОТКРЫТЫХ ТАРИФОВ + БЫСТРЫЙ НАБОР) ================= -->
+<!-- ================= БЛОК РАСЧЕТА СТОИМОСТИ ================= -->
+<section class="calc-section" id="calculator">
+    <div class="container">
+        <div class="section-header" data-parallax-header>
+            <div class="header-glow" data-parallax-speed="0.18"></div>
+            <span class="header-watermark" data-parallax-speed="-0.12" aria-hidden="true">BT LOGISTIK</span>
+            <div class="header-content" data-parallax-speed="0.04">
+                <h2 class="section-title">
+                    Калькулятор <span class="title-accent">стоимости</span>
+                </h2>
+                <div class="section-divider">
+                    <span class="divider-diamond"></span>
+                </div>
+            </div>
+        </div>
+
+        <p class="section-subtitle">Выберите направление и укажите объём партии для мгновенного расчёта</p>
+
+        <div class="glass-card calc-card">
+            <form id="costCalcForm" class="calc-grid" onsubmit="return false;">
+
+                <!-- ЛЕВАЯ КОЛОНКА: ПАРАМЕТРЫ -->
+                <div class="calc-inputs">
+
+                    <!-- ШАГ 1: Выбор типа услуги -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="calc-step-badge">1</span>
+                            Выберите направление услуги
+                        </label>
+                        <div class="service-pills" id="servicePills" role="radiogroup" aria-label="Направление услуги">
+                            <button type="button" class="pill-btn active" data-service="svh">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+                                <span>Услуги склада / СВХ</span>
+                            </button>
+                            <button type="button" class="pill-btn" data-service="soh">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                                <span>Услуги склада / СОХ</span>
+                            </button>
+                            <button type="button" class="pill-btn" data-service="marking">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                <span>Маркировка (УКЗ / DataMatrix)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ШАГ 2 (СКЛАД СВХ / СОХ): Паллеты (1..26) и Дни (безлимит) -->
+                    <div class="calc-mode-panel is-visible" id="calcWarehousePanel">
+                        <label class="form-label">
+                            <span class="calc-step-badge">2</span>
+                            Параметры складского хранения
+                        </label>
+                        <div class="form-row-2col">
+
+                            <!-- Кол-во паллет: шаг -1 / +1 -->
+                            <div class="form-group">
+                                <div class="calc-label-row">
+                                    <label class="calc-sublabel" for="calcPallets">Количество паллет</label>
+<!--                                    <span class="calc-limit-hint">макс. 26 шт.</span>-->
+                                </div>
+                                <div class="calc-stepper-box">
+                                    <button type="button" class="calc-step-btn" data-step-target="calcPallets" data-step-delta="-1" aria-label="Уменьшить на 1">−</button>
+                                    <div class="calc-input-wrap">
+                                        <input type="number" id="calcPallets" class="glass-input calc-stepper-input" value="3" min="1" max="26" step="1" inputmode="numeric">
+                                        <span class="calc-input-unit">шт.</span>
+                                    </div>
+                                    <button type="button" class="calc-step-btn" data-step-target="calcPallets" data-step-delta="1" aria-label="Увеличить на 1">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Срок хранения: шаг -1 / +1 -->
+                            <div class="form-group">
+                                <div class="calc-label-row">
+                                    <label class="calc-sublabel" for="calcDays">Срок хранения</label>
+<!--                                    <span class="calc-limit-hint">в сутках</span>-->
+                                </div>
+                                <div class="calc-stepper-box">
+                                    <button type="button" class="calc-step-btn" data-step-target="calcDays" data-step-delta="-1" aria-label="Уменьшить на 1">−</button>
+                                    <div class="calc-input-wrap">
+                                        <input type="number" id="calcDays" class="glass-input calc-stepper-input" value="4" min="1" step="1" inputmode="numeric">
+                                        <span class="calc-input-unit">дн.</span>
+                                    </div>
+                                    <button type="button" class="calc-step-btn" data-step-target="calcDays" data-step-delta="1" aria-label="Увеличить на 1">+</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ШАГ 2 (МАРКИРОВКА): Категория товара и Кол-во кодов (шаг -100 / +100) -->
+                    <div class="calc-mode-panel" id="calcMarkingPanel" hidden>
+                        <label class="form-label">
+                            <span class="calc-step-badge">02</span>
+                            Параметры партии на маркировку
+                        </label>
+                        <div class="form-row-2col">
+
+                            <div class="form-group">
+                                <div class="calc-label-row">
+                                    <label class="calc-sublabel" for="calcMarkingCategory">Категория товара</label>
+                                </div>
+                                <div class="calc-input-wrap">
+                                    <span class="calc-input-icon">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                                    </span>
+                                    <select id="calcMarkingCategory" class="glass-input calc-icon-select">
+                                        <option value="clothing" data-name="одежда / обувь">Одежда и обувь</option>
+                                        <option value="bottled" data-name="бутылированная продукция" selected>Бутылированная продукция</option>
+                                        <option value="fmcg" data-name="товары народного потребления">Товары народного потребления</option>
+                                        <option value="oversized" data-name="крупногабаритный груз">Крупногабаритный груз</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Кол-во DataMatrix: шаг -100 / +100 (10..50 000 шт) -->
+                            <div class="form-group">
+                                <div class="calc-label-row">
+                                    <label class="calc-sublabel" for="calcMarkingQty">Количество DataMatrix *</label>
+<!--                                    <span class="calc-limit-hint">10 – 50 000 шт.</span>-->
+                                </div>
+                                <div class="calc-stepper-box">
+                                    <button type="button" class="calc-step-btn" data-step-target="calcMarkingQty" data-step-delta="-100" aria-label="Уменьшить на 100">−</button>
+                                    <div class="calc-input-wrap">
+                                        <input type="number" id="calcMarkingQty" class="glass-input calc-stepper-input" value="1000" min="1" max="50000" step="100" inputmode="numeric">
+                                        <span class="calc-input-unit">шт.</span>
+                                    </div>
+                                    <button type="button" class="calc-step-btn" data-step-target="calcMarkingQty" data-step-delta="100" aria-label="Увеличить на 100">+</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="calc-marking-tariff-badge">
+                            <span class="tariff-star">*</span>
+                            <span>Тариф включает распечатку, нанесение и увязку</span>
+                        </div>
+                    </div>
+
+                    <!-- ШАГ 3: Дополнительные опции -->
+                    <div class="form-group" style="margin-top: 6px;">
+                        <label class="form-label">
+                            <span class="calc-step-badge">3</span>
+                            Дополнительные опции
+                        </label>
+                        <div class="toggles-row">
+                            <label class="toggle-item">
+                                <input type="checkbox" id="optExpress">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-text">Экспресс-обработка</span>
+                            </label>
+
+                            <label class="toggle-item" id="manualUnloadWrap">
+                                <input type="checkbox" id="optManualUnload">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-text">Ручная выгрузка</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ПРАВАЯ КОЛОНКА: ИТОГ И КНОПКА "НАЧАТЬ РАБОТУ" -->
+                <div class="calc-summary">
+                    <div class="summary-box">
+                        <div class="summary-top-meta">
+                            <span class="summary-service-tag" id="summaryServiceTag">Услуги склада / СВХ</span>
+                            <span class="summary-caption">Ориентировочная стоимость:</span>
+                        </div>
+
+                        <div class="summary-formula" id="summarySpecs">
+                            3 шт. (паллет) • 4 дн. хранения
+                        </div>
+
+                        <div class="summary-price">
+                            <span class="summary-tilde">~</span>
+                            <span id="calcTotalValue">27</span>
+                            <span class="currency">BYN</span>
+                        </div>
+
+                        <p class="summary-note" id="summaryNote">
+                            Нажмите «Начать работу», чтобы согласовать поставку со специалистом. Расчёт является предварительным.
+                        </p>
+
+                        <button type="button" class="gold-btn calc-submit-btn" id="startWorkBtn">
+                            <span>НАЧАТЬ РАБОТУ</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
 
 
 
 
 
-
-
- <!-- ================= БЛОК РАСЧЕТА СТОИМОСТИ ================= -->
-
-
- <section class="calc-section" id="calculator" data-aos="fade-up">
-     <div class="container">
-         <div class="section-header" data-parallax-header>
-             <div class="header-glow" data-parallax-speed="0.18"></div>
-
-             <span class="header-watermark" data-parallax-speed="-0.12" aria-hidden="true">
-    BT LOGISTIK
-  </span>
-
-             <div class="header-content" data-parallax-speed="0.04">
-                 <h2 class="section-title">
-                     Калькулятор <span class="title-accent">стоимости</span>
-                 </h2>
-                 <div class="section-divider">
-                     <span class="divider-diamond"></span>
-                 </div>
-             </div>
-         </div>
-
-
-
-
-         <p class="section-subtitle">Быстрый ориентировочный расчёт логистических, складских и таможенных услуг</p>
-
-         <div class="glass-card calc-card">
-             <form id="costCalcForm" class="calc-grid" onsubmit="return false;">
-
-                 <!-- Левая колонка: Параметры -->
-                 <div class="calc-inputs">
-
-                     <!-- Выбор услуги (интерактивные теги) -->
-                     <div class="form-group">
-                         <label class="form-label">Выберите направление услуги</label>
-                         <div class="service-pills" id="servicePills">
-                             <button type="button" class="pill-btn " >Услуги склада / СВХ</button>
-                             <button type="button" class="pill-btn" >Услуги склада / СОХ</button>
-                             <button type="button" class="pill-btn" >Маркировка (УКЗ / DataMatrix)</button>
-                         </div>
-                     </div>
-
-                     <div class="form-row-2col">
-                         <!-- Категория товара -->
-                         <div class="form-group">
-                             <label class="form-label" for="cargoCategory">Категория товара</label>
-                             <div class="custom-select-wrapper">
-                                 <select id="cargoCategory" class="glass-input">
-
-                                     <option value="0">Не выбрано</option>
-                                     <option value="1">Пиво</option>
-                                     <option value="1.25">Товары народного потребления</option>
-                                     <option value="1.4">Крупногабаритный груз</option>
-                                 </select>
-                             </div>
-                         </div>
-
-                         <!-- Количество -->
-                         <div class="form-group" id="cargoAmountGroup">
-                             <label class="form-label" id="cargoAmountLabel" for="cargoAmount">Количество паллет</label>
-                             <input type="number" id="cargoAmount" class="glass-input" value="1" min="1">
-                         </div>
-                     </div>
-
-                     <!-- Дополнительные опции (переключатели) -->
-                     <div class="form-group">
-                         <label class="form-label">Дополнительные опции</label>
-                         <div class="toggles-row">
-                             <label class="toggle-item">
-                                 <input type="checkbox" id="" value="1.3">
-                                 <span class="toggle-slider"></span>
-                                 <span class="toggle-text">Экспресс-обработка</span>
-                             </label>
-
-                             <label class="toggle-item">
-                                 <input type="checkbox" id="optDocs" value="80">
-                                 <span class="toggle-slider"></span>
-                                 <span class="toggle-text">Ручная выгрузка</span>
-                             </label>
-
-                             <label class="toggle-item">
-                                 <input type="checkbox" id="" value="1.3">
-                                 <span class="toggle-slider"></span>
-                                 <span class="toggle-text">Переупаковка</span>
-                             </label>
-                         </div>
-                     </div>
-
-                 </div>
-
-                 <!-- Правая колонка: Итог и CTA -->
-                 <div class="calc-summary">
-                     <div class="summary-box">
-                         <span class="summary-caption">Ориентировочная стоимость:</span>
-                         <div class="summary-price">
-                             от <span id="calcTotalValue">0</span> <span class="currency">BYN</span>
-                         </div>
-                         <p class="summary-note">
-                             Расчёт является предварительным. Точная ставка зависит от специфики груза, кодов ТН ВЭД и сроков хранения.
-                         </p>
-                         <button type="button" class="gold-btn calc-submit-btn" id="openOrderModalBtn">
-                             ОСТАВИТЬ ЗАЯВКУ НА РАСЧЁТ
-                         </button>
-                     </div>
-                 </div>
-
-             </form>
-         </div>
-     </div>
- </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- ================= БЛОК КОНТАКТОВ ================= -->
-
-
+ <!-- CONTACTS -->
  <section class="contacts-section" id="contacts" data-aos="fade-up">
      <div class="container">
          <div class="section-header" data-parallax-header>
@@ -786,7 +783,16 @@
      </div>
  </section>
 
- <!-- ================= ФУТЕР ================= -->
+
+
+
+
+
+
+
+
+
+ <!-- FOOTER-->
  <footer class="site-footer" data-aos="fade-up">
      <div class="container">
          <div class="footer-top">
@@ -852,9 +858,7 @@
 
 
 
-
-
-
+<!--MODAL CONTACTS-->
  <div class="btl-modal-overlay" id="btlContactModal" aria-hidden="true" role="dialog" aria-modal="true">
      <div class="btl-modal-container">
 
@@ -1203,21 +1207,6 @@
 
      </div>
  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

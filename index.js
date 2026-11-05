@@ -1,76 +1,270 @@
-
-////КАЛЬКУЛЯТОР ///
-
+/* ==========================================================================
+   КАЛЬКУЛЯТОР СТОИМОСТИ («ПОД КАПОТОМ» + КНОПКИ −/+ + LOCALSTORAGE)
+   ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-    const pills = document.querySelectorAll('#servicePills .pill-btn');
-    const categorySelect = document.getElementById('cargoCategory');
-    const amountInput = document.getElementById('cargoAmount');
-    const amountLabel = document.getElementById('cargoAmountLabel');
-    const amountGroup = document.getElementById('cargoAmountGroup');
+    const STORAGE_KEY = 'btl_last_calculation';
+
+    const serviceBtns = document.querySelectorAll('#servicePills .pill-btn');
+    const warehousePanel = document.getElementById('calcWarehousePanel');
+    const markingPanel = document.getElementById('calcMarkingPanel');
+
+    // Инпуты
+    const palletsInput = document.getElementById('calcPallets');
+    const daysInput = document.getElementById('calcDays');
+    const markingCatSelect = document.getElementById('calcMarkingCategory');
+    const markingQtyInput = document.getElementById('calcMarkingQty');
+
+    // Тумблеры
     const optExpress = document.getElementById('optExpress');
-    const optDocs = document.getElementById('optDocs');
+    const manualUnloadWrap = document.getElementById('manualUnloadWrap');
+    const optManualUnload = document.getElementById('optManualUnload');
+
+    // Вывод итога
+    const summaryServiceTag = document.getElementById('summaryServiceTag');
+    const summarySpecs = document.getElementById('summarySpecs');
     const totalValueEl = document.getElementById('calcTotalValue');
+    const startWorkBtn = document.getElementById('startWorkBtn');
 
-    let baseRate = 180; // Базовая ставка выбранной услуги (BYN)
+    if (!totalValueEl) return;
 
-    function calculateTotal() {
-        if (!totalValueEl) return;
-
-        const categoryMultiplier = parseFloat(categorySelect.value) || 1;
-        const rawAmount = parseInt(amountInput.value, 10);
-        const amount = isNaN(rawAmount) || rawAmount < 1 ? 1 : rawAmount;
-
-        // Формула расчёта: базовая ставка + надбавка за объём партии * коэффициент категории
-        let subtotal = (baseRate + amount * 18) * categoryMultiplier;
-
-        // Надбавка за экспресс-обработку (+30%)
-        if (optExpress && optExpress.checked) {
-            subtotal *= 1.3;
+    // Закрытые тарифы (только внутри JS)
+    const RATES = {
+        palletDay: 2.22,
+        manualUnloadPerPallet: 14.4,
+        warehouseExpressMult: 1.30,
+        markingExpressMult: 1.15,
+        markingCategories: {
+            clothing: 0.26,   // одежда / обувь
+            bottled: 0.17,    // бутылированная продукция
+            fmcg: 0.14,       // товары народного потребления
+            oversized: 1.20   // крупногабаритный груз
         }
+    };
 
-        // Фиксированная надбавка за полное документальное сопровождение
-        if (optDocs && optDocs.checked) {
-            subtotal += parseFloat(optDocs.value);
+    // Лимиты полей
+    const LIMITS = {
+        calcPallets: { min: 1, max: Infinity },         // Паллеты: 1..26 шт.
+        calcDays: { min: 1, max: Infinity },      // Дни: безлимит
+        calcMarkingQty: { min: 1, max: Infinity }   // Марки: 10..50 000 шт.
+    };
+
+    const serviceNames = {
+        svh: 'Услуги склада / СВХ',
+        soh: 'Услуги склада / СОХ',
+        marking: 'Маркировка (УКЗ / DataMatrix)'
+    };
+
+    let currentService = 'svh';
+    let lastCalcData = null;
+
+    const sanitizeInput = (inputEl, enforceMinOnEmpty = true) => {
+        if (!inputEl) return 1;
+        const rule = LIMITS[inputEl.id] || { min: 1, max: Infinity };
+        let val = parseInt(inputEl.value, 10);
+
+        if (isNaN(val)) {
+            if (!enforceMinOnEmpty) return rule.min;
+            val = rule.min;
         }
+        if (val < rule.min) val = rule.min;
+        if (val > rule.max) val = rule.max;
 
-        // Плавное округление до десятков
-        const finalPrice = Math.round(subtotal / 10) * 10;
-        totalValueEl.textContent = finalPrice.toLocaleString('ru-RU');
-    }
+        if (enforceMinOnEmpty || inputEl.value !== '') {
+            inputEl.value = val;
+        }
+        return val;
+    };
 
-    // Переключение тегов услуг
-    pills.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            pills.forEach((b) => b.classList.remove('active'));
-            amountGroup.style.display = 'block';
-            btn.classList.add('active');
+    function calculateTotal(saveToStorage = true, enforceInputRewrite = false) {
+        let total = 0;
+        let userSpecsSummary = [];
+        let humanMessage = '';
+        let detailsForStaff = {};
 
-            if (amountLabel) {
-                if (btn.textContent.includes('Маркировка')) {
-                    amountLabel.textContent = 'Количество DataMatrix';
-                } else {
-                    amountLabel.textContent = 'Количество паллет';
-                }
+        const isExpress = Boolean(optExpress && optExpress.checked);
+
+        if (currentService === 'svh' || currentService === 'soh') {
+            const pallets = sanitizeInput(palletsInput, enforceInputRewrite);
+            const days = sanitizeInput(daysInput, enforceInputRewrite);
+            const isManualUnload = Boolean(optManualUnload && optManualUnload.checked);
+
+            const baseStorage = days * RATES.palletDay * pallets;
+            total = baseStorage;
+
+            userSpecsSummary.push(`${pallets} шт. (паллет)`, `${days} дн. хранения`);
+
+            const activeOpts = [];
+            if (isExpress) {
+                total *= RATES.warehouseExpressMult;
+                userSpecsSummary.push('Экспресс');
+                activeOpts.push('экспресс-обработка');
             }
 
-            baseRate = parseFloat(btn.dataset.base) || 150;
-            calculateTotal();
+            const manualCost = isManualUnload ? (pallets * RATES.manualUnloadPerPallet) : 0;
+            if (isManualUnload) {
+                total += manualCost;
+                userSpecsSummary.push('Ручная выгрузка');
+                activeOpts.push('ручная выгрузка');
+            }
+
+            const serviceLabel = currentService === 'svh'
+                ? 'хранение на складе (СВХ)'
+                : 'хранение на складе (СОХ)';
+
+            const optsSuffix = activeOpts.length ? ` (${activeOpts.join(', ')})` : '';
+            humanMessage = `Здравствуйте! Меня интересует ${serviceLabel}: ${pallets} палл. на срок ${days} дн.${optsSuffix}.`;
+
+            detailsForStaff = {
+                serviceCode: currentService,
+                serviceName: serviceNames[currentService],
+                pallets: `${pallets} шт.`,
+                days: `${days} дн.`,
+                ratePerPalletDay: `${RATES.palletDay} BYN`,
+                baseStorageCost: `${baseStorage.toFixed(2)} BYN`,
+                expressOption: isExpress ? 'Да (+30%)' : 'Нет',
+                manualUnloadOption: isManualUnload ? `Да (+${manualCost.toFixed(2)} BYN)` : 'Нет',
+                formula: `${days} дн. × ${RATES.palletDay} BYN × ${pallets} палл.${isExpress ? ' + 30%' : ''}${isManualUnload ? ' + ' + manualCost.toFixed(2) + ' BYN' : ''}`,
+                estimatedTotalBYN: `${Math.round(total)} BYN`,
+                timestamp: new Date().toLocaleString('ru-RU')
+            };
+        } else {
+            const selectedOption = markingCatSelect.options[markingCatSelect.selectedIndex];
+            const catKey = selectedOption.value;
+            const categoryName = selectedOption.dataset.name || selectedOption.text;
+            const rate = RATES.markingCategories[catKey] || 0.17;
+            const qty = sanitizeInput(markingQtyInput, enforceInputRewrite);
+
+            const baseMarking = rate * qty;
+            total = baseMarking;
+
+            userSpecsSummary.push(selectedOption.text, `${qty.toLocaleString('ru-RU')} шт.`);
+
+            if (isExpress) {
+                total *= RATES.markingExpressMult;
+                userSpecsSummary.push('Экспресс');
+            }
+
+            const expressSuffix = isExpress ? ' (с экспресс-обработкой)' : '';
+            humanMessage = `Здравствуйте! Меня интересует маркировка ${qty.toLocaleString('ru-RU')} шт. — ${categoryName}${expressSuffix}.`;
+
+            detailsForStaff = {
+                serviceCode: 'marking',
+                serviceName: serviceNames.marking,
+                category: categoryName,
+                quantity: `${qty.toLocaleString('ru-RU')} шт.`,
+                ratePerUnit: `${rate} BYN/шт.`,
+                baseMarkingCost: `${baseMarking.toFixed(2)} BYN`,
+                expressOption: isExpress ? 'Да (+15%)' : 'Нет',
+                formula: `${qty} шт. × ${rate} BYN${isExpress ? ' + 15%' : ''}`,
+                estimatedTotalBYN: `${Math.round(total)} BYN`,
+                timestamp: new Date().toLocaleString('ru-RU')
+            };
+        }
+
+        if (summaryServiceTag) summaryServiceTag.textContent = serviceNames[currentService];
+        if (summarySpecs) summarySpecs.textContent = userSpecsSummary.join(' • ');
+        totalValueEl.textContent = Math.round(total).toLocaleString('ru-RU');
+
+        const priceWrap = totalValueEl.closest('.summary-price');
+        if (priceWrap) {
+            priceWrap.classList.remove('is-pop');
+            void priceWrap.offsetWidth;
+            priceWrap.classList.add('is-pop');
+        }
+
+        lastCalcData = { humanMessage, detailsForStaff };
+
+        if (saveToStorage) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(lastCalcData));
+            } catch (err) {
+                console.warn('Ошибка записи localStorage:', err);
+            }
+        }
+    }
+
+    const setServiceMode = (serviceKey) => {
+        currentService = serviceKey;
+        serviceBtns.forEach((btn) => btn.classList.toggle('active', btn.dataset.service === serviceKey));
+
+        const isMarking = serviceKey === 'marking';
+        if (warehousePanel) {
+            warehousePanel.hidden = isMarking;
+            warehousePanel.classList.toggle('is-visible', !isMarking);
+        }
+        if (markingPanel) {
+            markingPanel.hidden = !isMarking;
+            markingPanel.classList.toggle('is-visible', isMarking);
+        }
+        if (manualUnloadWrap) {
+            manualUnloadWrap.style.display = isMarking ? 'none' : 'inline-flex';
+        }
+
+        calculateTotal(true, true);
+    };
+
+    serviceBtns.forEach((btn) => {
+        btn.addEventListener('click', () => setServiceMode(btn.dataset.service));
+    });
+
+    // Кнопки "−" и "+" (Паллеты и Дни: -1/+1, Маркировка: -100/+100)
+    document.querySelectorAll('[data-step-target]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const input = document.getElementById(btn.dataset.stepTarget);
+            if (!input) return;
+            const delta = parseInt(btn.dataset.stepDelta, 10) || 0;
+            const currentVal = parseInt(input.value, 10) || 0;
+
+            // Если в маркировке стоял минимум 10 и нажали +100 -> переходим на круглое 100
+            if (input.id === 'calcMarkingQty' && currentVal === 10 && delta === 100) {
+                input.value = 100;
+            } else {
+                input.value = currentVal + delta;
+            }
+            calculateTotal(true, true);
         });
     });
 
-    // Слушатели изменений в полях
-    [categorySelect, amountInput, optExpress, optDocs].forEach((el) => {
-        if (el) {
-            el.addEventListener('input', calculateTotal);
-            el.addEventListener('change', calculateTotal);
-        }
+    [palletsInput, daysInput, markingCatSelect, markingQtyInput, optExpress, optManualUnload].forEach((el) => {
+        if (!el) return;
+        el.addEventListener('input', () => {
+            const rule = LIMITS[el.id];
+            if (rule && parseInt(el.value, 10) > rule.max) {
+                el.value = rule.max;
+            }
+            calculateTotal(true, false);
+        });
+        el.addEventListener('blur', () => calculateTotal(true, true));
+        el.addEventListener('change', () => calculateTotal(true, true));
     });
 
-    // Первичный расчёт при загрузке
-    calculateTotal();
+    if (startWorkBtn) {
+        startWorkBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            calculateTotal(true, true);
+
+            const commentField = document.getElementById('btlUserComment');
+            if (commentField && lastCalcData) {
+                commentField.value = lastCalcData.humanMessage;
+            }
+
+            const modalTrigger = document.createElement('button');
+            modalTrigger.setAttribute('data-open-contact-modal', 'form');
+            modalTrigger.style.display = 'none';
+            document.body.appendChild(modalTrigger);
+            modalTrigger.click();
+            modalTrigger.remove();
+
+            setTimeout(() => {
+                const nameInput = document.getElementById('btlUserName');
+                if (nameInput) nameInput.focus();
+            }, 350);
+        });
+    }
+
+    const existingSaved = localStorage.getItem(STORAGE_KEY);
+    calculateTotal(!existingSaved, true);
 });
-
-
 /*ГЛОБУС*/
 
 const scene = document.getElementById('orbitScene');
