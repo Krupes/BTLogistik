@@ -152,6 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+
+        const contactsTabHiddenInHero = document.getElementsByClassName('btl-tab-btn')[2];
+        if (contactsTabHiddenInHero) {
+            contactsTabHiddenInHero.style.display = ''; // Возвращаем вкладку при закрытии окна
+        }
     };
 
     // Кнопка калькулятора на главной странице открывает сразу форму заявки
@@ -193,24 +198,29 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const openTrigger = e.target.closest('[data-open-contact-modal]');
-        if (openTrigger) {
-            e.preventDefault();
-            const targetTab = openTrigger.dataset.openContactModal || 'contacts';
-            openModal(targetTab);
-            return;
-        }
-        const contactsTabHiddenInHero = document.getElementsByClassName('btl-tab-btn')[0];
+        const contactsTabHiddenInHero = document.getElementsByClassName('btl-tab-btn')[2];
+
+        // 1. Если нажали на кнопку в Hero (с атрибутом data-open-contact-modal-hero)
         const openTriggerHero = e.target.closest('[data-open-contact-modal-hero]');
         if (openTriggerHero) {
             e.preventDefault();
-            console.log('hello');
-            contactsTabHiddenInHero.style.display = 'none';
-            const targetTab = openTriggerHero.dataset.openContactModal || 'form';
+            if (contactsTabHiddenInHero) {
+                contactsTabHiddenInHero.style.display = 'none'; // Прячем вкладку мессенджеров
+            }
+            openModal('form'); // Открываем сразу вкладку с формой
+            return;
+        }
+
+        // 2. Если нажали на обычную кнопку «Контакты» в шапке (с атрибутом data-open-contact-modal)
+        const openTrigger = e.target.closest('[data-open-contact-modal]');
+        if (openTrigger) {
+            e.preventDefault();
+            if (contactsTabHiddenInHero) {
+                contactsTabHiddenInHero.style.display = ''; // Возвращаем вкладку мессенджеров обратно!
+            }
+            const targetTab = openTrigger.dataset.openContactModal || 'contacts';
             openModal(targetTab);
             return;
-
-
         }
 
         // Внутренние кнопки быстрого переключения на вкладку формы (учитываем регистр data-tab-trigger)

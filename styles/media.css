@@ -487,6 +487,9 @@
     .site-footer{
         width: 103%;
     }
+    .calc-section .section-header{
+        padding: 0 20px 6px;
+    }
 }
 
 /* ---- ≤480 ---- */

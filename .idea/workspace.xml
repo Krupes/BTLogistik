@@ -11,12 +11,8 @@
       <change beforePath="$PROJECT_DIR$/catalog/railway/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/railway/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog/warehouse/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/warehouse/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/burger.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/burger.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/contacts-modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/contacts-modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/contacts-modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/contacts-modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/warehouse.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/warehouse.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/media.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/media.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +116,7 @@
       <workItem from="1793543410098" duration="280000" />
       <workItem from="1793570817987" duration="2247000" />
       <workItem from="1793647859635" duration="748000" />
-      <workItem from="1793893091114" duration="17281000" />
+      <workItem from="1793893091114" duration="19278000" />
     </task>
     <servers />
   </component>
