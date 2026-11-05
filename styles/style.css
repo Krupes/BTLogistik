@@ -1358,6 +1358,16 @@ h2{
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+@media (max-width: 600px) {
+    .form-row-2col {
+
+        gap: 0;
+    }
+    .calc-inputs .form-row-2col .form-group{
+        margin-bottom: 0;
+    }
+
+}
 
 .glass-input {
     width: 100%;
@@ -2860,6 +2870,16 @@ body {
 
     box-sizing: border-box;
     transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+@media (max-width: 600px) {
+
+    .calc-inputs .form-row-2col .form-group{
+        margin-bottom: 10px;
+    }
+    .calc-grid{
+        gap: 0;
+    }
+
 }
 
 /* Когда пользователь кликает внутрь поля — ниша мягко подсвечивается изнутри */
