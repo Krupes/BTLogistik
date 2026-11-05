@@ -1473,6 +1473,11 @@ h2{
     font-weight: 500;
     color: var(--gold-primary);
 }
+.summary-price .currency svg {
+    font-size: 22px;
+    font-weight: 500;
+    fill: var(--gold-primary);
+}
 
 .summary-note {
     font-size: 12px;
