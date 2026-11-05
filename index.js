@@ -203,8 +203,20 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateTotal(true, true);
     };
 
+    const calcFormEl = document.getElementById('costCalcForm');
+
+    // На мобилке (<= 768px) со старта снимаем подсветку с кнопок шага 01, пока юзер сам не кликнет
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        serviceBtns.forEach((btn) => btn.classList.remove('active'));
+    }
+
     serviceBtns.forEach((btn) => {
-        btn.addEventListener('click', () => setServiceMode(btn.dataset.service));
+        btn.addEventListener('click', () => {
+            if (calcFormEl) {
+                calcFormEl.classList.add('is-step1-done');
+            }
+            setServiceMode(btn.dataset.service);
+        });
     });
 
     // Кнопки "−" и "+" (Паллеты и Дни: -1/+1, Маркировка: -100/+100)

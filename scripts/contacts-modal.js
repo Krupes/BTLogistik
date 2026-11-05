@@ -200,6 +200,18 @@ document.addEventListener('DOMContentLoaded', () => {
             openModal(targetTab);
             return;
         }
+        const contactsTabHiddenInHero = document.getElementsByClassName('btl-tab-btn')[0];
+        const openTriggerHero = e.target.closest('[data-open-contact-modal-hero]');
+        if (openTriggerHero) {
+            e.preventDefault();
+            console.log('hello');
+            contactsTabHiddenInHero.style.display = 'none';
+            const targetTab = openTriggerHero.dataset.openContactModal || 'form';
+            openModal(targetTab);
+            return;
+
+
+        }
 
         // Внутренние кнопки быстрого переключения на вкладку формы (учитываем регистр data-tab-trigger)
         const internalSwitch = e.target.closest('[data-tab-trigger]');

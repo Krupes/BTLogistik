@@ -1549,7 +1549,7 @@ h2{
     font-family: 'Ubuntu', sans-serif;
     font-size: 22px;
     color: var(--gold-light);
-    margin: 0 0 8px;
+    margin: 0 0 25px;
 }
 
 .contacts-desc {
@@ -1589,7 +1589,7 @@ h2{
 
 .contact-label {
     display: block;
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-muted);
     margin-bottom: 4px;
 }
@@ -1891,9 +1891,9 @@ h2{
 
     .dropdown-menu {
         position: absolute;
-        top: calc(100% + 16px);
+        top: calc(100% + 19px);
         left: 50%;
-        width: 310px;
+        width: 241px;
         padding: 10px;
         border-radius: 20px;
         background:
@@ -1959,6 +1959,7 @@ h2{
 .dropdown-link {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     padding: 10px 12px;
     border-radius: 14px;
@@ -2907,5 +2908,67 @@ body {
         padding: 14px 14px;
         border-radius: 15px;
         margin-bottom: 14px;
+    }
+}
+/* ==========================================================================
+   МОБИЛЬНАЯ ПОШАГОВАЯ ЛОГИКА КАЛЬКУЛЯТОРА (ДО ВЫБОРА УСЛУГИ В БЛОКЕ 01)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Пока услуга не выбрана — шаги 02 и 03 выглядят как компактные приглушённые плашки */
+    #costCalcForm:not(.is-step1-done) #calcWarehousePanel,
+    #costCalcForm:not(.is-step1-done) #calcMarkingPanel,
+    #costCalcForm:not(.is-step1-done) .calc-inputs > .form-group:last-child {
+        opacity: 0.45;
+        filter: grayscale(0.35);
+        pointer-events: none;
+        user-select: none;
+        padding-left: 10px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        margin-bottom: 12px;
+        border-radius: 15px;
+        background: rgba(3, 16, 13, 0.55);
+        border: 1px solid rgba(212, 175, 55, 0.14);
+        transition: opacity 0.35s ease, filter 0.35s ease, padding 0.35s ease;
+    }
+
+    /* Убираем нижний отступ у самих заголовков 02 и 03 в свёрнутом состоянии */
+    #costCalcForm:not(.is-step1-done) #calcWarehousePanel > .form-label,
+    #costCalcForm:not(.is-step1-done) #calcMarkingPanel > .form-label,
+    #costCalcForm:not(.is-step1-done) .calc-inputs > .form-group:last-child > .form-label {
+        margin-bottom: 0 !important;
+    }
+
+    /* Скрываем всё содержимое внутри блоков 02 и 03, КРОМЕ самого заголовка .form-label */
+    #costCalcForm:not(.is-step1-done) #calcWarehousePanel > :not(.form-label),
+    #costCalcForm:not(.is-step1-done) #calcMarkingPanel > :not(.form-label),
+    #costCalcForm:not(.is-step1-done) .calc-inputs > .form-group:last-child > :not(.form-label) {
+        display: none !important;
+    }
+
+    /* Также приглушаем или компактно сворачиваем правый блок с итоговой суммой до выбора */
+    #costCalcForm:not(.is-step1-done) .calc-summary {
+        opacity: 0.4;
+        pointer-events: none;
+        filter: grayscale(0.4);
+        transition: opacity 0.35s ease, filter 0.35s ease;
+    }
+
+    /* Плавное появление внутрянки, когда юзер кликнул на услугу */
+    #costCalcForm.is-step1-done #calcWarehousePanel > :not(.form-label),
+    #costCalcForm.is-step1-done #calcMarkingPanel > :not(.form-label),
+    #costCalcForm.is-step1-done .calc-inputs > .form-group:last-child > :not(.form-label) {
+        animation: calcStepReveal 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes calcStepReveal {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }

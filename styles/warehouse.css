@@ -2,9 +2,12 @@
    WAREHOUSE.CSS — Стили и адаптив для страницы Склада (СВХ и СОХ)
    Брейкпоинты: 1280px / 960px / 768px / 600px / 480px / 360px
    ========================================================================== */
+#svh-section{
+    scroll-margin-top:130px;
+}
 
-#svh-section, #soh-section{
-    scroll-margin-top: 130px;
+ #soh-section{
+    scroll-margin-top: 100px;
 }
 
 .inner-page {
