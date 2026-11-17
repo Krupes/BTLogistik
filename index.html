@@ -1257,12 +1257,74 @@
 
 
 
-</body>
+<!-- ================= ПЛАВАЮЩИЙ ВИДЖЕТ БЫСТРОЙ СВЯЗИ (FAB) ================= -->
+<div class="btl-fab" id="btlFab">
 
+    <!-- Вылетающий список мессенджеров (снизу вверх) -->
+    <div class="btl-fab-list" id="btlFabList" aria-hidden="true">
+
+        <!-- Позвонить -->
+        <a href="tel:+375299876543" class="btl-fab-item btl-fab-item--phone" style="--i: 1" data-tooltip="Позвонить" aria-label="Позвонить">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/375299876543" target="_blank" rel="noopener" class="btl-fab-item btl-fab-item--whatsapp" style="--i: 2" data-tooltip="WhatsApp" aria-label="Написать в WhatsApp">
+            <svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+            </svg>
+        </a>
+
+        <!-- Viber -->
+        <a href="viber://chat?number=%2B375299876543" target="_blank" rel="noopener" class="btl-fab-item btl-fab-item--viber" style="--i: 3" data-tooltip="Viber" aria-label="Написать в Viber">
+            <svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor">
+                <path d="M11.4 3C6.8 3 3.5 6.1 3.5 10.4c0 2.2 1 4.2 2.7 5.6l-.5 2.7 2.6-1.3c1 .3 2 .5 3.1.5 4.6 0 7.9-3.1 7.9-7.5S16 3 11.4 3zm4.1 9.8c-.2.5-.9 1-1.4 1.1-.4.1-.9.1-2.5-.5-2.1-.9-3.4-3-3.5-3.1-.1-.2-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.2.4-.2.6-.2h.4c.1 0 .3 0 .5.4.2.4.6 1.5.7 1.6.1.1.1.2 0 .4-.1.2-.1.3-.3.4l-.3.4c-.1.1-.2.2-.1.4.1.2.6 1 1.2 1.6.8.7 1.5 1 1.7 1.1.2.1.3.1.5-.1.1-.2.6-.7.8-.9.2-.2.3-.2.5-.1.2.1 1.3.6 1.5.7.2.1.4.2.4.3.1.2.1.7-.1 1.2z"/>
+            </svg>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/btlogistik" target="_blank" rel="noopener" class="btl-fab-item btl-fab-item--telegram" style="--i: 4" data-tooltip="Telegram" aria-label="Написать в Telegram">
+            <svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
+        </a>
+
+    </div>
+
+    <!-- Нижний ряд: плашка "Напишите нам!" + главная круглая кнопка -->
+    <div class="btl-fab-bottom">
+        <button type="button" class="btl-fab-hint" id="btlFabHint">
+            <span class="btl-fab-status-dot"></span>
+            <span>Напишите нам!</span>
+        </button>
+
+        <button type="button" class="btl-fab-trigger" id="btlFabTrigger" aria-expanded="false" aria-label="Открыть быстрые контакты">
+            <!-- Иконка чата (как на скрине) -->
+            <svg class="btl-fab-icon btl-fab-icon--chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                <line x1="9" y1="10" x2="15" y2="10"/>
+                <line x1="9" y1="14" x2="13" y2="14"/>
+            </svg>
+
+            <!-- Иконка крестика (появляется при открытии) -->
+            <svg class="btl-fab-icon btl-fab-icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>
+
+</div>
 <script src="index.js"></script>
 <script src="scripts/contacts-modal.js"></script>
 <script src="libs/aos/aos.js"></script>
 <script>
     AOS.init();
 </script>
+
+</body>
+
+
 </html>

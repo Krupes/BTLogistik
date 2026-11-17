@@ -275,6 +275,343 @@ h2{
 
 
 /*endregion */
+
+/*region Floating Action Button*/
+/* ==========================================================================
+   ПЛАВАЮЩИЙ ВИДЖЕТ СВЯЗИ В ПРАВОМ НИЖНЕМ УГЛУ (BTL FAB WIDGET)
+   ========================================================================== */
+.btl-fab {
+    position: fixed;
+    right: 26px;
+    bottom: calc(26px + env(safe-area-inset-bottom, 0px));
+    z-index: 950;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    pointer-events: none; /* Пропускает клики сквозь пустые зоны контейнера */
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Автоматически скрываем виджет, если открыто основное модальное окно контактов */
+body:has(#btlContactModal.is-open) .btl-fab {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    pointer-events: none !important;
+}
+
+.btl-fab-bottom {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    pointer-events: auto;
+}
+
+/* ---------- Плашка-баббл «Напишите нам!» слева от кнопки ---------- */
+.btl-fab-hint {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 18px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(8, 38, 30, 0.94) 0%, rgba(4, 20, 16, 0.98) 100%);
+    border: 1px solid rgba(235, 208, 133, 0.45);
+    color: #ffffff;
+    font-family: 'Ubuntu-bold', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow:
+            0 12px 28px rgba(0, 0, 0, 0.5),
+            0 0 20px rgba(212, 175, 55, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    animation: btlHintFloat 4s ease-in-out infinite;
+    transition:
+            opacity 0.28s ease,
+            transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0.28s,
+            border-color 0.25s ease;
+}
+
+/* Острый хвостик баббла справа, указывающий на кнопку (как на скрине) */
+.btl-fab-hint::after {
+    content: "";
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    background: rgba(5, 24, 19, 0.98);
+    border-top: 1px solid rgba(235, 208, 133, 0.45);
+    border-right: 1px solid rgba(235, 208, 133, 0.45);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.btl-fab-hint:hover {
+    border-color: var(--gold-light, #f3df9d);
+}
+
+/* Зелёный индикатор «онлайн» */
+.btl-fab-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981;
+    flex-shrink: 0;
+}
+
+@keyframes btlHintFloat {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(-5px); }
+}
+
+/* При открытии меню плашка «Напишите нам!» плавно прячется */
+.btl-fab.is-open .btl-fab-hint {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(14px) scale(0.92);
+    animation: none;
+}
+
+/* ---------- Главная круглая кнопка-триггер ---------- */
+.btl-fab-trigger {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1.5px solid #fff3c4;
+    background: linear-gradient(135deg, #f3df9d 0%, #d4af37 50%, #997a15 100%);
+    color: #07221b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow:
+            0 12px 30px rgba(0, 0, 0, 0.55),
+            0 0 25px rgba(212, 175, 55, 0.45),
+            inset 0 2px 2px rgba(255, 255, 255, 0.65);
+    transition:
+            transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+            background 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            color 0.3s ease;
+}
+
+/* Расходящаяся золотая волна-пульсация вокруг кнопки в закрытом виде */
+.btl-fab-trigger::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 2px solid rgba(243, 223, 157, 0.65);
+    animation: btlFabPulse 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    pointer-events: none;
+}
+
+@keyframes btlFabPulse {
+    0%   { transform: scale(1); opacity: 0.85; }
+    100% { transform: scale(1.48); opacity: 0; }
+}
+
+.btl-fab-trigger:hover {
+    transform: scale(1.07);
+    box-shadow:
+            0 14px 34px rgba(0, 0, 0, 0.65),
+            0 0 34px rgba(243, 223, 157, 0.7);
+}
+
+/* В открытом состоянии кнопка становится строгой тёмно-изумрудной с золотым крестиком */
+.btl-fab.is-open .btl-fab-trigger {
+    background: linear-gradient(145deg, #0b2e26 0%, #051813 100%);
+    color: var(--gold-light, #f3df9d);
+    border-color: rgba(243, 223, 157, 0.7);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+.btl-fab.is-open .btl-fab-trigger::before {
+    animation: none;
+    opacity: 0;
+}
+
+/* Смена иконок Чата и Крестика с вращением */
+.btl-fab-icon {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    transition:
+            transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+            opacity 0.25s ease;
+}
+
+.btl-fab-icon--chat {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.btl-fab-icon--close {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.4);
+}
+
+.btl-fab.is-open .btl-fab-icon--chat {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.4);
+}
+
+.btl-fab.is-open .btl-fab-icon--close {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* ---------- Список вылетающих иконок мессенджеров ---------- */
+.btl-fab-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-right: 4px; /* Центрируем 52px иконки над 60px кнопкой */
+    pointer-events: none;
+}
+
+.btl-fab.is-open .btl-fab-list {
+    pointer-events: auto;
+}
+
+.btl-fab-item {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(28px) scale(0.45);
+    transition:
+            transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+            opacity 0.25s ease,
+            visibility 0.25s,
+            filter 0.2s ease,
+            box-shadow 0.2s ease;
+    /* Каскадная задержка при закрытии */
+    transition-delay: calc((4 - var(--i)) * 0.04s);
+}
+
+/* Каскадный пружинящий вылет снизу вверх при открытии */
+.btl-fab.is-open .btl-fab-item {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    transition-delay: calc(var(--i) * 0.055s);
+}
+
+.btl-fab.is-open .btl-fab-item:hover {
+    transform: translateY(-2px) scale(1.1);
+    filter: brightness(1.12);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(235, 208, 133, 0.35);
+    transition-delay: 0s;
+}
+
+/* Цвета кружков мессенджеров */
+.btl-fab-item--telegram {
+    background: linear-gradient(135deg, #2AABEE 0%, #1d8adb 100%);
+}
+.btl-fab-item--viber {
+    background: linear-gradient(135deg, #7360f2 0%, #59469d 100%);
+}
+.btl-fab-item--whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #1fa855 100%);
+}
+.btl-fab-item--phone {
+    background: linear-gradient(135deg, #114b3c 0%, #07221b 100%);
+    color: var(--gold-light, #f3df9d);
+    border-color: rgba(235, 208, 133, 0.6);
+}
+
+/* Всплывающая подсказка слева при наведении на кружок мессенджера (на ПК) */
+@media (hover: hover) {
+    .btl-fab-item::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        right: calc(100% + 12px);
+        top: 50%;
+        transform: translateY(-50%) translateX(6px);
+        padding: 6px 12px;
+        border-radius: 8px;
+        background: rgba(6, 28, 22, 0.95);
+        border: 1px solid rgba(235, 208, 133, 0.38);
+        color: var(--gold-light, #f3df9d);
+        font-size: 12.5px;
+        font-weight: 500;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .btl-fab-item:hover::before {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+/* ---------- Адаптив для планшетов и смартфонов ---------- */
+@media (max-width: 768px) {
+    .btl-fab {
+        right: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        gap: 10px;
+    }
+
+    .btl-fab-trigger {
+        width: 54px;
+        height: 54px;
+    }
+
+    .btl-fab-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .btl-fab-list {
+        margin-right: 3px;
+        gap: 10px;
+    }
+
+    .btl-fab-item {
+        width: 48px;
+        height: 48px;
+    }
+
+    .btl-fab-hint {
+        padding: 9px 14px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .btl-fab-hint {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+}
+/*endregion*/
 /*region Тайтлы с переливами*/
 
 

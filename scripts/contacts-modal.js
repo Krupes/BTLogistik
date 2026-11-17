@@ -422,3 +422,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/* ===== Плавающий виджет быстрой связи (FAB) ===== */
+(() => {
+    const fab = document.getElementById('btlFab');
+    const trigger = document.getElementById('btlFabTrigger');
+    const hint = document.getElementById('btlFabHint');
+    const list = document.getElementById('btlFabList');
+
+    if (!fab || !trigger || !list) return;
+
+    const setFabOpen = (open) => {
+        fab.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+        trigger.setAttribute('aria-label', open ? 'Закрыть быстрые контакты' : 'Открыть быстрые контакты');
+        list.setAttribute('aria-hidden', String(!open));
+    };
+
+    const toggleFab = (e) => {
+        e.stopPropagation();
+        setFabOpen(!fab.classList.contains('is-open'));
+    };
+
+    // Открытие и по круглой кнопке, и по плашке «Напишите нам!»
+    trigger.addEventListener('click', toggleFab);
+    if (hint) hint.addEventListener('click', toggleFab);
+
+    // Закрытие при клике в любое место вне виджета
+    document.addEventListener('click', (e) => {
+        if (fab.classList.contains('is-open') && !fab.contains(e.target)) {
+            setFabOpen(false);
+        }
+    });
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && fab.classList.contains('is-open')) {
+            setFabOpen(false);
+        }
+    });
+})();
