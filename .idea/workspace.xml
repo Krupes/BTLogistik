@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="bcba9d45-d510-458f-a7c7-04c95d69bbf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/about/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/customsclearance/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/customsclearance/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/marking/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/marking/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/railway/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/railway/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/warehouse/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/warehouse/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/customsclearence.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/customsclearence.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/marking.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/marking.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/railway.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/railway.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/warehouse.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/warehouse.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +123,7 @@
       <workItem from="1794418223006" duration="5698000" />
       <workItem from="1794495923740" duration="3003000" />
       <workItem from="1794855752804" duration="6087000" />
-      <workItem from="1794945051354" duration="617000" />
+      <workItem from="1794945051354" duration="5152000" />
     </task>
     <servers />
   </component>
