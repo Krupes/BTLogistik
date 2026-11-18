@@ -604,6 +604,10 @@ body:has(#btlContactModal.is-open) .btl-fab {
         font-size: 13px;
     }
 }
+@media (max-width: 520px) {
+    .btl-fab-hint{
+    display: none}
+}
 
 @media (max-width: 380px) {
     .btl-fab-hint {
