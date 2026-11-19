@@ -615,6 +615,14 @@ body:has(#btlContactModal.is-open) .btl-fab {
         font-size: 12px;
     }
 }
+.hero-beaver {
+    display: block;
+    width: 100%;
+    max-width: 500px; /* подгони под размер, который был у PNG */
+    height: auto;
+    pointer-events: none; /* чтобы нельзя было кликнуть/поставить на паузу */
+    user-select: none;
+}
 /*endregion*/
 /*region Тайтлы с переливами*/
 
