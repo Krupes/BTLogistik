@@ -25,6 +25,87 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalValueEl = document.getElementById('calcTotalValue');
     const startWorkBtn = document.getElementById('startWorkBtn');
 
+
+
+    // Элементы переключения валют
+    const currencyBtns = document.querySelectorAll('#calcCurrencySwitcher .calc-curr-btn');
+    const currencyLabelEl = document.getElementById('calcCurrencyLabel');
+    const summaryRateInfoEl = document.getElementById('summaryRateInfo');
+
+    let currentCurrency = 'BYN';
+
+    // Актуальные курсы НБ РБ (сколько BYN стоит 1 единица валюты)
+    // Заполняются автоматически из API Нацбанка РБ при загрузке
+    const nbrbRates = {
+        BYN: { ratePerOne: 1, label: '' },
+        USD: { ratePerOne: 3.25, label: 'по курсу НБ РБ' },   // резерв до ответа API
+        RUB: { ratePerOne: 0.0335, label: 'по курсу НБ РБ' }  // резерв (3.35 BYN за 100 RUB)
+    };
+
+    // Загрузка официальных курсов Нацбанка РБ
+    async function fetchNbrbRates() {
+        const CACHE_KEY = 'btl_nbrb_rates_cache';
+        try {
+            const cached = sessionStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                Object.assign(nbrbRates, parsed);
+                calculateTotal(false, false);
+                return;
+            }
+
+            const [usdRes, rubRes] = await Promise.all([
+                fetch('https://api.nbrb.by/exrates/rates/USD?parammode=2'),
+                fetch('https://api.nbrb.by/exrates/rates/RUB?parammode=2')
+            ]);
+
+            if (usdRes.ok) {
+                const usdData = await usdRes.json();
+                const perOneUsd = usdData.Cur_OfficialRate / (usdData.Cur_Scale || 1);
+                nbrbRates.USD = {
+                    ratePerOne: perOneUsd,
+                    label: `Курс НБ РБ: 1 USD = ${usdData.Cur_OfficialRate.toFixed(4)} BYN`
+                };
+            }
+
+            if (rubRes.ok) {
+                const rubData = await rubRes.json();
+                // НБ РБ отдаёт курс за 100 RUB (Cur_Scale = 100)
+                const perOneRub = rubData.Cur_OfficialRate / (rubData.Cur_Scale || 100);
+                nbrbRates.RUB = {
+                    ratePerOne: perOneRub,
+                    label: `Курс НБ РБ: ${rubData.Cur_Scale} RUB = ${rubData.Cur_OfficialRate.toFixed(4)} BYN`
+                };
+            }
+
+            sessionStorage.setItem(CACHE_KEY, JSON.stringify(nbrbRates));
+            calculateTotal(false, false);
+        } catch (err) {
+            console.warn('Не удалось загрузить курсы НБ РБ, используются резервные:', err);
+        }
+    }
+
+    fetchNbrbRates();
+
+    // Переключение кнопок BYN / USD / RUB
+    currencyBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            currentCurrency = btn.dataset.currency || 'BYN';
+            currencyBtns.forEach((b) => b.classList.toggle('active', b === btn));
+            calculateTotal(true, false);
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
     if (!totalValueEl) return;
 
     // Закрытые тарифы (только внутри JS)
@@ -161,9 +242,35 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
 
+        // ✅ СТАЛО (Конвертация базовой суммы total из BYN в BYN / USD / RUB):
+        const rateObj = nbrbRates[currentCurrency] || nbrbRates.BYN;
+        const convertedTotal = currentCurrency === 'BYN'
+            ? total
+            : (total / rateObj.ratePerOne);
+
+        // Для USD при сумме < 100 показываем 2 знака после запятой (например, 8.31), для крупных сумм — целое число
+        const formattedPrice = (currentCurrency === 'USD' && convertedTotal < 100)
+            ? convertedTotal.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+            : Math.round(convertedTotal).toLocaleString('ru-RU');
+
         if (summaryServiceTag) summaryServiceTag.textContent = serviceNames[currentService];
         if (summarySpecs) summarySpecs.textContent = userSpecsSummary.join(' • ');
-        totalValueEl.textContent = Math.round(total).toLocaleString('ru-RU');
+        if (currencyLabelEl) currencyLabelEl.textContent = currentCurrency;
+        totalValueEl.textContent = formattedPrice;
+
+        // Показываем подпись с официальным курсом НБ РБ для USD и RUB
+        if (summaryRateInfoEl) {
+            if (currentCurrency === 'BYN' || !rateObj.label) {
+                summaryRateInfoEl.hidden = true;
+            } else {
+                summaryRateInfoEl.textContent = rateObj.label;
+                summaryRateInfoEl.hidden = false;
+            }
+        }
+
+        // Добавляем в скрытый отчёт для менеджера также сумму в выбранной клиентом валюте
+        detailsForStaff.selectedCurrency = currentCurrency;
+        detailsForStaff.convertedTotal = `${formattedPrice} ${currentCurrency}`;
 
         const priceWrap = totalValueEl.closest('.summary-price');
         if (priceWrap) {

@@ -679,37 +679,74 @@
                 </div>
 
                 <!-- ПРАВАЯ КОЛОНКА: ИТОГ И КНОПКА "НАЧАТЬ РАБОТУ" -->
-                <div class="calc-summary">
-                    <div class="summary-box">
-                        <div class="summary-top-meta">
+<!--                <div class="calc-summary">-->
+<!--                    <div class="summary-box">-->
+<!--                        <div class="summary-top-meta">-->
+<!--                            <span class="summary-service-tag" id="summaryServiceTag">Услуги склада / СВХ</span>-->
+<!--                            <span class="summary-caption">Ориентировочная стоимость:</span>-->
+<!--                        </div>-->
+
+<!--                        <div class="summary-formula" id="summarySpecs">-->
+<!--                            3 шт. (паллет) • 4 дн. хранения-->
+<!--                        </div>-->
+
+<!--                        <div class="summary-price">-->
+<!--                            <span class="summary-tilde">~</span>-->
+<!--                            <span id="calcTotalValue">27</span>-->
+<!--                            <span class="currency">-->
+<!--                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 14" width="25" height="25">-->
+<!--  <path d="M2.35 0v9.33H.09v1.31h2.26v3.36h5.48c1.5 0 2.56-.2 3.19-.59.62-.39 1.09-.88 1.4-1.5.32-.61.48-1.28.48-1.98 0-.87-.22-1.63-.66-2.28-.44-.65-1.02-1.1-1.75-1.33-.73-.24-1.71-.35-2.94-.35H4.21v-4.3H11.43V0H2.35zm1.86 7.57h2.47c1.23 0 2.1.06 2.61.19.5.13.9.38 1.19.77.29.39.43.87.43 1.45 0 .82-.25 1.43-.75 1.84-.5.4-1.25.61-2.24.61H4.21v-1.77H7.5V9.33H4.21V7.57z"/>-->
+<!--</svg>-->
+
+<!--                            </span>-->
+<!--                        </div>-->
+
+<!--                        <p class="summary-note" id="summaryNote">-->
+<!--                            Нажмите «Начать работу», чтобы согласовать поставку со специалистом. Расчёт является предварительным.-->
+<!--                        </p>-->
+
+<!--                        <button type="button" class="gold-btn calc-submit-btn" id="startWorkBtn">-->
+<!--                            <span>НАЧАТЬ РАБОТУ</span>-->
+<!--                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="summary-box">
+                    <div class="summary-top-meta">
+                        <div class="summary-header-row">
                             <span class="summary-service-tag" id="summaryServiceTag">Услуги склада / СВХ</span>
-                            <span class="summary-caption">Ориентировочная стоимость:</span>
+
+                            <!-- Переключатель валют BYN / USD / RUB -->
+                            <div class="calc-currency-switcher" id="calcCurrencySwitcher" role="group" aria-label="Выбор валюты">
+                                <button type="button" class="calc-curr-btn active" data-currency="BYN">BYN</button>
+                                <button type="button" class="calc-curr-btn" data-currency="USD">USD</button>
+                                <button type="button" class="calc-curr-btn" data-currency="RUB">RUB</button>
+                            </div>
                         </div>
-
-                        <div class="summary-formula" id="summarySpecs">
-                            3 шт. (паллет) • 4 дн. хранения
-                        </div>
-
-                        <div class="summary-price">
-                            <span class="summary-tilde">~</span>
-                            <span id="calcTotalValue">27</span>
-                            <span class="currency">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 14" width="25" height="25">
-  <path d="M2.35 0v9.33H.09v1.31h2.26v3.36h5.48c1.5 0 2.56-.2 3.19-.59.62-.39 1.09-.88 1.4-1.5.32-.61.48-1.28.48-1.98 0-.87-.22-1.63-.66-2.28-.44-.65-1.02-1.1-1.75-1.33-.73-.24-1.71-.35-2.94-.35H4.21v-4.3H11.43V0H2.35zm1.86 7.57h2.47c1.23 0 2.1.06 2.61.19.5.13.9.38 1.19.77.29.39.43.87.43 1.45 0 .82-.25 1.43-.75 1.84-.5.4-1.25.61-2.24.61H4.21v-1.77H7.5V9.33H4.21V7.57z"/>
-</svg>
-
-                            </span>
-                        </div>
-
-                        <p class="summary-note" id="summaryNote">
-                            Нажмите «Начать работу», чтобы согласовать поставку со специалистом. Расчёт является предварительным.
-                        </p>
-
-                        <button type="button" class="gold-btn calc-submit-btn" id="startWorkBtn">
-                            <span>НАЧАТЬ РАБОТУ</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </button>
+                        <span class="summary-caption">Ориентировочная стоимость:</span>
                     </div>
+
+                    <div class="summary-formula" id="summarySpecs">
+                        3 шт. (паллет) • 4 дн. хранения
+                    </div>
+
+                    <div class="summary-price">
+                        <span class="summary-tilde">~</span>
+                        <span id="calcTotalValue">27</span>
+                        <span class="currency" id="calcCurrencyLabel">BYN</span>
+                    </div>
+
+                    <!-- Информер актуального курса НБ РБ (показывается при выборе USD или RUB) -->
+                    <div class="summary-rate-info" id="summaryRateInfo" hidden></div>
+
+                    <p class="summary-note" id="summaryNote">
+                        Нажмите «Начать работу», чтобы зафиксировать расчёт и согласовать поставку со специалистом.
+                    </p>
+
+                    <button type="button" class="gold-btn calc-submit-btn" id="startWorkBtn">
+                        <span>НАЧАТЬ РАБОТУ</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
                 </div>
 
             </form>
